@@ -12,3 +12,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  table-layout: fixed;
+  width: 150px;
+}
