@@ -7,7 +7,7 @@ export class Main extends Component {
     if (this.props.selected === "Addition") {
       return (
         <div>
-          <Addition></Addition>
+          <Addition rowCount="15"></Addition>
         </div>
       );
     } else {
