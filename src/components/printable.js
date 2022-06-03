@@ -5,7 +5,9 @@ export class Printable extends Component {
     return (
       <div>
         <div>{this.props.children}</div>
-        <button>Print This Sheet</button>
+        <div>
+          <button>Print This Sheet</button>
+        </div>
       </div>
     );
   }
