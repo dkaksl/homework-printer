@@ -7,11 +7,14 @@ export class Main extends Component {
     if (this.props.selected === "Subtraction") {
       return (
         <div>
-          <Subtraction rowCount="15"></Subtraction>
+          <Subtraction
+            rowCount="15"
+            difficulty={this.props.difficulty}
+          ></Subtraction>
         </div>
       );
     } else {
-      return <div>Select a </div>;
+      return <div>Select an exercise and difficulty level</div>;
     }
   }
 }
