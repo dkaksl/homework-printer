@@ -1,13 +1,13 @@
 import { Component } from "react";
 
-import { Addition } from "../views/addition";
+import { Subtraction } from "./subtraction";
 
 export class Main extends Component {
   render() {
-    if (this.props.selected === "Addition") {
+    if (this.props.selected === "Subtraction") {
       return (
         <div>
-          <Addition rowCount="15"></Addition>
+          <Subtraction rowCount="15"></Subtraction>
         </div>
       );
     } else {

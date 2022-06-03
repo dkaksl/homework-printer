@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Printable } from "../components/printable";
 
-export class Addition extends Component {
+export class Subtraction extends Component {
   constructor(props) {
     super(props);
     const rows = this.generateRowData(props.rowCount);

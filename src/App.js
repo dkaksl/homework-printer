@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Menu />
-        <Main selected="Addition" />
+        <Main selected="Subtraction" />
       </header>
     </div>
   );
