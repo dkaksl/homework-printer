@@ -6,10 +6,10 @@ import { Menu } from "./components/menu";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header>
         <Menu />
-        <Main selected="Subtraction" />
       </header>
+      <Main selected="Subtraction" />
     </div>
   );
 }
