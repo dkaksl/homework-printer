@@ -37,3 +37,14 @@ export const generateRowData = (
   }
   return rows;
 };
+
+export const getOperatorFromSelected = (selected: string) => {
+  switch (selected) {
+    case "Addition":
+      return "+";
+    case "Subtraction":
+      return "-";
+    default:
+      throw new Error("Unexpected state selected");
+  }
+};
