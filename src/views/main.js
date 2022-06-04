@@ -12,14 +12,15 @@ export class Main extends Component {
       difficulty: "medium",
     };
     this.menuClickHandler = this.menuClickHandler.bind(this);
+    this.difficultyHandler = this.difficultyHandler.bind(this);
   }
 
   menuClickHandler(value) {
     this.setState({ selected: value });
   }
 
-  difficultyHandler(difficulty) {
-    this.setState({ difficulty });
+  difficultyHandler(event) {
+    this.setState({ difficulty: event.target.value });
   }
 
   getHomeworkView(selected, rowCount, difficulty) {
@@ -41,10 +42,23 @@ export class Main extends Component {
           <Menu menuClickHandler={this.menuClickHandler} />
         </header>
         <div className="content">
+          <label>
+            Difficulty:
+            <select
+              value={this.state.difficulty}
+              onChange={this.difficultyHandler}
+            >
+              {/* TODO: explain difficulties in tooltip */}
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </label>
           {this.getHomeworkView(
             this.state.selected,
             this.state.rowCount,
-            this.props.difficulty
+            this.state.difficulty
           )}
         </div>
       </div>
