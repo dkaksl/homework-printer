@@ -31,15 +31,24 @@ export class Subtraction extends Component {
         <Printable>
           <div>
             <table>
+              {/* TODO: extract component */}
               {this.state.rows.map((row) => (
                 <tr>
-                  <th>{row.a}</th>
-                  <th>-</th>
-                  <th>{row.b}</th>
-                  <th>=</th>
-                  <th>&nbsp;</th>
+                  <td>{row.a}</td>
+                  <td>-</td>
+                  <td>{row.b}</td>
+                  <td>=</td>
+                  <td>&nbsp;</td>
                 </tr>
               ))}
+              <tr>
+                <td colSpan={2}>Name:</td>
+                <td colSpan={3}></td>
+              </tr>
+              <tr>
+                <td colSpan={2}>Date:</td>
+                <td colSpan={3}></td>
+              </tr>
             </table>
           </div>
         </Printable>
