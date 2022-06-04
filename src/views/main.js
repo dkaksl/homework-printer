@@ -8,7 +8,7 @@ export class Main extends Component {
       return (
         <div className="content">
           <Subtraction
-            rowCount="15"
+            rowCount="20"
             difficulty={this.props.difficulty}
           ></Subtraction>
         </div>
