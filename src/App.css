@@ -1,16 +1,27 @@
 .App {
+  background-color: white;
+  color: black;
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.menu {
+  font-size: large;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  margin: 0;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.content {
+  margin-top: 50px;
+  font-size: 20px;
 }
 
 table,
@@ -22,5 +33,5 @@ td {
 
 table {
   table-layout: fixed;
-  width: 150px;
+  width: 200px;
 }
