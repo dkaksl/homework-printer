@@ -1,8 +1,7 @@
 import { Component } from "react";
 
 import { Menu } from "../components/menu";
-import { Maths } from "./maths";
-import { Subtraction } from "./subtraction";
+import { Maths } from "../components/maths";
 
 export type Difficulty = "easy" | "medium" | "hard" | "advanced";
 export type Operator = "-" | "+" | "×" | "÷";
@@ -29,18 +28,6 @@ export class Main extends Component<
 
   menuClickHandler(value: string) {
     this.setState({ selected: value });
-  }
-
-  getHomeworkView(selected: string, rowCount: number, difficulty: Difficulty) {
-    if (selected === "Subtraction") {
-      return (
-        <Subtraction rowCount={rowCount} difficulty={difficulty}></Subtraction>
-      );
-    } else if (selected === "Addition") {
-      return <div>TODO</div>;
-    } else {
-      return <div>Select an exercise and difficulty level</div>;
-    }
   }
 
   render() {
