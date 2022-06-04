@@ -15,11 +15,17 @@ const getMaxNumber = (difficulty?: string) => {
   }
 };
 
+export interface RowData {
+  a: number;
+  b: number;
+  operator: Operator;
+}
+
 export const generateRowData = (
   rowCount: number,
   difficulty: Difficulty,
   operator: Operator
-) => {
+): RowData[] => {
   const maxNumber = getMaxNumber(difficulty);
   const rows = [];
   for (let i = 0; i < rowCount; i++) {

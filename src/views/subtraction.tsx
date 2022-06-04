@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Printable } from "../components/printable";
 import { Sheet } from "../components/sheet";
-import { generateRowData } from "../util/index";
+import { generateRowData, RowData } from "../util/index";
 import { Difficulty } from "./main";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   difficulty: Difficulty;
 }
 
-export class Subtraction extends Component<Props, { rows: any }> {
+export class Subtraction extends Component<Props, { rows: RowData[] }> {
   constructor(props: Props) {
     super(props);
     const rows = generateRowData(props.rowCount, props.difficulty, "-");
