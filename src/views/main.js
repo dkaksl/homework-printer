@@ -6,7 +6,7 @@ export class Main extends Component {
   render() {
     if (this.props.selected === "Subtraction") {
       return (
-        <div>
+        <div className="content">
           <Subtraction
             rowCount="15"
             difficulty={this.props.difficulty}
