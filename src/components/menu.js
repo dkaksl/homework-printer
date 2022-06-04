@@ -19,7 +19,7 @@ export class Menu extends Component {
     return (
       <a
         className={this.isActive(name)}
-        href="#"
+        href="#/"
         onClick={() => this.handleClick(name)}
       >
         {name}
