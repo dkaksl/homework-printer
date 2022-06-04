@@ -1,12 +1,12 @@
 import { Component } from "react";
-import { Printable } from "../components/printable";
-import { Sheet } from "../components/sheet";
+import { Printable } from "./printable";
+import { Sheet } from "./sheet";
 import {
   generateRowData,
   getOperatorFromSelected,
   RowData,
 } from "../util/index";
-import { Difficulty } from "./main";
+import { Difficulty } from "../views/main";
 
 interface Props {
   selected: string;
