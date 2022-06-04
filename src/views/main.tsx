@@ -3,8 +3,20 @@ import { Component } from "react";
 import { Menu } from "../components/menu";
 import { Subtraction } from "./subtraction";
 
-export class Main extends Component {
-  constructor(props) {
+export type Difficulty = "easy" | "medium" | "hard" | "advanced";
+export type Operator = "-" | "+" | "*" | "÷";
+
+interface Props {}
+
+export class Main extends Component<
+  Props,
+  {
+    selected: string;
+    rowCount: number;
+    difficulty: Difficulty;
+  }
+> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       selected: "Subtraction",
@@ -15,15 +27,15 @@ export class Main extends Component {
     this.difficultyHandler = this.difficultyHandler.bind(this);
   }
 
-  menuClickHandler(value) {
+  menuClickHandler(value: string) {
     this.setState({ selected: value });
   }
 
-  difficultyHandler(event) {
+  difficultyHandler(event: any) {
     this.setState({ difficulty: event.target.value });
   }
 
-  getHomeworkView(selected, rowCount, difficulty) {
+  getHomeworkView(selected: string, rowCount: number, difficulty: Difficulty) {
     if (selected === "Subtraction") {
       return (
         <Subtraction rowCount={rowCount} difficulty={difficulty}></Subtraction>

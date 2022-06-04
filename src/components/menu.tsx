@@ -1,21 +1,25 @@
 import { Component } from "react";
 
-export class Menu extends Component {
-  constructor(props) {
+interface Props {
+  menuClickHandler: Function;
+}
+
+export class Menu extends Component<Props, { selected: string }> {
+  constructor(props: Props) {
     super(props);
     this.state = { selected: "Subtraction" };
   }
 
-  isActive(selected) {
+  isActive(selected: string) {
     return this.state.selected === selected ? "active" : "";
   }
 
-  handleClick(selected) {
+  handleClick(selected: string) {
     this.props.menuClickHandler(selected);
     this.setState({ selected });
   }
 
-  getMenuItem(name) {
+  getMenuItem(name: string) {
     return (
       <a
         className={this.isActive(name)}

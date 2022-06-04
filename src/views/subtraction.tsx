@@ -2,15 +2,21 @@ import { Component } from "react";
 import { Printable } from "../components/printable";
 import { Sheet } from "../components/sheet";
 import { generateRowData } from "../util/index";
+import { Difficulty } from "./main";
 
-export class Subtraction extends Component {
-  constructor(props) {
+interface Props {
+  rowCount: number;
+  difficulty: Difficulty;
+}
+
+export class Subtraction extends Component<Props, { rows: any }> {
+  constructor(props: Props) {
     super(props);
     const rows = generateRowData(props.rowCount, props.difficulty, "-");
     this.state = { rows };
   }
 
-  refreshRowData(rowCount) {
+  refreshRowData(rowCount: number) {
     this.setState({
       rows: generateRowData(rowCount, this.props.difficulty, "-"),
     });

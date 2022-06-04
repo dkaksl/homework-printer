@@ -1,4 +1,6 @@
-const getMaxNumber = (difficulty) => {
+import { Difficulty, Operator } from "../views/main";
+
+const getMaxNumber = (difficulty?: string) => {
   switch (difficulty) {
     case "easy":
       return 10;
@@ -13,8 +15,12 @@ const getMaxNumber = (difficulty) => {
   }
 };
 
-export const generateRowData = (rowCount, difficulty, operator) => {
-  const maxNumber = getMaxNumber();
+export const generateRowData = (
+  rowCount: number,
+  difficulty: Difficulty,
+  operator: Operator
+) => {
+  const maxNumber = getMaxNumber(difficulty);
   const rows = [];
   for (let i = 0; i < rowCount; i++) {
     const a = Math.floor(Math.random() * maxNumber);

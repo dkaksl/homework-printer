@@ -1,6 +1,9 @@
 import { Component } from "react";
+import { Operator } from "../views/main";
 
-export class Sheet extends Component {
+export class Sheet extends Component<{
+  rows: { a: number; b: number; operator: Operator }[];
+}> {
   render() {
     return (
       <div>
