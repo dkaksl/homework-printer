@@ -36,12 +36,18 @@ const generateRow = (
 export const generateRowData = (
   rowCount: number,
   difficulty: Difficulty,
-  operator: Operator
+  operators: Operator[]
 ): RowData[] => {
   const maxNumber = getMaxNumber(difficulty);
   const rows = [];
   for (let i = 0; i < rowCount; i++) {
-    rows.push(generateRow(maxNumber, difficulty, operator));
+    rows.push(
+      generateRow(
+        maxNumber,
+        difficulty,
+        operators[Math.floor(Math.random() * operators.length)]
+      )
+    );
   }
   return rows;
 };

@@ -24,11 +24,9 @@ export class Maths extends Component<Props, State> {
     const defaultDifficulty = "medium";
     this.state = {
       difficulty: defaultDifficulty,
-      rows: generateRowData(
-        this.props.rowCount,
-        defaultDifficulty,
-        getOperatorFromSelected("Subtraction")
-      ),
+      rows: generateRowData(this.props.rowCount, defaultDifficulty, [
+        getOperatorFromSelected("Subtraction"),
+      ]),
     };
     this.difficultyHandler = this.difficultyHandler.bind(this);
   }
@@ -41,11 +39,9 @@ export class Maths extends Component<Props, State> {
 
   refreshRowData(rowCount: number) {
     this.setState({
-      rows: generateRowData(
-        rowCount,
-        this.state.difficulty,
-        getOperatorFromSelected(this.props.selected)
-      ),
+      rows: generateRowData(rowCount, this.state.difficulty, [
+        getOperatorFromSelected(this.props.selected),
+      ]),
     });
   }
 
