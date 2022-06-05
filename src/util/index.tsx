@@ -21,6 +21,18 @@ export interface RowData {
   operator: Operator;
 }
 
+const generateRow = (
+  maxNumber: number,
+  difficulty: Difficulty,
+  operator: Operator
+) => {
+  const a = Math.floor(Math.random() * maxNumber);
+  const b = Math.floor(
+    Math.random() * (difficulty === "advanced" ? maxNumber : a)
+  );
+  return { a, b, operator };
+};
+
 export const generateRowData = (
   rowCount: number,
   difficulty: Difficulty,
@@ -29,11 +41,7 @@ export const generateRowData = (
   const maxNumber = getMaxNumber(difficulty);
   const rows = [];
   for (let i = 0; i < rowCount; i++) {
-    const a = Math.floor(Math.random() * maxNumber);
-    const b = Math.floor(
-      Math.random() * (difficulty === "advanced" ? maxNumber : a)
-    );
-    rows.push({ a, b, operator });
+    rows.push(generateRow(maxNumber, difficulty, operator));
   }
   return rows;
 };
