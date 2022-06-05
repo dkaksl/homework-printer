@@ -39,9 +39,13 @@ export class Maths extends Component<Props, State> {
 
   refreshRowData(rowCount: number) {
     this.setState({
-      rows: generateRowData(rowCount, this.state.difficulty, [
-        getOperatorFromSelected(this.props.selected),
-      ]),
+      rows: generateRowData(
+        rowCount,
+        this.state.difficulty,
+        this.props.selected === "Mix"
+          ? ["-", "+"] // TODO: allow user to select operators
+          : [getOperatorFromSelected(this.props.selected)]
+      ),
     });
   }
 
