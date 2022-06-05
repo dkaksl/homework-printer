@@ -19,13 +19,13 @@ export class Sheet extends Component<{
           ))}
           <tr>
             <td className="metadata-row" colSpan={2}>
-              Namn:
+              Name:
             </td>
             <td className="metadata-row" colSpan={3}></td>
           </tr>
           <tr>
             <td className="metadata-row" colSpan={2}>
-              Datum:
+              Date:
             </td>
             <td className="metadata-row" colSpan={3}></td>
           </tr>
