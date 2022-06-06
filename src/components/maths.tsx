@@ -11,24 +11,33 @@ interface Props {
 
 interface State {
   difficulty: Difficulty;
-  rows: RowData[];
   plus: boolean;
   minus: boolean;
+  pageCount: number;
+  rows: RowData[][];
 }
 
 export class Maths extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     const defaultDifficulty = "medium";
+    const defaultPageCount = 1;
     this.state = {
       difficulty: defaultDifficulty,
       plus: true,
       minus: false,
-      rows: generateRowData(this.props.rowCount, defaultDifficulty, ["+"]),
+      pageCount: defaultPageCount,
+      rows: generateRowData(
+        this.props.rowCount,
+        defaultDifficulty,
+        ["+"],
+        defaultPageCount
+      ),
     };
     this.difficultyHandler = this.difficultyHandler.bind(this);
     this.togglePlus = this.togglePlus.bind(this);
     this.toggleMinus = this.toggleMinus.bind(this);
+    this.pageCountHandler = this.pageCountHandler.bind(this);
   }
 
   togglePlus() {
@@ -59,6 +68,12 @@ export class Maths extends Component<Props, State> {
     });
   }
 
+  pageCountHandler(event: any) {
+    this.setState({ pageCount: event.target.value }, () => {
+      this.refreshRowData(this.props.rowCount);
+    });
+  }
+
   getSelectedOperators() {
     const operators: Operator[] = [];
     if (this.state.plus) {
@@ -78,7 +93,8 @@ export class Maths extends Component<Props, State> {
       rows: generateRowData(
         rowCount,
         this.state.difficulty,
-        this.getSelectedOperators()
+        this.getSelectedOperators(),
+        this.state.pageCount
       ),
     });
   }
@@ -101,7 +117,14 @@ export class Maths extends Component<Props, State> {
               <option value="advanced">Advanced</option>
             </select>
 
-            {/* <input id="number" type="number" value="1"></input> */}
+            <label htmlFor="pageCount">Pages</label>
+            <input
+              id="pageCount"
+              type="number"
+              min="1"
+              value={this.state.pageCount}
+              onChange={this.pageCountHandler}
+            ></input>
             <label htmlFor="checkbox-group">Included Operators</label>
             <div id="checkbox-group">
               <Checkbox
@@ -128,7 +151,12 @@ export class Maths extends Component<Props, State> {
         </section>
 
         <Printable>
-          <Sheet rows={this.state.rows}></Sheet>
+          {this.state.rows.map((page) => (
+            <div>
+              <div className="page-break" />
+              <Sheet rows={page}></Sheet>
+            </div>
+          ))}
         </Printable>
       </div>
     );
