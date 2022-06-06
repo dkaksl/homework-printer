@@ -32,15 +32,25 @@ export class Maths extends Component<Props, State> {
   }
 
   togglePlus() {
-    this.setState({
-      plus: !this.state.plus,
-    });
+    this.setState(
+      {
+        plus: !this.state.plus,
+      },
+      () => {
+        this.refreshRowData(this.props.rowCount);
+      }
+    );
   }
 
   toggleMinus() {
-    this.setState({
-      minus: !this.state.minus,
-    });
+    this.setState(
+      {
+        minus: !this.state.minus,
+      },
+      () => {
+        this.refreshRowData(this.props.rowCount);
+      }
+    );
   }
 
   difficultyHandler(event: any) {
