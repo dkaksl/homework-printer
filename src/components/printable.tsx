@@ -16,7 +16,7 @@ export class Printable extends Component<Props> {
       <div>
         <ReactToPrint
           trigger={() => {
-            return <button>Print This Sheet</button>;
+            return <button>Print</button>;
           }}
           content={() => this.myRef}
         ></ReactToPrint>
