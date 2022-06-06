@@ -7,40 +7,26 @@ export type Difficulty = "easy" | "medium" | "hard" | "advanced";
 export type Operator = "-" | "+" | "×" | "÷";
 
 interface Props {}
+interface State {
+  rowCount: number;
+}
 
-export class Main extends Component<
-  Props,
-  {
-    selected: string;
-    rowCount: number;
-    difficulty: Difficulty;
-  }
-> {
+export class Main extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selected: "Subtraction",
       rowCount: 20,
-      difficulty: "medium",
     };
-    this.menuClickHandler = this.menuClickHandler.bind(this);
-  }
-
-  menuClickHandler(value: string) {
-    this.setState({ selected: value });
   }
 
   render() {
     return (
       <div>
         <header>
-          <Menu menuClickHandler={this.menuClickHandler} />
+          <Menu />
         </header>
         <div className="content">
-          <Maths
-            selected={this.state.selected}
-            rowCount={this.state.rowCount}
-          ></Maths>
+          <Maths rowCount={this.state.rowCount}></Maths>
         </div>
       </div>
     );
