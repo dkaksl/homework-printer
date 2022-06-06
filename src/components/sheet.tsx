@@ -6,7 +6,7 @@ export class Sheet extends Component<{
 }> {
   render() {
     return (
-      <div>
+      <div className="page">
         <table>
           {this.props.rows.map((row) => (
             <tr>
