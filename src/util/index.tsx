@@ -33,11 +33,11 @@ const generateRow = (
   return { a, b, operator };
 };
 
-export const generateRowData = (
+const generatePage = (
   rowCount: number,
   difficulty: Difficulty,
   operators: Operator[]
-): RowData[] => {
+) => {
   const maxNumber = getMaxNumber(difficulty);
   const rows = [];
   for (let i = 0; i < rowCount; i++) {
@@ -50,6 +50,19 @@ export const generateRowData = (
     );
   }
   return rows;
+};
+
+export const generateRowData = (
+  rowCount: number,
+  difficulty: Difficulty,
+  operators: Operator[],
+  pageCount: number
+): RowData[][] => {
+  const pages = [];
+  for (let i = 0; i < pageCount; i++) {
+    pages.push(generatePage(rowCount, difficulty, operators));
+  }
+  return pages;
 };
 
 export const getOperatorFromSelected = (selected: string) => {
