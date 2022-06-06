@@ -96,8 +96,11 @@ button {
   grid-column: 1/3;
 }
 
+.page {
+  page-break-after: always;
+}
+
 .printable {
-  margin-top: 50px;
   font-size: 30px;
 }
 
@@ -118,4 +121,32 @@ table {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+@media all {
+  .page-break {
+    display: none;
+  }
+}
+
+@media print {
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print {
+  .page-break {
+    margin-top: 1rem;
+    display: block;
+    page-break-before: auto;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 20mm;
 }
