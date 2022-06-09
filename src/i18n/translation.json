@@ -1,0 +1,36 @@
+{
+  "en": {
+    "translation": {
+      "Maths": "Maths",
+      "ABCs": "ABCs",
+      "difficulty": "Difficulty",
+      "Easy": "Easy",
+      "Medium": "Medium",
+      "Hard": "Hard",
+      "Advanced": "Advanced",
+      "Pages": "Pages",
+      "Included Operators": "Included Operators",
+      "Name": "Name",
+      "Date": "Date",
+      "Randomize": "Randomize",
+      "Print": "Print"
+    }
+  },
+  "se": {
+    "translation": {
+      "Maths": "Matte",
+      "ABCs": "Alfabetet",
+      "difficulty": "Svårighetsgrad",
+      "Easy": "Lätt",
+      "Medium": "Mellan",
+      "Hard": "Svår",
+      "Advanced": "Avancerad",
+      "Pages": "Sidor",
+      "Included Operators": "Inkluderade operatorer",
+      "Name": "Namn",
+      "Date": "Datum",
+      "Randomize": "Slumpa",
+      "Print": "Skriv ut"
+    }
+  }
+}
