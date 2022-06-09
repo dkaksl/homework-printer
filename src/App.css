@@ -61,6 +61,27 @@ body {
   background: #2b3e46;
 }
 
+.language-selector {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.language-selector button {
+  display: block;
+  border: 0;
+  width: 30px;
+  height: 22.5px;
+  box-shadow: none;
+  border-radius: 0px;
+  z-index: 200;
+}
+
+.language-selector > div {
+  float: left;
+}
+
 .content {
   margin-top: 100px;
   background-color: white;
