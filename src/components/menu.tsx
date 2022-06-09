@@ -1,6 +1,7 @@
 import { Component } from "react";
+import { withTranslation, WithTranslation } from "react-i18next";
 
-interface Props {
+interface Props extends WithTranslation {
   selected: string;
   navigationHandler: Function;
 }
@@ -8,7 +9,8 @@ interface Props {
 interface State {
   selected: string;
 }
-export class Menu extends Component<Props, State> {
+
+class Menu extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { selected: this.props.selected };
@@ -24,6 +26,24 @@ export class Menu extends Component<Props, State> {
   render() {
     return (
       <div className="menu">
+        <div className="language-selector">
+          <div className="column-1">
+            <button
+              className="fib fi-gb"
+              onClick={() => {
+                this.props.i18n.changeLanguage("en");
+                localStorage.setItem("i18nextLng", "en");
+              }}
+            ></button>
+            <button
+              className="fib fi-se"
+              onClick={() => {
+                this.props.i18n.changeLanguage("se");
+                localStorage.setItem("i18nextLng", "se");
+              }}
+            ></button>
+          </div>
+        </div>
         <ul>
           <li>
             <a
@@ -31,7 +51,7 @@ export class Menu extends Component<Props, State> {
               className={this.state.selected === "maths" ? "active" : ""}
               onClick={() => this.menuClickHandler("maths")}
             >
-              Maths
+              {this.props.t<string>("Maths")}
             </a>
           </li>
           <li>
@@ -40,7 +60,7 @@ export class Menu extends Component<Props, State> {
               className={this.state.selected === "abcs" ? "active" : ""}
               onClick={() => this.menuClickHandler("abcs")}
             >
-              ABCs
+              {this.props.t<string>("ABCs")}
             </a>
           </li>
         </ul>
@@ -48,3 +68,5 @@ export class Menu extends Component<Props, State> {
     );
   }
 }
+
+export default withTranslation()(Menu);
