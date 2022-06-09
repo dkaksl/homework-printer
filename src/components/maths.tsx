@@ -1,11 +1,12 @@
 import { Component } from "react";
-import { Printable } from "./printable";
-import { Sheet } from "./sheet";
+import Printable from "./printable";
+import Sheet from "./sheet";
 import { generateRowData, RowData } from "../util/index";
 import { Difficulty, Operator } from "../views/main";
 import { Checkbox } from "./checkbox";
+import { withTranslation, WithTranslation } from "react-i18next";
 
-interface Props {
+interface Props extends WithTranslation {
   rowCount: number;
 }
 
@@ -17,7 +18,7 @@ interface State {
   rows: RowData[][];
 }
 
-export class Maths extends Component<Props, State> {
+class Maths extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     const defaultDifficulty = "medium";
@@ -104,20 +105,24 @@ export class Maths extends Component<Props, State> {
       <div>
         <section className="form-parent">
           <form className="form">
-            <label htmlFor="difficulty-selector">Difficulty</label>
+            <label htmlFor="difficulty-selector">
+              {this.props.t<string>("difficulty")}
+            </label>
             <select
               id="difficulty-selector"
               value={this.state.difficulty}
               onChange={this.difficultyHandler}
             >
               {/* TODO: explain difficulties in tooltip */}
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-              <option value="advanced">Advanced</option>
+              <option value="easy">{this.props.t<string>("Easy")}</option>
+              <option value="medium">{this.props.t<string>("Medium")}</option>
+              <option value="hard">{this.props.t<string>("Hard")}</option>
+              <option value="advanced">
+                {this.props.t<string>("Advanced")}
+              </option>
             </select>
 
-            <label htmlFor="pageCount">Pages</label>
+            <label htmlFor="pageCount">{this.props.t<string>("Pages")}</label>
             <input
               id="pageCount"
               type="number"
@@ -125,7 +130,9 @@ export class Maths extends Component<Props, State> {
               value={this.state.pageCount}
               onChange={this.pageCountHandler}
             ></input>
-            <label htmlFor="checkbox-group">Included Operators</label>
+            <label htmlFor="checkbox-group">
+              {this.props.t<string>("Included Operators")}
+            </label>
             <div id="checkbox-group">
               <Checkbox
                 defaultChecked={true}
@@ -145,7 +152,7 @@ export class Maths extends Component<Props, State> {
               type="button"
               onClick={() => this.refreshRowData(this.props.rowCount)}
             >
-              Randomize
+              {this.props.t<string>("Randomize")}
             </button>
           </form>
         </section>
@@ -162,3 +169,4 @@ export class Maths extends Component<Props, State> {
     );
   }
 }
+export default withTranslation()(Maths);

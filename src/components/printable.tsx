@@ -1,11 +1,12 @@
 import { Component, createRef } from "react";
 import ReactToPrint from "react-to-print";
+import { withTranslation, WithTranslation } from "react-i18next";
 
-interface Props {
+interface Props extends WithTranslation {
   children: any;
 }
 
-export class Printable extends Component<Props> {
+class Printable extends Component<Props> {
   myRef: any;
   constructor(props: Props) {
     super(props);
@@ -16,7 +17,7 @@ export class Printable extends Component<Props> {
       <div>
         <ReactToPrint
           trigger={() => {
-            return <button>Print</button>;
+            return <button>{this.props.t<string>("Print")}</button>;
           }}
           content={() => this.myRef}
         ></ReactToPrint>
@@ -27,3 +28,5 @@ export class Printable extends Component<Props> {
     );
   }
 }
+
+export default withTranslation()(Printable);
