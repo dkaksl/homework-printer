@@ -1,7 +1,7 @@
 import { Component } from "react";
 
-import { Menu } from "../components/menu";
-import { Maths } from "../components/maths";
+import Menu from "../components/menu";
+import Maths from "../components/maths";
 
 export type Difficulty = "easy" | "medium" | "hard" | "advanced";
 export type Operator = "-" | "+" | "×" | "÷";
@@ -12,14 +12,6 @@ interface State {
   selected: string;
 }
 
-const getSubject = (selected: string, rowCount: number) => {
-  if (selected === "maths") {
-    return <Maths rowCount={rowCount}></Maths>;
-  } else if (selected === "abcs") {
-    return <div>wip</div>;
-  }
-};
-
 export class Main extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -28,6 +20,14 @@ export class Main extends Component<Props, State> {
       selected: "maths",
     };
     this.navigateMenu = this.navigateMenu.bind(this);
+  }
+
+  getSubject(selected: string, rowCount: number) {
+    if (selected === "maths") {
+      return <Maths rowCount={rowCount}></Maths>;
+    } else if (selected === "abcs") {
+      return <div>wip</div>;
+    }
   }
 
   navigateMenu(selected: string) {
@@ -41,7 +41,7 @@ export class Main extends Component<Props, State> {
           <Menu selected="maths" navigationHandler={this.navigateMenu} />
         </header>
         <div className="content">
-          {getSubject(this.state.selected, this.state.rowCount)}
+          {this.getSubject(this.state.selected, this.state.rowCount)}
         </div>
       </div>
     );
