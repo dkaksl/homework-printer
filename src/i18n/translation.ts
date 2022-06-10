@@ -62,12 +62,12 @@ export const resources: Resources = {
   cn: {
     translation: {
       Maths: "數學",
-      ABCs: "英文字母",
+      ABCs: "字母",
       difficulty: "難度",
       Easy: "簡單",
       Medium: "中級",
-      Hard: "高級",
-      Advanced: "困難",
+      Hard: "困難",
+      Advanced: "硬核",
       Pages: "頁數",
       "Included Operators": "運算符號",
       Name: "名字",
