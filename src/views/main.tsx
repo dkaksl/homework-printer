@@ -2,6 +2,7 @@ import { Component } from "react";
 
 import Menu from "../components/menu";
 import Maths from "../components/maths";
+import ABCs from "../components/abcs";
 
 export type Difficulty = "easy" | "medium" | "hard" | "advanced";
 export type Operator = "-" | "+" | "×" | "÷";
@@ -26,7 +27,7 @@ export class Main extends Component<Props, State> {
     if (selected === "maths") {
       return <Maths rowCount={rowCount}></Maths>;
     } else if (selected === "abcs") {
-      return <div>wip</div>;
+      return <ABCs>wip</ABCs>;
     }
   }
 
