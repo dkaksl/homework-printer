@@ -42,6 +42,13 @@ class Menu extends Component<Props, State> {
                 localStorage.setItem("i18nextLng", "se");
               }}
             ></button>
+            <button
+              className="fib fi-tw"
+              onClick={() => {
+                this.props.i18n.changeLanguage("cn");
+                localStorage.setItem("i18nextLng", "cn");
+              }}
+            ></button>
           </div>
         </div>
         <ul>
