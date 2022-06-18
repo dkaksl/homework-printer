@@ -115,6 +115,7 @@ class ABCs extends Component<Props, State> {
               name="case"
               value="upper"
               onChange={this.caseHandler}
+              checked={this.state.case === "upper"}
             />
             <label htmlFor="upper">{this.props.t<string>("lowercase")}</label>
             <input
@@ -123,6 +124,7 @@ class ABCs extends Component<Props, State> {
               name="case"
               value="lower"
               onChange={this.caseHandler}
+              checked={this.state.case === "lower"}
             />
           </form>
         </section>
