@@ -16,6 +16,8 @@ interface Dictionary {
   Medium: string;
   Hard: string;
   Advanced: string;
+  uppercase: string;
+  lowercase: string;
   Pages: string;
   "Included Operators": string;
   Name: string;
@@ -34,6 +36,8 @@ export const resources: Resources = {
       Medium: "Medium",
       Hard: "Hard",
       Advanced: "Advanced",
+      uppercase: "Uppercase",
+      lowercase: "Lowercase",
       Pages: "Pages",
       "Included Operators": "Included Operators",
       Name: "Name",
@@ -51,6 +55,8 @@ export const resources: Resources = {
       Medium: "Mellan",
       Hard: "Svår",
       Advanced: "Avancerad",
+      uppercase: "Versaler",
+      lowercase: "Gemener",
       Pages: "Sidor",
       "Included Operators": "Inkluderade operatorer",
       Name: "Namn",
@@ -68,6 +74,8 @@ export const resources: Resources = {
       Medium: "中級",
       Hard: "高級",
       Advanced: "困難",
+      uppercase: "大寫",
+      lowercase: "小寫",
       Pages: "頁數",
       "Included Operators": "運算符號",
       Name: "名字",
