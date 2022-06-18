@@ -133,6 +133,7 @@ class ABCs extends Component<Props, State> {
           <div>
             <div className="page-break" />
             <ABCSheet
+              lowercase={this.state.case === "lower"}
               difficulty={this.state.difficulty}
               rows={this.state.rows}
             ></ABCSheet>

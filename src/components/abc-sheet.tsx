@@ -4,6 +4,7 @@ import { withTranslation, WithTranslation } from "react-i18next";
 import { Difficulty } from "../views/main";
 
 interface Props extends WithTranslation {
+  lowercase: boolean;
   difficulty: Difficulty;
   rows: { leftColumn: string; rightColumn: string }[];
 }
@@ -47,23 +48,26 @@ class ABCSheet extends Component<Props> {
     const columnPairs = [];
     const colSpan = this.getColspanByDifficulty(difficulty);
     for (let i = 0; i < columnPairCount; i++) {
+      const abcsRowClasS = `abcs-row ${
+        this.props.lowercase ? "lowercase" : ""
+      }`;
       columnPairs.push(
-        <td className="abcs-row" colSpan={colSpan}>
+        <td className={abcsRowClasS} colSpan={colSpan}>
           {row.leftColumn}
         </td>
       );
       columnPairs.push(
-        <td className="abcs-row" colSpan={colSpan}>
+        <td className={abcsRowClasS} colSpan={colSpan}>
           &nbsp;
         </td>
       );
       columnPairs.push(
-        <td className="abcs-row" colSpan={colSpan}>
+        <td className={abcsRowClasS} colSpan={colSpan}>
           {row.rightColumn}
         </td>
       );
       columnPairs.push(
-        <td className="abcs-row" colSpan={colSpan}>
+        <td className={abcsRowClasS} colSpan={colSpan}>
           &nbsp;
         </td>
       );

@@ -130,6 +130,10 @@ td.abcs-row {
   border-collapse: collapse;
 }
 
+td.abcs-row.lowercase {
+  font-family: "Comic Sans MS", "Comic Sans";
+}
+
 td.metadata-row {
   border: 1px solid black;
   border-collapse: collapse;
