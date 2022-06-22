@@ -177,6 +177,6 @@ table {
 }
 
 @page {
-  size: auto;
-  margin: 20mm;
+  size: A4 portrait;
+  margin-top: 20mm;
 }
