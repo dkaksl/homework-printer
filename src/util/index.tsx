@@ -1,24 +1,24 @@
-import { Difficulty, Operator } from "../views/main";
+import { Difficulty, Operator } from '../views/main'
 
 const getMaxNumber = (difficulty?: string) => {
   switch (difficulty) {
-    case "easy":
-      return 10;
-    case "medium":
-      return 15;
-    case "hard":
-      return 20;
-    case "advanced":
-      return 20;
+    case 'easy':
+      return 10
+    case 'medium':
+      return 15
+    case 'hard':
+      return 20
+    case 'advanced':
+      return 20
     default:
-      return 15;
+      return 15
   }
-};
+}
 
 export interface RowData {
-  a: number;
-  b: number;
-  operator: Operator;
+  a: number
+  b: number
+  operator: Operator
 }
 
 const generateRow = (
@@ -26,20 +26,20 @@ const generateRow = (
   difficulty: Difficulty,
   operator: Operator
 ) => {
-  const a = Math.floor(Math.random() * maxNumber);
+  const a = Math.floor(Math.random() * maxNumber)
   const b = Math.floor(
-    Math.random() * (difficulty === "advanced" ? maxNumber : a)
-  );
-  return { a, b, operator };
-};
+    Math.random() * (difficulty === 'advanced' ? maxNumber : a)
+  )
+  return { a, b, operator }
+}
 
 const generatePage = (
   rowCount: number,
   difficulty: Difficulty,
   operators: Operator[]
 ) => {
-  const maxNumber = getMaxNumber(difficulty);
-  const rows = [];
+  const maxNumber = getMaxNumber(difficulty)
+  const rows = []
   for (let i = 0; i < rowCount; i++) {
     rows.push(
       generateRow(
@@ -47,10 +47,10 @@ const generatePage = (
         difficulty,
         operators[Math.floor(Math.random() * operators.length)]
       )
-    );
+    )
   }
-  return rows;
-};
+  return rows
+}
 
 export const generateRowData = (
   rowCount: number,
@@ -58,20 +58,34 @@ export const generateRowData = (
   operators: Operator[],
   pageCount: number
 ): RowData[][] => {
-  const pages = [];
+  const pages = []
   for (let i = 0; i < pageCount; i++) {
-    pages.push(generatePage(rowCount, difficulty, operators));
+    pages.push(generatePage(rowCount, difficulty, operators))
   }
-  return pages;
-};
+  return pages
+}
 
 export const getOperatorFromSelected = (selected: string) => {
   switch (selected) {
-    case "Addition":
-      return "+";
-    case "Subtraction":
-      return "-";
+    case 'Addition':
+      return '+'
+    case 'Subtraction':
+      return '-'
     default:
-      throw new Error("Unexpected state selected");
+      throw new Error('Unexpected state selected')
   }
-};
+}
+
+export const getRowString = (columns: {
+  leftColumn: string
+  rightColumn: string
+}) => {
+  const leftColumnChars = columns.leftColumn.split('')
+  const rightColumnChars = columns.rightColumn.split('')
+  const newStringArray = []
+  for (let i = 0; i < leftColumnChars.length; i++) {
+    newStringArray.push(leftColumnChars[i])
+    newStringArray.push(rightColumnChars[i])
+  }
+  return newStringArray.join('')
+}

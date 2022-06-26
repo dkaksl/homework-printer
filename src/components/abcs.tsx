@@ -4,6 +4,7 @@ import ABCSheet from './abc-sheet'
 import { Difficulty } from '../views/main'
 
 import { withTranslation, WithTranslation } from 'react-i18next'
+import { getRowString } from '../util'
 
 interface Props extends WithTranslation {}
 
@@ -16,17 +17,6 @@ interface State {
 const capitalABCColumns = {
   leftColumn: 'ABCDEFGHIJKLMNOPQRST',
   rightColumn: 'UVWXYZÅÄÖ0123456789?'
-}
-
-const getRowString = (columns: { leftColumn: string; rightColumn: string }) => {
-  const leftColumnChars = columns.leftColumn.split('')
-  const rightColumnChars = columns.rightColumn.split('')
-  const newStringArray = []
-  for (let i = 0; i < leftColumnChars.length; i++) {
-    newStringArray.push(leftColumnChars[i])
-    newStringArray.push(rightColumnChars[i])
-  }
-  return newStringArray.join('')
 }
 
 const getCapitalABCRowString = () => {
