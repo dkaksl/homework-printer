@@ -70,6 +70,15 @@ class Menu extends Component<Props, State> {
               {this.props.t<string>('ABCs')}
             </a>
           </li>
+          <li>
+            <a
+              href="#/"
+              className={this.state.selected === 'zhuyin' ? 'active' : ''}
+              onClick={() => this.menuClickHandler('zhuyin')}
+            >
+              {this.props.t<string>('Zhuyin')}
+            </a>
+          </li>
         </ul>
       </div>
     )
