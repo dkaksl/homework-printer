@@ -14,8 +14,8 @@ interface State {
 }
 
 const zhuyinColumns = {
-  leftColumn: 'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘ',
-  rightColumn: 'ㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ   '
+  leftColumn: 'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖ ',
+  rightColumn: 'ㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ'
 }
 
 const getZhuyinString = () => {
