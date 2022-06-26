@@ -15,7 +15,7 @@ interface State {
 
 const zhuyinColumns = {
   leftColumn: 'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖ ',
-  rightColumn: 'ㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ'
+  rightColumn: 'ㄗㄘㄙ⼀ㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ'
 }
 
 const getZhuyinString = () => {
@@ -91,6 +91,7 @@ class Zhuyin extends Component<Props, State> {
               lowercase={false}
               difficulty={this.state.difficulty}
               rows={this.state.rows}
+              bopomo={true}
             ></ABCSheet>
           </div>
         </Printable>
