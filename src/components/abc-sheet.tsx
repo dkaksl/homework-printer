@@ -7,6 +7,7 @@ interface Props extends WithTranslation {
   lowercase: boolean
   difficulty: Difficulty
   rows: { leftColumn: string; rightColumn: string }[]
+  bopomo?: boolean
 }
 
 class ABCSheet extends Component<Props> {
@@ -48,7 +49,9 @@ class ABCSheet extends Component<Props> {
     const columnPairs = []
     const colSpan = this.getColspanByDifficulty(difficulty)
     for (let i = 0; i < columnPairCount; i++) {
-      const abcsRowClasS = `abcs-row ${this.props.lowercase ? 'lowercase' : ''}`
+      const lowercaseClass = this.props.lowercase ? 'lowercase' : ''
+      const bopomoClass = this.props.bopomo ? 'bopomo' : ''
+      const abcsRowClasS = `abcs-row ${lowercaseClass} ${bopomoClass}`
       columnPairs.push(
         <td className={abcsRowClasS} colSpan={colSpan}>
           {row.leftColumn}
