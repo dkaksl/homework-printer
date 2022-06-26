@@ -3,6 +3,7 @@ import { Component } from 'react'
 import Menu from '../components/menu'
 import Maths from '../components/maths'
 import ABCs from '../components/abcs'
+import Zhuyin from '../components/zhuyin'
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
 export type Operator = '-' | '+' | '×' | '÷'
@@ -28,6 +29,8 @@ export class Main extends Component<Props, State> {
       return <Maths rowCount={rowCount}></Maths>
     } else if (selected === 'abcs') {
       return <ABCs></ABCs>
+    } else if (selected === 'zhuyin') {
+      return <Zhuyin></Zhuyin>
     }
   }
 
