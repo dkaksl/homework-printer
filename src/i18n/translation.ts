@@ -1,87 +1,91 @@
 interface Resources {
-  en: Language;
-  se: Language;
-  cn: Language;
+  en: Language
+  se: Language
+  cn: Language
 }
 
 interface Language {
-  translation: Dictionary;
+  translation: Dictionary
 }
 
 interface Dictionary {
-  Maths: string;
-  ABCs: string;
-  difficulty: string;
-  Easy: string;
-  Medium: string;
-  Hard: string;
-  Advanced: string;
-  uppercase: string;
-  lowercase: string;
-  Pages: string;
-  "Included Operators": string;
-  Name: string;
-  Date: string;
-  Randomize: string;
-  Print: string;
+  Maths: string
+  ABCs: string
+  difficulty: string
+  Easy: string
+  Medium: string
+  Hard: string
+  Advanced: string
+  uppercase: string
+  lowercase: string
+  Pages: string
+  'Included Operators': string
+  Name: string
+  Date: string
+  Randomize: string
+  Print: string
+  Zhuyin: string
 }
 
 export const resources: Resources = {
   en: {
     translation: {
-      Maths: "Maths",
-      ABCs: "ABCs",
-      difficulty: "Difficulty",
-      Easy: "Easy",
-      Medium: "Medium",
-      Hard: "Hard",
-      Advanced: "Advanced",
-      uppercase: "Uppercase",
-      lowercase: "Lowercase",
-      Pages: "Pages",
-      "Included Operators": "Included Operators",
-      Name: "Name",
-      Date: "Date",
-      Randomize: "Randomize",
-      Print: "Print",
-    },
+      Maths: 'Maths',
+      ABCs: 'ABCs',
+      difficulty: 'Difficulty',
+      Easy: 'Easy',
+      Medium: 'Medium',
+      Hard: 'Hard',
+      Advanced: 'Advanced',
+      uppercase: 'Uppercase',
+      lowercase: 'Lowercase',
+      Pages: 'Pages',
+      'Included Operators': 'Included Operators',
+      Name: 'Name',
+      Date: 'Date',
+      Randomize: 'Randomize',
+      Print: 'Print',
+      Zhuyin: 'Bopomofo'
+    }
   },
   se: {
     translation: {
-      Maths: "Matte",
-      ABCs: "Alfabetet",
-      difficulty: "Svårighetsgrad",
-      Easy: "Lätt",
-      Medium: "Mellan",
-      Hard: "Svår",
-      Advanced: "Avancerad",
-      uppercase: "Versaler",
-      lowercase: "Gemener",
-      Pages: "Sidor",
-      "Included Operators": "Inkluderade operatorer",
-      Name: "Namn",
-      Date: "Datum",
-      Randomize: "Slumpa",
-      Print: "Skriv ut",
-    },
+      Maths: 'Matte',
+      ABCs: 'Alfabetet',
+      difficulty: 'Svårighetsgrad',
+      Easy: 'Lätt',
+      Medium: 'Mellan',
+      Hard: 'Svår',
+      Advanced: 'Avancerad',
+      uppercase: 'Versaler',
+      lowercase: 'Gemener',
+      Pages: 'Sidor',
+      'Included Operators': 'Inkluderade operatorer',
+      Name: 'Namn',
+      Date: 'Datum',
+      Randomize: 'Slumpa',
+      Print: 'Skriv ut',
+      Zhuyin: 'Bopomofo'
+    }
   },
   cn: {
     translation: {
-      Maths: "數學",
-      ABCs: "字母",
-      difficulty: "難度",
-      Easy: "簡單",
-      Medium: "中級",
-      Hard: "困難",
-      Advanced: "硬核",
-      uppercase: "大寫",
-      lowercase: "小寫",
-      Pages: "頁數",
-      "Included Operators": "運算符號",
-      Name: "名字",
-      Date: "日期",
-      Randomize: "隨機",
-      Print: "列印",
-    },
-  },
-};
+      Maths: '數學',
+      ABCs: '字母',
+      difficulty: '難度',
+      Easy: '簡單',
+      Medium: '中級',
+      Hard: '困難',
+      Advanced: '硬核',
+      uppercase: '大寫',
+      lowercase: '小寫',
+      Pages: '頁數',
+      'Included Operators': '運算符號',
+      Name: '名字',
+      Date: '日期',
+      Randomize: '隨機',
+      Print: '列印',
+      Zhuyin: '注音符號'
+    }
+  }
+}
