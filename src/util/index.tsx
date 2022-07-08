@@ -21,14 +21,33 @@ export interface RowData {
   operator: Operator
 }
 
+/**
+ * Recursive function that will re-roll if the number generated is zero and includeZero is false
+ */
+const getRandomNumber = (maxNumber: number, includeZero: boolean): number => {
+  if (maxNumber <= 1) {
+    if (!includeZero) {
+      return 1
+    }
+    return Math.floor(Math.random() * 2) // flip between 0 and 1
+  }
+  const n = Math.floor(Math.random() * maxNumber) // random number including zero
+  if (n === 0 && !includeZero) {
+    return getRandomNumber(maxNumber, includeZero)
+  }
+  return n
+}
+
 const generateRow = (
   maxNumber: number,
   difficulty: Difficulty,
-  operator: Operator
+  operator: Operator,
+  includeZero: boolean
 ) => {
-  const a = Math.floor(Math.random() * maxNumber)
-  const b = Math.floor(
-    Math.random() * (difficulty === 'advanced' ? maxNumber : a)
+  const a = getRandomNumber(maxNumber, includeZero)
+  const b = getRandomNumber(
+    difficulty === 'advanced' ? maxNumber : a,
+    includeZero
   )
   return { a, b, operator }
 }
@@ -40,14 +59,20 @@ const generatePage = (
 ) => {
   const maxNumber = getMaxNumber(difficulty)
   const rows = []
+  let numberOfZeros = 0
   for (let i = 0; i < rowCount; i++) {
-    rows.push(
-      generateRow(
-        maxNumber,
-        difficulty,
-        operators[Math.floor(Math.random() * operators.length)]
-      )
+    const row = generateRow(
+      maxNumber,
+      difficulty,
+      operators[Math.floor(Math.random() * operators.length)],
+      numberOfZeros >= 3 ? false : true
     )
+    if (row.a === 0) {
+      numberOfZeros++
+    } else if (row.b === 0) {
+      numberOfZeros++
+    }
+    rows.push(row)
   }
   return rows
 }
