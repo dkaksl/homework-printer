@@ -1,13 +1,13 @@
-import { Component } from "react";
-import { withTranslation, WithTranslation } from "react-i18next";
+import { Component } from 'react'
+import { withTranslation, WithTranslation } from 'react-i18next'
 
-import { Operator } from "../views/main";
+import { Operator } from '../views/main'
 
 interface Props extends WithTranslation {
-  rows: { a: number; b: number; operator: Operator }[];
+  rows: { a: number; b: number; operator: Operator }[]
 }
 
-class Sheet extends Component<Props> {
+class MathsSheet extends Component<Props> {
   render() {
     return (
       <div className="page">
@@ -23,20 +23,20 @@ class Sheet extends Component<Props> {
           ))}
           <tr>
             <td className="metadata-row" colSpan={2}>
-              {this.props.t<string>("Name")}:
+              {this.props.t<string>('Name')}:
             </td>
             <td className="metadata-row" colSpan={3}></td>
           </tr>
           <tr>
             <td className="metadata-row" colSpan={2}>
-              {this.props.t<string>("Date")}:
+              {this.props.t<string>('Date')}:
             </td>
             <td className="metadata-row" colSpan={3}></td>
           </tr>
         </table>
       </div>
-    );
+    )
   }
 }
 
-export default withTranslation()(Sheet);
+export default withTranslation()(MathsSheet)
