@@ -1,34 +1,33 @@
-import { Component } from "react";
-import { Operator } from "../views/main";
+import { Component } from 'react'
 
 interface Props {
-  defaultChecked: boolean;
-  name: string;
-  operator: Operator;
-  toggle: Function;
+  defaultChecked: boolean
+  name: string
+  label: string
+  toggle: Function
 }
 interface State {
-  operator: string;
+  operator: string
 }
 
 export class Checkbox extends Component<Props, State> {
   constructor(props: Props) {
-    super(props);
-    this.state = { operator: "checked" };
-    this.toggleCheckbox = this.toggleCheckbox.bind(this);
+    super(props)
+    this.state = { operator: 'checked' }
+    this.toggleCheckbox = this.toggleCheckbox.bind(this)
   }
 
   toggleCheckbox() {
-    this.setState({ operator: this.state.operator ? "" : "checked" });
-    this.props.toggle();
+    this.setState({ operator: this.state.operator ? '' : 'checked' })
+    this.props.toggle()
   }
 
   render() {
-    const id = `operator-${this.props.name}`;
+    const id = `operator-${this.props.name}`
     return (
       <div>
         <label>
-          {this.props.operator}
+          {this.props.label}
           <input
             defaultChecked={this.props.defaultChecked}
             type="checkbox"
@@ -39,6 +38,6 @@ export class Checkbox extends Component<Props, State> {
           ></input>
         </label>
       </div>
-    );
+    )
   }
 }
