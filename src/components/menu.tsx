@@ -23,6 +23,10 @@ class Menu extends Component<Props, State> {
     return undefined
   }
 
+  getSelectedClassName(selected: string) {
+    return this.state.selected === selected ? 'active' : ''
+  }
+
   render() {
     return (
       <div className="menu">
@@ -55,7 +59,7 @@ class Menu extends Component<Props, State> {
           <li>
             <a
               href="#/"
-              className={this.state.selected === 'maths' ? 'active' : ''}
+              className={this.getSelectedClassName('maths')}
               onClick={() => this.menuClickHandler('maths')}
             >
               {this.props.t<string>('Maths')}
@@ -64,7 +68,7 @@ class Menu extends Component<Props, State> {
           <li>
             <a
               href="#/"
-              className={this.state.selected === 'abcs' ? 'active' : ''}
+              className={this.getSelectedClassName('abcs')}
               onClick={() => this.menuClickHandler('abcs')}
             >
               {this.props.t<string>('ABCs')}
@@ -73,10 +77,19 @@ class Menu extends Component<Props, State> {
           <li>
             <a
               href="#/"
-              className={this.state.selected === 'zhuyin' ? 'active' : ''}
+              className={this.getSelectedClassName('zhuyin')}
               onClick={() => this.menuClickHandler('zhuyin')}
             >
               {this.props.t<string>('Zhuyin')}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#/"
+              className={this.getSelectedClassName('words')}
+              onClick={() => this.menuClickHandler('words')}
+            >
+              {this.props.t<string>('Words')}
             </a>
           </li>
         </ul>

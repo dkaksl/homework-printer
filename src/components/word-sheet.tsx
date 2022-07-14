@@ -1,24 +1,21 @@
 import { Component } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
-import { Operator } from '../views/main'
-
 interface Props extends WithTranslation {
-  rows: { a: number; b: number; operator: Operator }[]
+  rows: string[]
 }
 
-class MathsSheet extends Component<Props> {
+class WordSheet extends Component<Props> {
   render() {
     return (
       <div className="page">
         <table>
           {this.props.rows.map((row) => (
             <tr>
-              <td>{row.a}</td>
-              <td>{row.operator}</td>
-              <td>{row.b}</td>
-              <td>=</td>
-              <td>&nbsp;</td>
+              <td className="abcs-row" colSpan={2}>
+                {row}
+              </td>
+              <td colSpan={3}>&nbsp;</td>
             </tr>
           ))}
           <tr>
@@ -39,4 +36,4 @@ class MathsSheet extends Component<Props> {
   }
 }
 
-export default withTranslation()(MathsSheet)
+export default withTranslation()(WordSheet)

@@ -20,11 +20,13 @@ interface Dictionary {
   lowercase: string
   Pages: string
   'Included Operators': string
+  'Included Declensions': string
   Name: string
   Date: string
   Randomize: string
   Print: string
   Zhuyin: string
+  Words: string
 }
 
 export const resources: Resources = {
@@ -41,11 +43,13 @@ export const resources: Resources = {
       lowercase: 'Lowercase',
       Pages: 'Pages',
       'Included Operators': 'Included Operators',
+      'Included Declensions': 'Included Declensions',
       Name: 'Name',
       Date: 'Date',
       Randomize: 'Randomize',
       Print: 'Print',
-      Zhuyin: 'Bopomofo'
+      Zhuyin: 'Bopomofo',
+      Words: 'Words'
     }
   },
   se: {
@@ -61,11 +65,13 @@ export const resources: Resources = {
       lowercase: 'Gemener',
       Pages: 'Sidor',
       'Included Operators': 'Inkluderade operatorer',
+      'Included Declensions': 'Inkluderade böjningar',
       Name: 'Namn',
       Date: 'Datum',
       Randomize: 'Slumpa',
       Print: 'Skriv ut',
-      Zhuyin: 'Bopomofo'
+      Zhuyin: 'Bopomofo',
+      Words: 'Ord'
     }
   },
   cn: {
@@ -81,11 +87,13 @@ export const resources: Resources = {
       lowercase: '小寫',
       Pages: '頁數',
       'Included Operators': '運算符號',
+      'Included Declensions': '變格',
       Name: '名字',
       Date: '日期',
       Randomize: '隨機',
       Print: '列印',
-      Zhuyin: '注音符號'
+      Zhuyin: '注音符號',
+      Words: '字'
     }
   }
 }
