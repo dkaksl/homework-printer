@@ -125,13 +125,13 @@ button {
   font-size: 28px;
 }
 
-.page.words {
-  font-size: 22px;
-}
-
 td.abcs-row {
   border: 1px solid black;
   border-collapse: collapse;
+}
+
+td.words {
+  white-space: nowrap;
 }
 
 td.abcs-row.lowercase {
