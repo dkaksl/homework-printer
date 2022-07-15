@@ -12,8 +12,8 @@ class WordSheet extends Component<Props> {
         <table>
           {this.props.rows.map((row) => (
             <tr>
-              <td className="abcs-row" colSpan={2}>
-                {row}
+              <td className="abcs-row words" colSpan={2}>
+                <span>{row}</span>
               </td>
               <td colSpan={3}>&nbsp;</td>
             </tr>
