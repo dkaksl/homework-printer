@@ -8,7 +8,7 @@ interface Props extends WithTranslation {
 class WordSheet extends Component<Props> {
   render() {
     return (
-      <div className="page">
+      <div className="page words">
         <table>
           {this.props.rows.map((row) => (
             <tr>
