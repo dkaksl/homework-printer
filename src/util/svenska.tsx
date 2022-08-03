@@ -1,8 +1,4 @@
-export interface Ord {
-  ord: string
-}
-
-interface Egennamn extends Ord {}
+interface Egennamn {}
 
 export enum SubstantivAlternativ {
   SingularObestämd = 'singular-obestämd',
@@ -13,12 +9,12 @@ export enum SubstantivAlternativ {
 
 const pluralNummer = ['två', 'tre', 'fyra', 'fem', 'sex', 'sju', 'åtta', 'nio']
 
-interface Substantiv extends Ord {
+interface Substantiv {
   singular: { obestämd: string; bestämd: string }
   plural: { obestämd: string; bestämd: string }
 }
 
-interface Verb extends Ord {
+interface Verb {
   framtid: {
     futurum: string
   }
@@ -29,17 +25,14 @@ interface Verb extends Ord {
 
 const möbler: Substantiv[] = [
   {
-    ord: 'bord',
     singular: { obestämd: 'ett bord', bestämd: 'det bordet' },
     plural: { obestämd: 'bord', bestämd: 'borden' }
   },
   {
-    ord: 'bokhylla',
     singular: { obestämd: 'en bokhylla', bestämd: 'den bokhyllan' },
     plural: { obestämd: 'bokhyllor', bestämd: 'bokhyllorna' }
   },
   {
-    ord: 'soffa',
     singular: { obestämd: 'en soffa', bestämd: 'den soffan' },
     plural: { obestämd: 'soffor', bestämd: 'sofforna' }
   }
@@ -47,12 +40,10 @@ const möbler: Substantiv[] = [
 
 const redskap: Substantiv[] = [
   {
-    ord: 'penna',
     singular: { obestämd: 'en penna', bestämd: 'den pennan' },
     plural: { obestämd: 'pennor', bestämd: 'pennorna' }
   },
   {
-    ord: 'papper',
     singular: { obestämd: 'ett papper', bestämd: 'det pappret' },
     plural: { obestämd: 'papper', bestämd: 'pappren' }
   }
@@ -60,27 +51,22 @@ const redskap: Substantiv[] = [
 
 const kläder: Substantiv[] = [
   {
-    ord: 'sko',
     singular: { obestämd: 'en sko', bestämd: 'den skon' },
     plural: { obestämd: 'skor', bestämd: 'skorna' }
   },
   {
-    ord: 'strumpa',
     singular: { obestämd: 'en strumpa', bestämd: 'den strumpan' },
     plural: { obestämd: 'strumpor', bestämd: 'strumporna' }
   },
   {
-    ord: 'byxa',
     singular: { obestämd: 'en byxa', bestämd: 'den byxan' },
     plural: { obestämd: 'byxor', bestämd: 'byxorna' }
   },
   {
-    ord: 'tröja',
     singular: { obestämd: 'en tröja', bestämd: 'den tröjan' },
     plural: { obestämd: 'tröjor', bestämd: 'tröjorna' }
   },
   {
-    ord: 'jacka',
     singular: { obestämd: 'en jacka', bestämd: 'den jackan' },
     plural: { obestämd: 'jackor', bestämd: 'jackorna' }
   }
@@ -88,17 +74,14 @@ const kläder: Substantiv[] = [
 
 const mat: Substantiv[] = [
   {
-    ord: 'äpple',
     singular: { obestämd: 'ett äpple', bestämd: 'det äpplet' },
     plural: { obestämd: 'äpplen', bestämd: 'äpplena' }
   },
   {
-    ord: 'päron',
     singular: { obestämd: 'ett päron', bestämd: 'det päronet' },
     plural: { obestämd: 'päron', bestämd: 'päronen' }
   },
   {
-    ord: 'banan',
     singular: { obestämd: 'en banan', bestämd: 'den bananen' },
     plural: { obestämd: 'bananer', bestämd: 'bananerna' }
   }
@@ -113,7 +96,6 @@ export const ordbok: {
   egennamn: [],
   verb: [
     {
-      ord: 'skriva',
       dåtid: { preteritum: 'skrev' },
       framtid: { futurum: 'ska skriva' }
     }
