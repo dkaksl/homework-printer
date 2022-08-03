@@ -5,7 +5,7 @@ describe('ordbok tests', () => {
     const substantiv = ordbok.substantiv
     const substantivSet = new Set()
     for (const s of substantiv) {
-      substantivSet.add(s.ord)
+      substantivSet.add(s.grundord)
     }
     expect(substantiv.length).toEqual(substantivSet.size)
   })
