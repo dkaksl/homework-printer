@@ -3,6 +3,7 @@ interface Egennamn {}
 export enum SubstantivAlternativ {
   SingularObestämd = 'singular-obestämd',
   SingularBestämd = 'singular-bestämd',
+  SingularPossessiv = 'singular-possessiv',
   PluralObestämd = 'plural-obestämd',
   PluralBestämd = 'plural-bestämd'
 }
@@ -10,6 +11,8 @@ export enum SubstantivAlternativ {
 const pluralNummer = ['två', 'tre', 'fyra', 'fem', 'sex', 'sju', 'åtta', 'nio']
 
 interface Substantiv {
+  grundord: string
+  artikel: 'en' | 'ett'
   singular: { obestämd: string; bestämd: string }
   plural: { obestämd: string; bestämd: string }
 }
@@ -25,64 +28,90 @@ interface Verb {
 
 const möbler: Substantiv[] = [
   {
-    singular: { obestämd: 'ett bord', bestämd: 'det bordet' },
+    grundord: 'bord',
+    artikel: 'ett',
+    singular: { obestämd: 'bord', bestämd: 'bordet' },
     plural: { obestämd: 'bord', bestämd: 'borden' }
   },
   {
-    singular: { obestämd: 'en bokhylla', bestämd: 'den bokhyllan' },
+    grundord: 'bokhylla',
+    artikel: 'en',
+    singular: { obestämd: 'bokhylla', bestämd: 'bokhyllan' },
     plural: { obestämd: 'bokhyllor', bestämd: 'bokhyllorna' }
   },
   {
-    singular: { obestämd: 'en soffa', bestämd: 'den soffan' },
+    grundord: 'soffa',
+    artikel: 'en',
+    singular: { obestämd: 'soffa', bestämd: 'soffan' },
     plural: { obestämd: 'soffor', bestämd: 'sofforna' }
   }
 ]
 
 const redskap: Substantiv[] = [
   {
-    singular: { obestämd: 'en penna', bestämd: 'den pennan' },
+    grundord: 'penna',
+    artikel: 'en',
+    singular: { obestämd: 'penna', bestämd: 'pennan' },
     plural: { obestämd: 'pennor', bestämd: 'pennorna' }
   },
   {
-    singular: { obestämd: 'ett papper', bestämd: 'det pappret' },
+    grundord: 'papper',
+    artikel: 'ett',
+    singular: { obestämd: 'papper', bestämd: 'pappret' },
     plural: { obestämd: 'papper', bestämd: 'pappren' }
   }
 ]
 
 const kläder: Substantiv[] = [
   {
-    singular: { obestämd: 'en sko', bestämd: 'den skon' },
+    grundord: 'sko',
+    artikel: 'en',
+    singular: { obestämd: 'sko', bestämd: 'skon' },
     plural: { obestämd: 'skor', bestämd: 'skorna' }
   },
   {
-    singular: { obestämd: 'en strumpa', bestämd: 'den strumpan' },
+    grundord: 'strumpa',
+    artikel: 'en',
+    singular: { obestämd: 'strumpa', bestämd: 'strumpan' },
     plural: { obestämd: 'strumpor', bestämd: 'strumporna' }
   },
   {
-    singular: { obestämd: 'en byxa', bestämd: 'den byxan' },
+    grundord: 'byxa',
+    artikel: 'en',
+    singular: { obestämd: 'byxa', bestämd: 'byxan' },
     plural: { obestämd: 'byxor', bestämd: 'byxorna' }
   },
   {
-    singular: { obestämd: 'en tröja', bestämd: 'den tröjan' },
+    grundord: 'tröja',
+    artikel: 'en',
+    singular: { obestämd: 'tröja', bestämd: 'tröjan' },
     plural: { obestämd: 'tröjor', bestämd: 'tröjorna' }
   },
   {
-    singular: { obestämd: 'en jacka', bestämd: 'den jackan' },
+    grundord: 'jacka',
+    artikel: 'en',
+    singular: { obestämd: 'jacka', bestämd: 'jackan' },
     plural: { obestämd: 'jackor', bestämd: 'jackorna' }
   }
 ]
 
 const mat: Substantiv[] = [
   {
-    singular: { obestämd: 'ett äpple', bestämd: 'det äpplet' },
+    grundord: 'äpple',
+    artikel: 'ett',
+    singular: { obestämd: 'äpple', bestämd: 'äpplet' },
     plural: { obestämd: 'äpplen', bestämd: 'äpplena' }
   },
   {
-    singular: { obestämd: 'ett päron', bestämd: 'det päronet' },
+    grundord: 'päron',
+    artikel: 'ett',
+    singular: { obestämd: 'päron', bestämd: 'päronet' },
     plural: { obestämd: 'päron', bestämd: 'päronen' }
   },
   {
-    singular: { obestämd: 'en banan', bestämd: 'den bananen' },
+    grundord: 'banan',
+    artikel: 'en',
+    singular: { obestämd: 'banan', bestämd: 'bananen' },
     plural: { obestämd: 'bananer', bestämd: 'bananerna' }
   }
 ]
