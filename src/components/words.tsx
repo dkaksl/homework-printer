@@ -4,8 +4,13 @@ import WordSheet from './word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { SubstantivAlternativ, getRandomNoun } from '../util/svenska'
-const { SingularObestämd, SingularBestämd, PluralObestämd, PluralBestämd } =
-  SubstantivAlternativ
+const {
+  SingularObestämd,
+  SingularBestämd,
+  SingularPossessiv,
+  PluralObestämd,
+  PluralBestämd
+} = SubstantivAlternativ
 
 interface Props extends WithTranslation {
   rowCount: number
@@ -14,6 +19,7 @@ interface Props extends WithTranslation {
 interface State {
   singularObestämd: boolean
   singularBestämd: boolean
+  singularPossessiv: boolean
   pluralObestämd: boolean
   pluralBestämd: boolean
   pageCount: number
@@ -27,6 +33,7 @@ class Words extends Component<Props, State> {
     this.state = {
       singularObestämd: true,
       singularBestämd: false,
+      singularPossessiv: false,
       pluralObestämd: false,
       pluralBestämd: false,
       pageCount: defaultPageCount,
@@ -34,6 +41,7 @@ class Words extends Component<Props, State> {
     }
     this.toggleSingularObestämd = this.toggleSingularObestämd.bind(this)
     this.toggleSingularBestämd = this.toggleSingularBestämd.bind(this)
+    this.toggleSingularPossessiv = this.toggleSingularPossessiv.bind(this)
     this.togglePluralObestämd = this.togglePluralObestämd.bind(this)
     this.togglePluralBestämd = this.togglePluralBestämd.bind(this)
     this.pageCountHandler = this.pageCountHandler.bind(this)
@@ -53,10 +61,24 @@ class Words extends Component<Props, State> {
       const randomNoun = getRandomNoun()
       const nounAlternatives = []
       if (includedOperators.includes(SingularObestämd)) {
-        nounAlternatives.push(randomNoun.singular.obestämd)
+        nounAlternatives.push(
+          [randomNoun.artikel, randomNoun.singular.obestämd].join(' ')
+        )
       }
       if (includedOperators.includes(SingularBestämd)) {
-        nounAlternatives.push(randomNoun.singular.bestämd)
+        const denEllerDet = randomNoun.artikel === 'en' ? 'den' : 'det'
+        nounAlternatives.push(
+          [denEllerDet, randomNoun.singular.bestämd].join(' ')
+        )
+      }
+      if (includedOperators.includes(SingularPossessiv)) {
+        const pronomenPrefix = Math.round(Math.random()) ? 'mi' : 'di'
+        nounAlternatives.push(
+          [
+            pronomenPrefix + (randomNoun.artikel === 'en' ? 'n' : 'tt'),
+            randomNoun.grundord
+          ].join(' ')
+        )
       }
       if (includedOperators.includes(PluralObestämd)) {
         nounAlternatives.push(randomNoun.plural.obestämd)
@@ -88,6 +110,15 @@ class Words extends Component<Props, State> {
     this.setState(
       {
         singularBestämd: !this.state.singularBestämd
+      },
+      this.refreshRowDataCallback
+    )
+  }
+
+  toggleSingularPossessiv() {
+    this.setState(
+      {
+        singularPossessiv: !this.state.singularPossessiv
       },
       this.refreshRowDataCallback
     )
@@ -126,6 +157,9 @@ class Words extends Component<Props, State> {
     }
     if (this.state.singularBestämd) {
       operators.push(SingularBestämd)
+    }
+    if (this.state.singularPossessiv) {
+      operators.push(SingularPossessiv)
     }
     if (this.state.pluralObestämd) {
       operators.push(PluralObestämd)
@@ -176,6 +210,12 @@ class Words extends Component<Props, State> {
                 name={SingularBestämd}
                 label="singular bestämd"
                 toggle={this.toggleSingularBestämd}
+              ></Checkbox>
+              <Checkbox
+                defaultChecked={false}
+                name={SingularPossessiv}
+                label="singular possessiv"
+                toggle={this.toggleSingularPossessiv}
               ></Checkbox>
               <Checkbox
                 defaultChecked={false}
