@@ -62,6 +62,66 @@ const redskap: Substantiv[] = [
   }
 ]
 
+const leksaker: Substantiv[] = [
+  {
+    grundord: 'leksak',
+    artikel: 'en',
+    singular: { obestämd: 'leksak', bestämd: 'leksaken' },
+    plural: { obestämd: 'leksaker', bestämd: 'leksakerna' }
+  },
+  {
+    grundord: 'boll',
+    artikel: 'en',
+    singular: { obestämd: 'boll', bestämd: 'bollen' },
+    plural: { obestämd: 'bollar', bestämd: 'bollarna' }
+  },
+  {
+    grundord: 'legobit',
+    artikel: 'en',
+    singular: { obestämd: 'legobit', bestämd: 'legobiten' },
+    plural: { obestämd: 'legobitar', bestämd: 'legobitarna' }
+  },
+  {
+    grundord: 'spel',
+    artikel: 'ett',
+    singular: { obestämd: 'spel', bestämd: 'spelet' },
+    plural: { obestämd: 'spel', bestämd: 'spelen' }
+  }
+]
+
+const djur: Substantiv[] = [
+  {
+    grundord: 'djur',
+    artikel: 'en',
+    singular: { obestämd: 'leksak', bestämd: 'leksaken' },
+    plural: { obestämd: 'leksaker', bestämd: 'leksakerna' }
+  },
+  {
+    grundord: 'hund',
+    artikel: 'en',
+    singular: { obestämd: 'hund', bestämd: 'hunden' },
+    plural: { obestämd: 'hundar', bestämd: 'hundarna' }
+  },
+  {
+    grundord: 'katt',
+    artikel: 'en',
+    singular: { obestämd: 'katt', bestämd: 'katten' },
+    plural: { obestämd: 'katter', bestämd: 'katterna' }
+  },
+  {
+    grundord: 'kanin',
+    artikel: 'en',
+    singular: { obestämd: 'kanin', bestämd: 'kaninen' },
+    plural: { obestämd: 'kaniner', bestämd: 'kaninerna' }
+  },
+  {
+    grundord: 'monster',
+    artikel: 'ett',
+    singular: { obestämd: 'monster', bestämd: 'monstret' },
+    plural: { obestämd: 'monster', bestämd: 'monstrena' }
+  }
+]
+
 const kläder: Substantiv[] = [
   {
     grundord: 'sko',
@@ -121,7 +181,7 @@ export const ordbok: {
   verb: Verb[]
   egennamn: Egennamn[]
 } = {
-  substantiv: [...möbler, ...redskap, ...kläder, ...mat],
+  substantiv: [...möbler, ...redskap, ...kläder, ...mat, ...leksaker, ...djur],
   egennamn: [],
   verb: [
     {
