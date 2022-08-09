@@ -1,4 +1,4 @@
-interface Egennamn {}
+interface Egennamn { }
 
 export enum SubstantivAlternativ {
   SingularObestämd = 'singular-obestämd',
@@ -59,6 +59,63 @@ const redskap: Substantiv[] = [
     artikel: 'ett',
     singular: { obestämd: 'papper', bestämd: 'pappret' },
     plural: { obestämd: 'papper', bestämd: 'pappren' }
+  }
+]
+
+const dukning: Substantiv[] = [
+  {
+    grundord: 'tallrik',
+    artikel: 'en',
+    singular: { obestämd: 'tallrik', bestämd: 'tallriken' },
+    plural: { obestämd: 'tallrikar', bestämd: 'tallrikarna' }
+  },
+  {
+    grundord: 'skål',
+    artikel: 'en',
+    singular: { obestämd: 'skål', bestämd: 'skålen' },
+    plural: { obestämd: 'skålar', bestämd: 'skålarna' }
+  },
+  {
+    grundord: 'sked',
+    artikel: 'en',
+    singular: { obestämd: 'sked', bestämd: 'skeden' },
+    plural: { obestämd: 'skedar', bestämd: 'skedarna' }
+  },
+  {
+    grundord: 'kniv',
+    artikel: 'en',
+    singular: { obestämd: 'kniv', bestämd: 'kniven' },
+    plural: { obestämd: 'knivar', bestämd: 'knivarna' }
+  },
+  {
+    grundord: 'gaffel',
+    artikel: 'en',
+    singular: { obestämd: 'gaffel', bestämd: 'gaffeln' },
+    plural: { obestämd: 'gafflar', bestämd: 'gafflarna' }
+  },
+  {
+    grundord: 'glas',
+    artikel: 'ett',
+    singular: { obestämd: 'glas', bestämd: 'glaset' },
+    plural: { obestämd: 'glas', bestämd: 'glasen' }
+  },
+  {
+    grundord: 'mugg',
+    artikel: 'en',
+    singular: { obestämd: 'mugg', bestämd: 'muggen' },
+    plural: { obestämd: 'muggar', bestämd: 'muggarna' }
+  },
+  {
+    grundord: 'kopp',
+    artikel: 'en',
+    singular: { obestämd: 'kopp', bestämd: 'koppen' },
+    plural: { obestämd: 'koppar', bestämd: 'kopparna' }
+  },
+  {
+    grundord: 'sugrör',
+    artikel: 'ett',
+    singular: { obestämd: 'sugrör', bestämd: 'sugröret' },
+    plural: { obestämd: 'sugrör', bestämd: 'sugrören' }
   }
 ]
 
@@ -181,7 +238,7 @@ export const ordbok: {
   verb: Verb[]
   egennamn: Egennamn[]
 } = {
-  substantiv: [...möbler, ...redskap, ...kläder, ...mat, ...leksaker, ...djur],
+  substantiv: [...möbler, ...redskap, ...dukning, ...kläder, ...mat, ...leksaker, ...djur],
   egennamn: [],
   verb: [
     {
