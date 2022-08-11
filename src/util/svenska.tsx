@@ -1,4 +1,4 @@
-interface Egennamn { }
+interface Egennamn {}
 
 export enum SubstantivAlternativ {
   SingularObestämd = 'singular-obestämd',
@@ -149,9 +149,9 @@ const leksaker: Substantiv[] = [
 const djur: Substantiv[] = [
   {
     grundord: 'djur',
-    artikel: 'en',
-    singular: { obestämd: 'leksak', bestämd: 'leksaken' },
-    plural: { obestämd: 'leksaker', bestämd: 'leksakerna' }
+    artikel: 'ett',
+    singular: { obestämd: 'djur', bestämd: 'djuret' },
+    plural: { obestämd: 'djur', bestämd: 'djuren' }
   },
   {
     grundord: 'hund',
@@ -238,7 +238,15 @@ export const ordbok: {
   verb: Verb[]
   egennamn: Egennamn[]
 } = {
-  substantiv: [...möbler, ...redskap, ...dukning, ...kläder, ...mat, ...leksaker, ...djur],
+  substantiv: [
+    ...möbler,
+    ...redskap,
+    ...dukning,
+    ...kläder,
+    ...mat,
+    ...leksaker,
+    ...djur
+  ],
   egennamn: [],
   verb: [
     {
