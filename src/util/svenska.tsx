@@ -146,6 +146,57 @@ const leksaker: Substantiv[] = [
   }
 ]
 
+const schack: Substantiv[] = [
+  {
+    grundord: 'bräde',
+    artikel: 'ett',
+    singular: { obestämd: 'bräde', bestämd: 'brädet' },
+    plural: { obestämd: 'bräden', bestämd: 'brädena' }
+  },
+  {
+    grundord: 'pjäs',
+    artikel: 'en',
+    singular: { obestämd: 'pjäs', bestämd: 'pjäsen' },
+    plural: { obestämd: 'pjäser', bestämd: 'pjäserna' }
+  },
+  {
+    grundord: 'bonde',
+    artikel: 'en',
+    singular: { obestämd: 'bonde', bestämd: 'bonden' },
+    plural: { obestämd: 'bönder', bestämd: 'bönderna' }
+  },
+  {
+    grundord: 'torn',
+    artikel: 'ett',
+    singular: { obestämd: 'torn', bestämd: 'tornet' },
+    plural: { obestämd: 'torn', bestämd: 'tornen' }
+  },
+  {
+    grundord: 'springare',
+    artikel: 'en',
+    singular: { obestämd: 'springare', bestämd: 'springaren' },
+    plural: { obestämd: 'springare', bestämd: 'springarna' }
+  },
+  {
+    grundord: 'löpare',
+    artikel: 'en',
+    singular: { obestämd: 'löpare', bestämd: 'löparen' },
+    plural: { obestämd: 'löpare', bestämd: 'löparna' }
+  },
+  {
+    grundord: 'dam',
+    artikel: 'en',
+    singular: { obestämd: 'dam', bestämd: 'damen' },
+    plural: { obestämd: 'damer', bestämd: 'damerna' }
+  },
+  {
+    grundord: 'kung',
+    artikel: 'en',
+    singular: { obestämd: 'kung', bestämd: 'kungen' },
+    plural: { obestämd: 'kungar', bestämd: 'kungarna' }
+  }
+]
+
 const djur: Substantiv[] = [
   {
     grundord: 'djur',
@@ -176,6 +227,12 @@ const djur: Substantiv[] = [
     artikel: 'ett',
     singular: { obestämd: 'monster', bestämd: 'monstret' },
     plural: { obestämd: 'monster', bestämd: 'monstrena' }
+  },
+  {
+    grundord: 'häst',
+    artikel: 'en',
+    singular: { obestämd: 'häst', bestämd: 'hästen' },
+    plural: { obestämd: 'hästar', bestämd: 'hästarna' }
   }
 ]
 
@@ -245,6 +302,7 @@ export const ordbok: {
     ...kläder,
     ...mat,
     ...leksaker,
+    ...schack,
     ...djur
   ],
   egennamn: [],
