@@ -5,6 +5,7 @@ import Maths from '../components/maths'
 import ABCs from '../components/abcs'
 import Zhuyin from '../components/zhuyin'
 import Nouns from '../components/nouns'
+import Verbs from '../components/verbs'
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
 export type Operator = '-' | '+' | '×' | '÷'
@@ -34,6 +35,8 @@ export class Main extends Component<Props, State> {
       return <Zhuyin></Zhuyin>
     } else if (selected === 'nouns') {
       return <Nouns rowCount={rowCount}></Nouns>
+    } else if (selected === 'verbs') {
+      return <Verbs rowCount={rowCount}></Verbs>
     }
   }
 
