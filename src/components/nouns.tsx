@@ -26,7 +26,7 @@ interface State {
   pages: string[][]
 }
 
-class Words extends Component<Props, State> {
+class Nouns extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     const defaultPageCount = 1
@@ -249,4 +249,4 @@ class Words extends Component<Props, State> {
     )
   }
 }
-export default withTranslation()(Words)
+export default withTranslation()(Nouns)

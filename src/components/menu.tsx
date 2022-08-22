@@ -25,7 +25,8 @@ class Menu extends Component<Props, State> {
     { menuId: 'abcs', menuTranslationKey: 'ABCs' },
     { menuId: 'maths', menuTranslationKey: 'Maths' },
     { menuId: 'zhuyin', menuTranslationKey: 'Zhuyin' },
-    { menuId: 'nouns', menuTranslationKey: 'Nouns' }
+    { menuId: 'nouns', menuTranslationKey: 'Nouns' },
+    { menuId: 'verbs', menuTranslationKey: 'Verbs' }
   ]
 
   getMenuLinks = () => {
