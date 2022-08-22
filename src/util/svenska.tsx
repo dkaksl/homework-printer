@@ -1,3 +1,4 @@
+import { getRandomFromArray } from '.'
 import { substantiv, Substantiv } from './dictionary/substantiv'
 import { Verb, verb } from './dictionary/verb'
 
@@ -11,6 +12,12 @@ export enum SubstantivAlternativ {
   PluralBestämd = 'plural-bestämd'
 }
 
+export enum VerbAlternativ {
+  Nutid = 'nutid',
+  Dåtid = 'dåtid',
+  DåtidTidsuttryck = 'dåtid tidsuttryck'
+}
+
 const pluralNummer = ['två', 'tre', 'fyra', 'fem', 'sex', 'sju', 'åtta', 'nio']
 
 const pronomen = [
@@ -19,7 +26,6 @@ const pronomen = [
   'han',
   'hon',
   'den',
-  'det',
   'vi',
   'ni',
   'de',
@@ -45,10 +51,6 @@ export const ordbok: {
   verb
 }
 
-const getRandomFromArray = (array: any[]) => {
-  return array[Math.floor(Math.random() * array.length)]
-}
-
 export const getRandomNoun = () => {
   const substantiv = ordbok.substantiv
   const randomSubstantiv = getRandomFromArray(substantiv)
@@ -63,7 +65,7 @@ export const getRandomNoun = () => {
 
 export const getRandomVerb = () => {
   const verb = ordbok.verb
-  const randomVerb = verb[Math.floor(Math.random() * verb.length)]
+  const randomVerb = getRandomFromArray(verb)
   const randomVerbCopy = JSON.parse(JSON.stringify(randomVerb))
   const randomPronomen = getRandomFromArray(pronomen)
   const randomTidsuttryck = getRandomFromArray(tidsuttryck)
@@ -77,7 +79,12 @@ export const getRandomVerb = () => {
     randomVerb.grundord
   ].join(' ')
   randomVerbCopy.dåtid = {
-    grund: [randomPronomen, randomVerb.dåtid].join(' '),
-    tidsuttryck: [randomTidsuttryck, randomVerb.dåtid, randomPronomen].join(' ')
+    grund: [randomPronomen, randomVerb.dåtid.preteritum].join(' '),
+    tidsuttryck: [
+      randomTidsuttryck,
+      randomVerb.dåtid.preteritum,
+      randomPronomen
+    ].join(' ')
   }
+  return randomVerbCopy
 }
