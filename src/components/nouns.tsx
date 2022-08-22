@@ -4,6 +4,7 @@ import WordSheet from './word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { SubstantivAlternativ, getRandomNoun } from '../util/svenska'
+import { getRandomFromArray } from '../util'
 const {
   SingularObestämd,
   SingularBestämd,
@@ -80,9 +81,7 @@ class Nouns extends Component<Props, State> {
       if (includedOperators.includes(PluralBestämd)) {
         nounAlternatives.push(randomNoun.plural.bestämd)
       }
-      rows.push(
-        nounAlternatives[Math.floor(Math.random() * nounAlternatives.length)]
-      )
+      rows.push(getRandomFromArray(nounAlternatives))
     }
     return rows
   }
