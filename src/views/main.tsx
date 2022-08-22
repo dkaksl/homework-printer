@@ -32,7 +32,7 @@ export class Main extends Component<Props, State> {
       return <ABCs></ABCs>
     } else if (selected === 'zhuyin') {
       return <Zhuyin></Zhuyin>
-    } else if (selected === 'words') {
+    } else if (selected === 'nouns') {
       return <Words rowCount={rowCount}></Words>
     }
   }
