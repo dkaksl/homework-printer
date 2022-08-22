@@ -91,56 +91,42 @@ class Nouns extends Component<Props, State> {
     this.refreshRowData()
   }
 
+  setStateAndRefreshRows = (newState: any) => {
+    this.setState(newState, this.refreshRowDataCallback)
+  }
+
   toggleSingularObestämd = () => {
-    this.setState(
-      {
-        singularObestämd: !this.state.singularObestämd
-      },
-      this.refreshRowDataCallback
-    )
+    this.setStateAndRefreshRows({
+      singularObestämd: !this.state.singularObestämd
+    })
   }
 
   toggleSingularBestämd = () => {
-    this.setState(
-      {
-        singularBestämd: !this.state.singularBestämd
-      },
-      this.refreshRowDataCallback
-    )
+    this.setStateAndRefreshRows({
+      singularBestämd: !this.state.singularBestämd
+    })
   }
 
   toggleSingularPossessiv = () => {
-    this.setState(
-      {
-        singularPossessiv: !this.state.singularPossessiv
-      },
-      this.refreshRowDataCallback
-    )
+    this.setStateAndRefreshRows({
+      singularPossessiv: !this.state.singularPossessiv
+    })
   }
 
   togglePluralObestämd = () => {
-    this.setState(
-      {
-        pluralObestämd: !this.state.pluralObestämd
-      },
-      this.refreshRowDataCallback
-    )
+    this.setStateAndRefreshRows({
+      pluralObestämd: !this.state.pluralObestämd
+    })
   }
 
   togglePluralBestämd = () => {
-    this.setState(
-      {
-        pluralBestämd: !this.state.pluralBestämd
-      },
-      this.refreshRowDataCallback
-    )
+    this.setStateAndRefreshRows({
+      pluralBestämd: !this.state.pluralBestämd
+    })
   }
 
   pageCountHandler = (event: any) => {
-    this.setState(
-      { pageCount: event.target.value },
-      this.refreshRowDataCallback
-    )
+    this.setStateAndRefreshRows({ pageCount: event.target.value })
   }
 
   getSelectedOperators() {
