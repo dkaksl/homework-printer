@@ -3,25 +3,19 @@ import Printable from './printable'
 import WordSheet from './word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import { SubstantivAlternativ, getRandomNoun } from '../util/svenska'
-const {
-  SingularObestämd,
-  SingularBestämd,
-  SingularPossessiv,
-  PluralObestämd,
-  PluralBestämd
-} = SubstantivAlternativ
+import { getRandomVerb, VerbAlternativ } from '../util/svenska'
+import { getRandomFromArray } from '../util'
+
+const { Nutid, Dåtid, DåtidTidsuttryck } = VerbAlternativ
 
 interface Props extends WithTranslation {
   rowCount: number
 }
 
 interface State {
-  singularObestämd: boolean
-  singularBestämd: boolean
-  singularPossessiv: boolean
-  pluralObestämd: boolean
-  pluralBestämd: boolean
+  nutid: boolean
+  dåtid: boolean
+  dåtidTidsuttryck: boolean
   pageCount: number
   pages: string[][]
 }
@@ -31,17 +25,15 @@ class Verbs extends Component<Props, State> {
     super(props)
     const defaultPageCount = 1
     this.state = {
-      singularObestämd: true,
-      singularBestämd: false,
-      singularPossessiv: false,
-      pluralObestämd: false,
-      pluralBestämd: false,
+      nutid: true,
+      dåtid: false,
+      dåtidTidsuttryck: false,
       pageCount: defaultPageCount,
-      pages: this.generatePages(defaultPageCount, [SingularObestämd])
+      pages: this.generatePages(defaultPageCount, [Nutid])
     }
   }
 
-  generatePages(pageCount: number, includedOperators: SubstantivAlternativ[]) {
+  generatePages(pageCount: number, includedOperators: VerbAlternativ[]) {
     const pages = []
     for (let i = 0; i < pageCount; i++) {
       pages.push(this.generateRows(includedOperators))
@@ -49,40 +41,21 @@ class Verbs extends Component<Props, State> {
     return pages
   }
 
-  generateRows(includedOperators: SubstantivAlternativ[]) {
+  generateRows(includedOperators: VerbAlternativ[]) {
     const rows = []
     for (let i = 0; i < this.props.rowCount; i++) {
-      const randomNoun = getRandomNoun()
-      const nounAlternatives = []
-      if (includedOperators.includes(SingularObestämd)) {
-        nounAlternatives.push(
-          [randomNoun.artikel, randomNoun.singular.obestämd].join(' ')
-        )
+      const randomVerb = getRandomVerb()
+      const verbAlternatives = []
+      if (includedOperators.includes(Nutid)) {
+        verbAlternatives.push(randomVerb.nutid)
       }
-      if (includedOperators.includes(SingularBestämd)) {
-        const denEllerDet = randomNoun.artikel === 'en' ? 'den' : 'det'
-        nounAlternatives.push(
-          [denEllerDet, randomNoun.singular.bestämd].join(' ')
-        )
+      if (includedOperators.includes(Dåtid)) {
+        verbAlternatives.push(randomVerb.dåtid.grund)
       }
-      if (includedOperators.includes(SingularPossessiv)) {
-        const pronomenPrefix = Math.round(Math.random()) ? 'mi' : 'di'
-        nounAlternatives.push(
-          [
-            pronomenPrefix + (randomNoun.artikel === 'en' ? 'n' : 'tt'),
-            randomNoun.grundord
-          ].join(' ')
-        )
+      if (includedOperators.includes(DåtidTidsuttryck)) {
+        verbAlternatives.push(randomVerb.dåtid.tidsuttryck)
       }
-      if (includedOperators.includes(PluralObestämd)) {
-        nounAlternatives.push(randomNoun.plural.obestämd)
-      }
-      if (includedOperators.includes(PluralBestämd)) {
-        nounAlternatives.push(randomNoun.plural.bestämd)
-      }
-      rows.push(
-        nounAlternatives[Math.floor(Math.random() * nounAlternatives.length)]
-      )
+      rows.push(getRandomFromArray(verbAlternatives))
     }
     return rows
   }
@@ -95,33 +68,21 @@ class Verbs extends Component<Props, State> {
     this.setState(newState, this.refreshRowDataCallback)
   }
 
-  toggleSingularObestämd = () => {
+  toggleNutid = () => {
     this.setStateAndRefreshRows({
-      singularObestämd: !this.state.singularObestämd
+      nutid: !this.state.nutid
     })
   }
 
-  toggleSingularBestämd = () => {
+  toggleDåtid = () => {
     this.setStateAndRefreshRows({
-      singularBestämd: !this.state.singularBestämd
+      dåtid: !this.state.dåtid
     })
   }
 
-  toggleSingularPossessiv = () => {
+  toggleDåtidTidsuttryck = () => {
     this.setStateAndRefreshRows({
-      singularPossessiv: !this.state.singularPossessiv
-    })
-  }
-
-  togglePluralObestämd = () => {
-    this.setStateAndRefreshRows({
-      pluralObestämd: !this.state.pluralObestämd
-    })
-  }
-
-  togglePluralBestämd = () => {
-    this.setStateAndRefreshRows({
-      pluralBestämd: !this.state.pluralBestämd
+      dåtidTidsuttryck: !this.state.dåtidTidsuttryck
     })
   }
 
@@ -130,22 +91,16 @@ class Verbs extends Component<Props, State> {
   }
 
   getSelectedOperators = () => {
-    const defaultOperator = SingularObestämd
-    const operators: SubstantivAlternativ[] = []
-    if (this.state.singularObestämd) {
+    const defaultOperator = Nutid
+    const operators: VerbAlternativ[] = []
+    if (this.state.nutid) {
       operators.push(defaultOperator)
     }
-    if (this.state.singularBestämd) {
-      operators.push(SingularBestämd)
+    if (this.state.dåtid) {
+      operators.push(Dåtid)
     }
-    if (this.state.singularPossessiv) {
-      operators.push(SingularPossessiv)
-    }
-    if (this.state.pluralObestämd) {
-      operators.push(PluralObestämd)
-    }
-    if (this.state.pluralBestämd) {
-      operators.push(PluralBestämd)
+    if (this.state.dåtidTidsuttryck) {
+      operators.push(DåtidTidsuttryck)
     }
     if (operators.length < 1) {
       operators.push(defaultOperator)
@@ -164,11 +119,9 @@ class Verbs extends Component<Props, State> {
 
   getCheckboxes = () => {
     return [
-      { name: SingularObestämd, toggle: this.toggleSingularObestämd },
-      { name: SingularBestämd, toggle: this.toggleSingularBestämd },
-      { name: SingularPossessiv, toggle: this.toggleSingularPossessiv },
-      { name: PluralObestämd, toggle: this.togglePluralObestämd },
-      { name: PluralBestämd, toggle: this.togglePluralBestämd }
+      { name: Nutid, toggle: this.toggleNutid },
+      { name: Dåtid, toggle: this.toggleDåtid },
+      { name: DåtidTidsuttryck, toggle: this.toggleDåtidTidsuttryck }
     ].map((entry, index) => (
       <Checkbox
         defaultChecked={index === 0}
