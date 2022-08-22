@@ -4,6 +4,7 @@ import WordSheet from './word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { SubstantivAlternativ, getRandomNoun } from '../util/svenska'
+import { getRandomFromArray } from '../util'
 const {
   SingularObestämd,
   SingularBestämd,
@@ -26,7 +27,7 @@ interface State {
   pages: string[][]
 }
 
-class Words extends Component<Props, State> {
+class Nouns extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     const defaultPageCount = 1
@@ -39,12 +40,6 @@ class Words extends Component<Props, State> {
       pageCount: defaultPageCount,
       pages: this.generatePages(defaultPageCount, [SingularObestämd])
     }
-    this.toggleSingularObestämd = this.toggleSingularObestämd.bind(this)
-    this.toggleSingularBestämd = this.toggleSingularBestämd.bind(this)
-    this.toggleSingularPossessiv = this.toggleSingularPossessiv.bind(this)
-    this.togglePluralObestämd = this.togglePluralObestämd.bind(this)
-    this.togglePluralBestämd = this.togglePluralBestämd.bind(this)
-    this.pageCountHandler = this.pageCountHandler.bind(this)
   }
 
   generatePages(pageCount: number, includedOperators: SubstantivAlternativ[]) {
@@ -86,9 +81,7 @@ class Words extends Component<Props, State> {
       if (includedOperators.includes(PluralBestämd)) {
         nounAlternatives.push(randomNoun.plural.bestämd)
       }
-      rows.push(
-        nounAlternatives[Math.floor(Math.random() * nounAlternatives.length)]
-      )
+      rows.push(getRandomFromArray(nounAlternatives))
     }
     return rows
   }
@@ -97,56 +90,42 @@ class Words extends Component<Props, State> {
     this.refreshRowData()
   }
 
-  toggleSingularObestämd() {
-    this.setState(
-      {
-        singularObestämd: !this.state.singularObestämd
-      },
-      this.refreshRowDataCallback
-    )
+  setStateAndRefreshRows = (newState: any) => {
+    this.setState(newState, this.refreshRowDataCallback)
   }
 
-  toggleSingularBestämd() {
-    this.setState(
-      {
-        singularBestämd: !this.state.singularBestämd
-      },
-      this.refreshRowDataCallback
-    )
+  toggleSingularObestämd = () => {
+    this.setStateAndRefreshRows({
+      singularObestämd: !this.state.singularObestämd
+    })
   }
 
-  toggleSingularPossessiv() {
-    this.setState(
-      {
-        singularPossessiv: !this.state.singularPossessiv
-      },
-      this.refreshRowDataCallback
-    )
+  toggleSingularBestämd = () => {
+    this.setStateAndRefreshRows({
+      singularBestämd: !this.state.singularBestämd
+    })
   }
 
-  togglePluralObestämd() {
-    this.setState(
-      {
-        pluralObestämd: !this.state.pluralObestämd
-      },
-      this.refreshRowDataCallback
-    )
+  toggleSingularPossessiv = () => {
+    this.setStateAndRefreshRows({
+      singularPossessiv: !this.state.singularPossessiv
+    })
   }
 
-  togglePluralBestämd() {
-    this.setState(
-      {
-        pluralBestämd: !this.state.pluralBestämd
-      },
-      this.refreshRowDataCallback
-    )
+  togglePluralObestämd = () => {
+    this.setStateAndRefreshRows({
+      pluralObestämd: !this.state.pluralObestämd
+    })
   }
 
-  pageCountHandler(event: any) {
-    this.setState(
-      { pageCount: event.target.value },
-      this.refreshRowDataCallback
-    )
+  togglePluralBestämd = () => {
+    this.setStateAndRefreshRows({
+      pluralBestämd: !this.state.pluralBestämd
+    })
+  }
+
+  pageCountHandler = (event: any) => {
+    this.setStateAndRefreshRows({ pageCount: event.target.value })
   }
 
   getSelectedOperators() {
@@ -182,6 +161,23 @@ class Words extends Component<Props, State> {
     })
   }
 
+  getCheckboxes = () => {
+    return [
+      { name: SingularObestämd, toggle: this.toggleSingularObestämd },
+      { name: SingularBestämd, toggle: this.toggleSingularBestämd },
+      { name: SingularPossessiv, toggle: this.toggleSingularPossessiv },
+      { name: PluralObestämd, toggle: this.togglePluralObestämd },
+      { name: PluralBestämd, toggle: this.togglePluralBestämd }
+    ].map((entry, index) => (
+      <Checkbox
+        defaultChecked={index === 0}
+        name={entry.name}
+        label={entry.name.replaceAll('-', ' ')}
+        toggle={entry.toggle}
+      ></Checkbox>
+    ))
+  }
+
   render() {
     return (
       <div>
@@ -198,39 +194,7 @@ class Words extends Component<Props, State> {
             <label htmlFor="checkbox-group">
               {this.props.t<string>('Included Declensions')}
             </label>
-            <div id="checkbox-group">
-              <Checkbox
-                defaultChecked={true}
-                name={SingularObestämd}
-                label="singular obestämd"
-                toggle={this.toggleSingularObestämd}
-              ></Checkbox>
-              <Checkbox
-                defaultChecked={false}
-                name={SingularBestämd}
-                label="singular bestämd"
-                toggle={this.toggleSingularBestämd}
-              ></Checkbox>
-              <Checkbox
-                defaultChecked={false}
-                name={SingularPossessiv}
-                label="singular possessiv"
-                toggle={this.toggleSingularPossessiv}
-              ></Checkbox>
-              <Checkbox
-                defaultChecked={false}
-                name={PluralObestämd}
-                label="plural obestämd"
-                toggle={this.togglePluralObestämd}
-              ></Checkbox>
-              <Checkbox
-                defaultChecked={false}
-                name={PluralBestämd}
-                label="plural bestämd"
-                toggle={this.togglePluralBestämd}
-              ></Checkbox>
-            </div>
-
+            <div id="checkbox-group">{this.getCheckboxes()}</div>
             <button type="button" onClick={() => this.refreshRowData()}>
               {this.props.t<string>('Randomize')}
             </button>
@@ -249,4 +213,4 @@ class Words extends Component<Props, State> {
     )
   }
 }
-export default withTranslation()(Words)
+export default withTranslation()(Nouns)

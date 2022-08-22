@@ -27,6 +27,8 @@ interface Dictionary {
   Print: string
   Zhuyin: string
   Words: string
+  Nouns: string
+  Verbs: string
 }
 
 export const resources: Resources = {
@@ -49,7 +51,9 @@ export const resources: Resources = {
       Randomize: 'Randomize',
       Print: 'Print',
       Zhuyin: 'Bopomofo',
-      Words: 'Words'
+      Words: 'Words',
+      Nouns: 'Nouns',
+      Verbs: 'Verbs'
     }
   },
   se: {
@@ -71,7 +75,9 @@ export const resources: Resources = {
       Randomize: 'Slumpa',
       Print: 'Skriv ut',
       Zhuyin: 'Bopomofo',
-      Words: 'Ord'
+      Words: 'Ord',
+      Nouns: 'Substantiv',
+      Verbs: 'Verb'
     }
   },
   cn: {
@@ -93,7 +99,9 @@ export const resources: Resources = {
       Randomize: '隨機',
       Print: '列印',
       Zhuyin: '注音符號',
-      Words: '字'
+      Words: '字',
+      Nouns: '名詞',
+      Verbs: '動詞'
     }
   }
 }

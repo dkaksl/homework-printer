@@ -4,7 +4,8 @@ import Menu from '../components/menu'
 import Maths from '../components/maths'
 import ABCs from '../components/abcs'
 import Zhuyin from '../components/zhuyin'
-import Words from '../components/words'
+import Nouns from '../components/nouns'
+import Verbs from '../components/verbs'
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
 export type Operator = '-' | '+' | '×' | '÷'
@@ -32,8 +33,10 @@ export class Main extends Component<Props, State> {
       return <ABCs></ABCs>
     } else if (selected === 'zhuyin') {
       return <Zhuyin></Zhuyin>
-    } else if (selected === 'words') {
-      return <Words rowCount={rowCount}></Words>
+    } else if (selected === 'nouns') {
+      return <Nouns rowCount={rowCount}></Nouns>
+    } else if (selected === 'verbs') {
+      return <Verbs rowCount={rowCount}></Verbs>
     }
   }
 

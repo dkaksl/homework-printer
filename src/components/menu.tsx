@@ -10,14 +10,40 @@ interface State {
   selected: string
 }
 
+interface Link {
+  menuId: string
+  menuTranslationKey: string
+}
+
 class Menu extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = { selected: this.props.selected }
-    this.menuClickHandler = this.menuClickHandler.bind(this)
   }
 
-  menuClickHandler(selected: string) {
+  links: Link[] = [
+    { menuId: 'maths', menuTranslationKey: 'Maths' },
+    { menuId: 'abcs', menuTranslationKey: 'ABCs' },
+    { menuId: 'zhuyin', menuTranslationKey: 'Zhuyin' },
+    { menuId: 'nouns', menuTranslationKey: 'Nouns' },
+    { menuId: 'verbs', menuTranslationKey: 'Verbs' }
+  ]
+
+  getMenuLinks = () => {
+    return this.links.map((link) => (
+      <li>
+        <a
+          href="#/"
+          className={this.getSelectedClassName(link.menuId)}
+          onClick={() => this.menuClickHandler(link.menuId)}
+        >
+          {this.props.t<string>(link.menuTranslationKey)}
+        </a>
+      </li>
+    ))
+  }
+
+  menuClickHandler = (selected: string) => {
     this.props.navigationHandler(selected)
     this.setState({ selected })
     return undefined
@@ -55,44 +81,7 @@ class Menu extends Component<Props, State> {
             ></button>
           </div>
         </div>
-        <ul>
-          <li>
-            <a
-              href="#/"
-              className={this.getSelectedClassName('maths')}
-              onClick={() => this.menuClickHandler('maths')}
-            >
-              {this.props.t<string>('Maths')}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#/"
-              className={this.getSelectedClassName('abcs')}
-              onClick={() => this.menuClickHandler('abcs')}
-            >
-              {this.props.t<string>('ABCs')}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#/"
-              className={this.getSelectedClassName('zhuyin')}
-              onClick={() => this.menuClickHandler('zhuyin')}
-            >
-              {this.props.t<string>('Zhuyin')}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#/"
-              className={this.getSelectedClassName('words')}
-              onClick={() => this.menuClickHandler('words')}
-            >
-              {this.props.t<string>('Words')}
-            </a>
-          </li>
-        </ul>
+        <ul>{this.getMenuLinks()}</ul>
       </div>
     )
   }

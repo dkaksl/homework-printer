@@ -64,7 +64,7 @@ const generatePage = (
     const row = generateRow(
       maxNumber,
       difficulty,
-      operators[Math.floor(Math.random() * operators.length)],
+      getRandomFromArray(operators),
       numberOfZeros >= 3 ? false : true
     )
     if (row.a === 0) {
@@ -113,4 +113,8 @@ export const getRowString = (columns: {
     newStringArray.push(rightColumnChars[i])
   }
   return newStringArray.join('')
+}
+
+export const getRandomFromArray = (array: any[]) => {
+  return array[Math.floor(Math.random() * array.length)]
 }

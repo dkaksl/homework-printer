@@ -10,4 +10,14 @@ describe('ordbok tests', () => {
     }
     expect(substantiv.length).toEqual(substantivSet.size)
   })
+
+  test('that there are no duplicate verbs', () => {
+    const verb = ordbok.verb
+    const verbSet = new Set()
+    for (const v of verb) {
+      expect(verbSet.has(v.grundord)).toBe(false)
+      verbSet.add(v.grundord)
+    }
+    expect(verb.length).toEqual(verbSet.size)
+  })
 })
