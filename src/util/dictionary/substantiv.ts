@@ -37,6 +37,12 @@ export const hus: Substantiv[] = [
     plural: { obestämd: 'sovrum', bestämd: 'sovrummen' }
   },
   {
+    grundord: 'vardagsrum',
+    artikel: 'ett',
+    singular: { obestämd: 'vardagsrum', bestämd: 'vardagsrummet' },
+    plural: { obestämd: 'vardagsrum', bestämd: 'vardagsrummen' }
+  },
+  {
     grundord: 'hall',
     artikel: 'en',
     singular: { obestämd: 'hall', bestämd: 'hallen' },
