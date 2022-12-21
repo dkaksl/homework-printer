@@ -269,6 +269,63 @@ export const mat: Substantiv[] = [
   }
 ]
 
+export const kroppsdelar: Substantiv[] = [
+  {
+    grundord: 'öra',
+    artikel: 'ett',
+    singular: { obestämd: 'öra', bestämd: 'örat' },
+    plural: { obestämd: 'öron', bestämd: 'öronen' }
+  },
+  {
+    grundord: 'öga',
+    artikel: 'ett',
+    singular: { obestämd: 'öga', bestämd: 'ögat' },
+    plural: { obestämd: 'ögon', bestämd: 'ögonen' }
+  },
+  {
+    grundord: 'panna',
+    artikel: 'en',
+    singular: { obestämd: 'panna', bestämd: 'pannan' },
+    plural: { obestämd: 'pannor', bestämd: 'pannorna' }
+  },
+  {
+    grundord: 'kind',
+    artikel: 'en',
+    singular: { obestämd: 'kind', bestämd: 'kinden' },
+    plural: { obestämd: 'kinder', bestämd: 'kinderna' }
+  },
+  {
+    grundord: 'haka',
+    artikel: 'en',
+    singular: { obestämd: 'haka', bestämd: 'hakan' },
+    plural: { obestämd: 'hakor', bestämd: 'hakorna' }
+  },
+  {
+    grundord: 'mun',
+    artikel: 'en',
+    singular: { obestämd: 'mun', bestämd: 'munnen' },
+    plural: { obestämd: 'munnar', bestämd: 'munnarna' }
+  },
+  {
+    grundord: 'läpp',
+    artikel: 'en',
+    singular: { obestämd: 'läpp', bestämd: 'läppen' },
+    plural: { obestämd: 'läppar', bestämd: 'läpparna' }
+  },
+  {
+    grundord: 'hals',
+    artikel: 'en',
+    singular: { obestämd: 'hals', bestämd: 'halsen' },
+    plural: { obestämd: 'halsar', bestämd: 'halsarna' }
+  },
+  {
+    grundord: 'nacke',
+    artikel: 'en',
+    singular: { obestämd: 'nacke', bestämd: 'nacken' },
+    plural: { obestämd: 'nackar', bestämd: 'nackarna' }
+  }
+]
+
 export const substantiv = [
   ...möbler,
   ...redskap,
@@ -277,5 +334,6 @@ export const substantiv = [
   ...mat,
   ...leksaker,
   ...schack,
-  ...djur
+  ...djur,
+  ...kroppsdelar
 ]
