@@ -5,6 +5,57 @@ export interface Substantiv {
   plural: { obestämd: string; bestämd: string }
 }
 
+export const hus: Substantiv[] = [
+  {
+    grundord: 'hus',
+    artikel: 'ett',
+    singular: { obestämd: 'hus', bestämd: 'huset' },
+    plural: { obestämd: 'hus', bestämd: 'husen' }
+  },
+  {
+    grundord: 'kök',
+    artikel: 'ett',
+    singular: { obestämd: 'kök', bestämd: 'köket' },
+    plural: { obestämd: 'kök', bestämd: 'köken' }
+  },
+  {
+    grundord: 'rum',
+    artikel: 'ett',
+    singular: { obestämd: 'rum', bestämd: 'rummet' },
+    plural: { obestämd: 'rum', bestämd: 'rummen' }
+  },
+  {
+    grundord: 'badrum',
+    artikel: 'ett',
+    singular: { obestämd: 'badrum', bestämd: 'badrummet' },
+    plural: { obestämd: 'badrum', bestämd: 'badrummen' }
+  },
+  {
+    grundord: 'sovrum',
+    artikel: 'ett',
+    singular: { obestämd: 'sovrum', bestämd: 'sovrummet' },
+    plural: { obestämd: 'sovrum', bestämd: 'sovrummen' }
+  },
+  {
+    grundord: 'hall',
+    artikel: 'en',
+    singular: { obestämd: 'hall', bestämd: 'hallen' },
+    plural: { obestämd: 'hallar', bestämd: 'hallarna' }
+  },
+  {
+    grundord: 'toalett',
+    artikel: 'en',
+    singular: { obestämd: 'toalett', bestämd: 'toaletten' },
+    plural: { obestämd: 'toaletter', bestämd: 'toaletterna' }
+  },
+  {
+    grundord: 'gård',
+    artikel: 'en',
+    singular: { obestämd: 'gård', bestämd: 'gården' },
+    plural: { obestämd: 'gårdar', bestämd: 'gårdarna' }
+  },
+]
+
 export const möbler: Substantiv[] = [
   {
     grundord: 'bord',
@@ -327,6 +378,7 @@ export const kroppsdelar: Substantiv[] = [
 ]
 
 export const substantiv = [
+  ...hus,
   ...möbler,
   ...redskap,
   ...dukning,
