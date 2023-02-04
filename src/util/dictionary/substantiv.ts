@@ -60,6 +60,60 @@ export const hus: Substantiv[] = [
     singular: { obestämd: 'gård', bestämd: 'gården' },
     plural: { obestämd: 'gårdar', bestämd: 'gårdarna' }
   },
+  {
+    grundord: 'källare',
+    artikel: 'en',
+    singular: { obestämd: 'källare', bestämd: 'källaren' },
+    plural: { obestämd: 'källare', bestämd: 'källarna' }
+  }
+]
+
+export const infrastruktur: Substantiv[] = [
+  {
+    grundord: 'gata',
+    artikel: 'en',
+    singular: { obestämd: 'gata', bestämd: 'gatan' },
+    plural: { obestämd: 'gator', bestämd: 'gatorna' }
+  },
+  {
+    grundord: 'väg',
+    artikel: 'en',
+    singular: { obestämd: 'väg', bestämd: 'vägen' },
+    plural: { obestämd: 'vägar', bestämd: 'vägarna' }
+  },
+  {
+    grundord: 'bilväg',
+    artikel: 'en',
+    singular: { obestämd: 'bilväg', bestämd: 'bilvägen' },
+    plural: { obestämd: 'bilvägar', bestämd: 'bilvägarna' }
+  },
+  {
+    grundord: 'cykelväg',
+    artikel: 'en',
+    singular: { obestämd: 'cykelväg', bestämd: 'cykelvägen' },
+    plural: { obestämd: 'cykelvägar', bestämd: 'cykelvägarna' }
+  },
+  {
+    grundord: 'tunnel',
+    artikel: 'en',
+    singular: { obestämd: 'tunnel', bestämd: 'tunneln' },
+    plural: { obestämd: 'tunnlar', bestämd: 'tunnlarna' }
+  },
+]
+
+export const fordon: Substantiv[] = [
+  {
+    grundord: 'tåg',
+    artikel: 'ett',
+    singular: { obestämd: 'tåg', bestämd: 'tåget' },
+    plural: { obestämd: 'tåg', bestämd: 'tågen' }
+  },
+  {
+    grundord: 'bil',
+    artikel: 'en',
+    singular: { obestämd: 'bil', bestämd: 'bilen' },
+    plural: { obestämd: 'bilar', bestämd: 'bilarna' }
+  }
 ]
 
 export const möbler: Substantiv[] = [
@@ -95,6 +149,12 @@ export const redskap: Substantiv[] = [
     artikel: 'ett',
     singular: { obestämd: 'papper', bestämd: 'pappret' },
     plural: { obestämd: 'papper', bestämd: 'pappren' }
+  },
+  {
+    grundord: 'brev',
+    artikel: 'ett',
+    singular: { obestämd: 'brev', bestämd: 'brevet' },
+    plural: { obestämd: 'brev', bestämd: 'breven' }
   }
 ]
 
@@ -385,6 +445,8 @@ export const kroppsdelar: Substantiv[] = [
 
 export const substantiv = [
   ...hus,
+  ...infrastruktur,
+  ...fordon,
   ...möbler,
   ...redskap,
   ...dukning,
