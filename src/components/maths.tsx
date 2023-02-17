@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import Printable from './printable'
-import MathsSheet from './sheet'
+import MathsSheet from './sheets/maths-sheet'
 import { generateRowData, RowData } from '../util/index'
 import { Difficulty, Operator } from '../views/main'
 import { Checkbox } from './checkbox'

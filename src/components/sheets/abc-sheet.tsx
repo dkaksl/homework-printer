@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
-import { Difficulty } from '../views/main'
+import { Difficulty } from '../../views/main'
 
 interface Props extends WithTranslation {
   lowercase: boolean

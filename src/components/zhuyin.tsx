@@ -1,12 +1,12 @@
 import { Component } from 'react'
 import Printable from './printable'
-import ABCSheet from './abc-sheet'
+import ABCSheet from './sheets/abc-sheet'
 import { Difficulty } from '../views/main'
 
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
 
-interface Props extends WithTranslation {}
+interface Props extends WithTranslation { }
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]

@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import Printable from './printable'
-import WordSheet from './word-sheet'
+import WordSheet from './sheets/word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { SubstantivAlternativ, getRandomNoun } from '../util/svenska'

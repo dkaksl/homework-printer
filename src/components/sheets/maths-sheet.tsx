@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
-import { Operator } from '../views/main'
+import { Operator } from '../../views/main'
 
 interface Props extends WithTranslation {
   rows: { a: number; b: number; operator: Operator }[]
