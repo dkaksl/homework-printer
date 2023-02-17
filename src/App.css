@@ -78,7 +78,7 @@ body {
   z-index: 200;
 }
 
-.language-selector > div {
+.language-selector>div {
   float: left;
 }
 
@@ -97,6 +97,7 @@ body {
   justify-content: center;
   align-content: center;
 }
+
 form {
   display: grid;
   grid-gap: 16px;
@@ -113,6 +114,7 @@ label {
 input {
   grid-column: 2/3;
 }
+
 button {
   grid-column: 1/3;
 }
@@ -161,6 +163,18 @@ table {
   text-align: center;
 }
 
+.freetext-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+textarea {
+  resize: none;
+  font-size: 20px;
+  overflow: hidden
+}
+
 @media all {
   .page-break {
     display: none;
@@ -168,6 +182,7 @@ table {
 }
 
 @media print {
+
   html,
   body {
     height: initial !important;
