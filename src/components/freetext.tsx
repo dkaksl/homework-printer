@@ -7,10 +7,6 @@ interface Props {
 }
 
 export class Freetext extends Component<Props> {
-  constructor(props: Props) {
-    super(props)
-  }
-
   render() {
     const id = `textarea-${this.props.name}`
     return (
