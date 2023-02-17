@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import Printable from './printable'
 import MathsSheet from './sheets/maths-sheet'
+import { Freetext } from './freetext'
 import { generateRowData, RowData } from '../util/index'
 import { Difficulty, Operator } from '../views/main'
 import { Checkbox } from './checkbox'
@@ -16,6 +17,7 @@ interface State {
   minus: boolean
   pageCount: number
   rows: RowData[][]
+  withFreetext: boolean
 }
 
 class Maths extends Component<Props, State> {
@@ -33,11 +35,13 @@ class Maths extends Component<Props, State> {
         defaultDifficulty,
         ['+'],
         defaultPageCount
-      )
+      ),
+      withFreetext: false
     }
     this.difficultyHandler = this.difficultyHandler.bind(this)
     this.togglePlus = this.togglePlus.bind(this)
     this.toggleMinus = this.toggleMinus.bind(this)
+    this.toggleFreetext = this.toggleFreetext.bind(this)
     this.pageCountHandler = this.pageCountHandler.bind(this)
   }
 
@@ -61,6 +65,12 @@ class Maths extends Component<Props, State> {
         this.refreshRowData(this.props.rowCount)
       }
     )
+  }
+
+  toggleFreetext() {
+    this.setState({
+      withFreetext: !this.state.withFreetext
+    })
   }
 
   difficultyHandler(event: any) {
@@ -146,6 +156,12 @@ class Maths extends Component<Props, State> {
                 label="-"
                 toggle={this.toggleMinus}
               ></Checkbox>
+              <Checkbox
+                defaultChecked={false}
+                name="freetext"
+                label="?"
+                toggle={this.toggleFreetext}
+              ></Checkbox>
             </div>
 
             <button
@@ -161,7 +177,7 @@ class Maths extends Component<Props, State> {
           {this.state.rows.map((page) => (
             <div>
               <div className="page-break" />
-              <MathsSheet rows={page}></MathsSheet>
+              <MathsSheet rows={page} withFreetext={this.state.withFreetext}></MathsSheet>
             </div>
           ))}
         </Printable>

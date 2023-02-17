@@ -5,12 +5,14 @@ import { Difficulty } from '../views/main'
 
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
+import { Checkbox } from './checkbox'
 
 interface Props extends WithTranslation { }
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]
   difficulty: Difficulty
+  withFreetext: boolean
 }
 
 const zhuyinColumns = {
@@ -35,9 +37,11 @@ class Zhuyin extends Component<Props, State> {
         })) || []
     this.state = {
       rows: defaultRows,
-      difficulty: defaultDifficulty
+      difficulty: defaultDifficulty,
+      withFreetext: false,
     }
     this.difficultyHandler = this.difficultyHandler.bind(this)
+    this.toggleFreetext = this.toggleFreetext.bind(this)
   }
 
   generateRows() {
@@ -61,6 +65,12 @@ class Zhuyin extends Component<Props, State> {
     this.setState({ difficulty: event.target.value })
   }
 
+  toggleFreetext() {
+    this.setState({
+      withFreetext: !this.state.withFreetext
+    })
+  }
+
   render() {
     return (
       <div>
@@ -82,6 +92,12 @@ class Zhuyin extends Component<Props, State> {
               </option>
             </select>
           </form>
+          <Checkbox
+            defaultChecked={false}
+            name="freetext"
+            label="?"
+            toggle={this.toggleFreetext}
+          ></Checkbox>
         </section>
 
         <Printable>
@@ -92,6 +108,7 @@ class Zhuyin extends Component<Props, State> {
               difficulty={this.state.difficulty}
               rows={this.state.rows}
               bopomo={true}
+              withFreetext={this.state.withFreetext}
             ></ABCSheet>
           </div>
         </Printable>

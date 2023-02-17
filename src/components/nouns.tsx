@@ -25,6 +25,7 @@ interface State {
   pluralBestämd: boolean
   pageCount: number
   pages: string[][]
+  withFreetext: boolean
 }
 
 class Nouns extends Component<Props, State> {
@@ -38,8 +39,10 @@ class Nouns extends Component<Props, State> {
       pluralObestämd: false,
       pluralBestämd: false,
       pageCount: defaultPageCount,
-      pages: this.generatePages(defaultPageCount, [SingularObestämd])
+      pages: this.generatePages(defaultPageCount, [SingularObestämd]),
+      withFreetext: false
     }
+    this.toggleFreetext = this.toggleFreetext.bind(this)
   }
 
   generatePages(pageCount: number, includedOperators: SubstantivAlternativ[]) {
@@ -124,6 +127,12 @@ class Nouns extends Component<Props, State> {
     })
   }
 
+  toggleFreetext() {
+    this.setState({
+      withFreetext: !this.state.withFreetext
+    })
+  }
+
   pageCountHandler = (event: any) => {
     this.setStateAndRefreshRows({ pageCount: event.target.value })
   }
@@ -161,6 +170,8 @@ class Nouns extends Component<Props, State> {
     })
   }
 
+
+
   getCheckboxes = () => {
     return [
       { name: SingularObestämd, toggle: this.toggleSingularObestämd },
@@ -194,7 +205,13 @@ class Nouns extends Component<Props, State> {
             <label htmlFor="checkbox-group">
               {this.props.t<string>('Included Declensions')}
             </label>
-            <div id="checkbox-group">{this.getCheckboxes()}</div>
+            <div id="checkbox-group">{[...this.getCheckboxes(),
+            <Checkbox
+              defaultChecked={false}
+              name="freetext"
+              label="?"
+              toggle={this.toggleFreetext}
+            ></Checkbox>]}</div>
             <button type="button" onClick={() => this.refreshRowData()}>
               {this.props.t<string>('Randomize')}
             </button>
@@ -205,7 +222,7 @@ class Nouns extends Component<Props, State> {
           {this.state.pages.map((page) => (
             <div>
               <div className="page-break" />
-              <WordSheet rows={page}></WordSheet>
+              <WordSheet rows={page} withFreetext={this.state.withFreetext}></WordSheet>
             </div>
           ))}
         </Printable>

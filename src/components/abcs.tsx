@@ -5,6 +5,7 @@ import { Difficulty } from '../views/main'
 
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
+import { Checkbox } from './checkbox'
 
 interface Props extends WithTranslation { }
 
@@ -12,6 +13,7 @@ interface State {
   rows: { leftColumn: string; rightColumn: string }[]
   difficulty: Difficulty
   case: 'upper' | 'lower'
+  withFreetext: boolean
 }
 
 const capitalABCColumns = {
@@ -45,10 +47,12 @@ class ABCs extends Component<Props, State> {
     this.state = {
       rows: defaultRows,
       difficulty: defaultDifficulty,
-      case: defaultCase
+      case: defaultCase,
+      withFreetext: false
     }
     this.difficultyHandler = this.difficultyHandler.bind(this)
     this.caseHandler = this.caseHandler.bind(this)
+    this.toggleFreetext = this.toggleFreetext.bind(this)
   }
 
   generateRows() {
@@ -77,6 +81,13 @@ class ABCs extends Component<Props, State> {
       this.refreshRows()
     })
   }
+
+  toggleFreetext() {
+    this.setState({
+      withFreetext: !this.state.withFreetext
+    })
+  }
+
 
   render() {
     return (
@@ -117,6 +128,12 @@ class ABCs extends Component<Props, State> {
               checked={this.state.case === 'lower'}
             />
           </form>
+          <Checkbox
+            defaultChecked={false}
+            name="freetext"
+            label="?"
+            toggle={this.toggleFreetext}
+          ></Checkbox>
         </section>
 
         <Printable>
@@ -126,6 +143,7 @@ class ABCs extends Component<Props, State> {
               lowercase={this.state.case === 'lower'}
               difficulty={this.state.difficulty}
               rows={this.state.rows}
+              withFreetext={this.state.withFreetext}
             ></ABCSheet>
           </div>
         </Printable>
