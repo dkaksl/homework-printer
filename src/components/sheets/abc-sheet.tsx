@@ -2,12 +2,14 @@ import { Component } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
 import { Difficulty } from '../../views/main'
+import { Freetext } from '../freetext'
 
 interface Props extends WithTranslation {
   lowercase: boolean
   difficulty: Difficulty
   rows: { leftColumn: string; rightColumn: string }[]
   bopomo?: boolean
+  withFreetext?: boolean
 }
 
 class ABCSheet extends Component<Props> {
@@ -106,6 +108,7 @@ class ABCSheet extends Component<Props> {
             <td className="metadata-row" colSpan={36}></td>
           </tr>
         </table>
+        {this.props.withFreetext && <Freetext label={this.props.t<string>('Notes')}></Freetext>}
       </div>
     )
   }

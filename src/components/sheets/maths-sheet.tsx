@@ -2,9 +2,11 @@ import { Component } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
 import { Operator } from '../../views/main'
+import { Freetext } from '../freetext';
 
 interface Props extends WithTranslation {
   rows: { a: number; b: number; operator: Operator }[]
+  withFreetext?: boolean
 }
 
 class MathsSheet extends Component<Props> {
@@ -34,6 +36,7 @@ class MathsSheet extends Component<Props> {
             <td className="metadata-row" colSpan={3}></td>
           </tr>
         </table>
+        {this.props.withFreetext && <Freetext label={this.props.t<string>('Notes')}></Freetext>}
       </div>
     )
   }
