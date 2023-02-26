@@ -36,7 +36,7 @@ class MathsSheet extends Component<Props> {
             <td className="metadata-row" colSpan={3}></td>
           </tr>
         </table>
-        {this.props.withFreetext && <Freetext label={this.props.t<string>('Notes')}></Freetext>}
+        {this.props.withFreetext && <Freetext />}
       </div>
     )
   }
