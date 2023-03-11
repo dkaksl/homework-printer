@@ -20,6 +20,7 @@
     "web-vitals": "^3.1.0"
   },
   "scripts": {
+    "prepare": "husky install",
     "lint": "eslint .",
     "start": "react-scripts start",
     "build": "react-scripts build",
