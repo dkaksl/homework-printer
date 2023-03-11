@@ -21,7 +21,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "commit-lint": "commitlint --from=HEAD~1",
+    "commit-lint": "commitlint --from=HEAD~1 --to HEAD",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
