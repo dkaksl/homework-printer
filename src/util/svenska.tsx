@@ -2,8 +2,6 @@ import { getRandomFromArray } from '.'
 import { substantiv, Substantiv } from './dictionary/substantiv'
 import { Verb, verb } from './dictionary/verb'
 
-interface Egennamn {}
-
 export enum SubstantivAlternativ {
   SingularObestämd = 'singular-obestämd',
   SingularBestämd = 'singular-bestämd',
@@ -44,10 +42,8 @@ const tidsuttryck = ['då', 'sen', 'först']
 export const ordbok: {
   substantiv: Substantiv[]
   verb: Verb[]
-  egennamn: Egennamn[]
 } = {
   substantiv,
-  egennamn: [],
   verb
 }
 
