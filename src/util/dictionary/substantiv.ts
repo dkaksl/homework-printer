@@ -98,7 +98,7 @@ export const infrastruktur: Substantiv[] = [
     artikel: 'en',
     singular: { obestämd: 'tunnel', bestämd: 'tunneln' },
     plural: { obestämd: 'tunnlar', bestämd: 'tunnlarna' }
-  },
+  }
 ]
 
 export const fordon: Substantiv[] = [
@@ -362,6 +362,18 @@ export const kläder: Substantiv[] = [
     artikel: 'en',
     singular: { obestämd: 'jacka', bestämd: 'jackan' },
     plural: { obestämd: 'jackor', bestämd: 'jackorna' }
+  },
+  {
+    grundord: 'armband',
+    artikel: 'ett',
+    singular: { obestämd: 'armband', bestämd: 'armbandet' },
+    plural: { obestämd: 'armband', bestämd: 'armbanden' }
+  },
+  {
+    grundord: 'halsband',
+    artikel: 'ett',
+    singular: { obestämd: 'halsband', bestämd: 'halsbandet' },
+    plural: { obestämd: 'halsband', bestämd: 'halsbanden' }
   }
 ]
 
