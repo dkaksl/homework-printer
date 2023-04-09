@@ -1,4 +1,11 @@
 import { getRandomFromArray } from '.'
+import {
+  PluralBestämd,
+  PluralObestämd,
+  SingularBestämd,
+  SingularObestämd,
+  SingularPossessiv
+} from '../components/nouns'
 import { substantiv, Substantiv } from './dictionary/substantiv'
 import { Verb, verb } from './dictionary/verb'
 
@@ -47,7 +54,7 @@ export const ordbok: {
   verb
 }
 
-export const getRandomNoun = () => {
+const getRandomNoun = () => {
   const substantiv = ordbok.substantiv
   const randomSubstantiv = getRandomFromArray(substantiv)
   const randomSubstantivCopy = JSON.parse(JSON.stringify(randomSubstantiv))
@@ -57,6 +64,38 @@ export const getRandomNoun = () => {
   randomSubstantivCopy.plural.bestämd =
     'de ' + randomPluralNummer + ' ' + randomSubstantiv.plural.bestämd
   return randomSubstantivCopy
+}
+
+export const getRandomNounOutOfOptions = (
+  includedOperators: SubstantivAlternativ[]
+) => {
+  const randomNoun = getRandomNoun()
+  const nounAlternatives = []
+  if (includedOperators.includes(SingularObestämd)) {
+    nounAlternatives.push(
+      [randomNoun.artikel, randomNoun.singular.obestämd].join(' ')
+    )
+  }
+  if (includedOperators.includes(SingularBestämd)) {
+    const denEllerDet = randomNoun.artikel === 'en' ? 'den' : 'det'
+    nounAlternatives.push([denEllerDet, randomNoun.singular.bestämd].join(' '))
+  }
+  if (includedOperators.includes(SingularPossessiv)) {
+    const pronomenPrefix = Math.round(Math.random()) ? 'mi' : 'di'
+    nounAlternatives.push(
+      [
+        pronomenPrefix + (randomNoun.artikel === 'en' ? 'n' : 'tt'),
+        randomNoun.singular.obestämd
+      ].join(' ')
+    )
+  }
+  if (includedOperators.includes(PluralObestämd)) {
+    nounAlternatives.push(randomNoun.plural.obestämd)
+  }
+  if (includedOperators.includes(PluralBestämd)) {
+    nounAlternatives.push(randomNoun.plural.bestämd)
+  }
+  return getRandomFromArray(nounAlternatives)
 }
 
 export const getRandomVerb = () => {

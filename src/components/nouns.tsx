@@ -3,9 +3,11 @@ import Printable from './printable'
 import WordSheet from './sheets/word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import { SubstantivAlternativ, getRandomNoun } from '../util/svenska'
-import { getRandomFromArray } from '../util'
-const {
+import {
+  SubstantivAlternativ,
+  getRandomNounOutOfOptions
+} from '../util/svenska'
+export const {
   SingularObestämd,
   SingularBestämd,
   SingularPossessiv,
@@ -56,35 +58,7 @@ class Nouns extends Component<Props, State> {
   generateRows(includedOperators: SubstantivAlternativ[]) {
     const rows = []
     for (let i = 0; i < this.props.rowCount; i++) {
-      const randomNoun = getRandomNoun()
-      const nounAlternatives = []
-      if (includedOperators.includes(SingularObestämd)) {
-        nounAlternatives.push(
-          [randomNoun.artikel, randomNoun.singular.obestämd].join(' ')
-        )
-      }
-      if (includedOperators.includes(SingularBestämd)) {
-        const denEllerDet = randomNoun.artikel === 'en' ? 'den' : 'det'
-        nounAlternatives.push(
-          [denEllerDet, randomNoun.singular.bestämd].join(' ')
-        )
-      }
-      if (includedOperators.includes(SingularPossessiv)) {
-        const pronomenPrefix = Math.round(Math.random()) ? 'mi' : 'di'
-        nounAlternatives.push(
-          [
-            pronomenPrefix + (randomNoun.artikel === 'en' ? 'n' : 'tt'),
-            randomNoun.singular.obestämd
-          ].join(' ')
-        )
-      }
-      if (includedOperators.includes(PluralObestämd)) {
-        nounAlternatives.push(randomNoun.plural.obestämd)
-      }
-      if (includedOperators.includes(PluralBestämd)) {
-        nounAlternatives.push(randomNoun.plural.bestämd)
-      }
-      rows.push(getRandomFromArray(nounAlternatives))
+      rows.push(getRandomNounOutOfOptions(includedOperators))
     }
     return rows
   }
@@ -170,8 +144,6 @@ class Nouns extends Component<Props, State> {
     })
   }
 
-
-
   getCheckboxes = () => {
     return [
       { name: SingularObestämd, toggle: this.toggleSingularObestämd },
@@ -205,13 +177,17 @@ class Nouns extends Component<Props, State> {
             <label htmlFor="checkbox-group">
               {this.props.t<string>('Included Declensions')}
             </label>
-            <div id="checkbox-group">{[...this.getCheckboxes(),
-            <Checkbox
-              defaultChecked={false}
-              name="freetext"
-              label="?"
-              toggle={this.toggleFreetext}
-            ></Checkbox>]}</div>
+            <div id="checkbox-group">
+              {[
+                ...this.getCheckboxes(),
+                <Checkbox
+                  defaultChecked={false}
+                  name="freetext"
+                  label="?"
+                  toggle={this.toggleFreetext}
+                ></Checkbox>
+              ]}
+            </div>
             <button type="button" onClick={() => this.refreshRowData()}>
               {this.props.t<string>('Randomize')}
             </button>
@@ -222,7 +198,10 @@ class Nouns extends Component<Props, State> {
           {this.state.pages.map((page) => (
             <div>
               <div className="page-break" />
-              <WordSheet rows={page} withFreetext={this.state.withFreetext}></WordSheet>
+              <WordSheet
+                rows={page}
+                withFreetext={this.state.withFreetext}
+              ></WordSheet>
             </div>
           ))}
         </Printable>
