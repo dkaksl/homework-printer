@@ -176,7 +176,10 @@ class Maths extends Component<Props, State> {
           {this.state.rows.map((page) => (
             <div>
               <div className="page-break" />
-              <MathsSheet rows={page} withFreetext={this.state.withFreetext}></MathsSheet>
+              <MathsSheet
+                rows={page}
+                withFreetext={this.state.withFreetext}
+              ></MathsSheet>
             </div>
           ))}
         </Printable>
