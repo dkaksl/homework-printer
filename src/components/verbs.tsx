@@ -140,7 +140,7 @@ class Verbs extends Component<Props, State> {
               type="number"
               min="1"
               value={this.state.pageCount}
-              onChange={() => this.pageCountHandler}
+              onChange={this.pageCountHandler}
             ></input>
             <label htmlFor="checkbox-group">
               {this.props.t<string>('Included Declensions')}
