@@ -1,12 +1,4 @@
 import { getRandomFromArray } from '.'
-import {
-  PluralBestämd,
-  PluralObestämd,
-  SingularBestämd,
-  SingularObestämd,
-  SingularPossessiv
-} from '../components/nouns'
-import { Dåtid, DåtidTidsuttryck, Nutid } from '../components/verbs'
 import { substantiv, Substantiv } from './dictionary/substantiv'
 import { Verb, verb } from './dictionary/verb'
 
@@ -72,16 +64,16 @@ export const getRandomNounOutOfOptions = (
 ) => {
   const randomNoun = getRandomNoun()
   const nounAlternatives = []
-  if (includedOperators.includes(SingularObestämd)) {
+  if (includedOperators.includes(SubstantivAlternativ.SingularObestämd)) {
     nounAlternatives.push(
       [randomNoun.artikel, randomNoun.singular.obestämd].join(' ')
     )
   }
-  if (includedOperators.includes(SingularBestämd)) {
+  if (includedOperators.includes(SubstantivAlternativ.SingularBestämd)) {
     const denEllerDet = randomNoun.artikel === 'en' ? 'den' : 'det'
     nounAlternatives.push([denEllerDet, randomNoun.singular.bestämd].join(' '))
   }
-  if (includedOperators.includes(SingularPossessiv)) {
+  if (includedOperators.includes(SubstantivAlternativ.SingularPossessiv)) {
     const pronomenPrefix = Math.round(Math.random()) ? 'mi' : 'di'
     nounAlternatives.push(
       [
@@ -90,10 +82,10 @@ export const getRandomNounOutOfOptions = (
       ].join(' ')
     )
   }
-  if (includedOperators.includes(PluralObestämd)) {
+  if (includedOperators.includes(SubstantivAlternativ.PluralObestämd)) {
     nounAlternatives.push(randomNoun.plural.obestämd)
   }
-  if (includedOperators.includes(PluralBestämd)) {
+  if (includedOperators.includes(SubstantivAlternativ.PluralBestämd)) {
     nounAlternatives.push(randomNoun.plural.bestämd)
   }
   return getRandomFromArray(nounAlternatives)
@@ -130,13 +122,13 @@ export const getRandomVerbOutOfOptions = (
 ) => {
   const randomVerb = getRandomVerb()
   const verbAlternatives = []
-  if (includedOperators.includes(Nutid)) {
+  if (includedOperators.includes(VerbAlternativ.Nutid)) {
     verbAlternatives.push(randomVerb.nutid)
   }
-  if (includedOperators.includes(Dåtid)) {
+  if (includedOperators.includes(VerbAlternativ.Dåtid)) {
     verbAlternatives.push(randomVerb.dåtid.grund)
   }
-  if (includedOperators.includes(DåtidTidsuttryck)) {
+  if (includedOperators.includes(VerbAlternativ.DåtidTidsuttryck)) {
     verbAlternatives.push(randomVerb.dåtid.tidsuttryck)
   }
   return getRandomFromArray(verbAlternatives)
