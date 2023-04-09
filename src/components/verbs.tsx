@@ -3,10 +3,9 @@ import Printable from './printable'
 import WordSheet from './sheets/word-sheet'
 import { Checkbox } from './checkbox'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import { getRandomVerb, VerbAlternativ } from '../util/svenska'
-import { getRandomFromArray } from '../util'
+import { getRandomVerbOutOfOptions, VerbAlternativ } from '../util/svenska'
 
-const { Nutid, Dåtid, DåtidTidsuttryck } = VerbAlternativ
+export const { Nutid, Dåtid, DåtidTidsuttryck } = VerbAlternativ
 
 interface Props extends WithTranslation {
   rowCount: number
@@ -47,18 +46,7 @@ class Verbs extends Component<Props, State> {
   generateRows(includedOperators: VerbAlternativ[]) {
     const rows = []
     for (let i = 0; i < this.props.rowCount; i++) {
-      const randomVerb = getRandomVerb()
-      const verbAlternatives = []
-      if (includedOperators.includes(Nutid)) {
-        verbAlternatives.push(randomVerb.nutid)
-      }
-      if (includedOperators.includes(Dåtid)) {
-        verbAlternatives.push(randomVerb.dåtid.grund)
-      }
-      if (includedOperators.includes(DåtidTidsuttryck)) {
-        verbAlternatives.push(randomVerb.dåtid.tidsuttryck)
-      }
-      rows.push(getRandomFromArray(verbAlternatives))
+      rows.push(getRandomVerbOutOfOptions(includedOperators))
     }
     return rows
   }
@@ -157,12 +145,17 @@ class Verbs extends Component<Props, State> {
             <label htmlFor="checkbox-group">
               {this.props.t<string>('Included Declensions')}
             </label>
-            <div id="checkbox-group">{[...this.getCheckboxes(), <Checkbox
-              defaultChecked={false}
-              name="freetext"
-              label="?"
-              toggle={this.toggleFreetext}
-            ></Checkbox>]}</div>
+            <div id="checkbox-group">
+              {[
+                ...this.getCheckboxes(),
+                <Checkbox
+                  defaultChecked={false}
+                  name="freetext"
+                  label="?"
+                  toggle={this.toggleFreetext}
+                ></Checkbox>
+              ]}
+            </div>
             <button type="button" onClick={() => this.refreshRowData()}>
               {this.props.t<string>('Randomize')}
             </button>
@@ -173,7 +166,10 @@ class Verbs extends Component<Props, State> {
           {this.state.pages.map((page) => (
             <div>
               <div className="page-break" />
-              <WordSheet rows={page} withFreetext={this.state.withFreetext}></WordSheet>
+              <WordSheet
+                rows={page}
+                withFreetext={this.state.withFreetext}
+              ></WordSheet>
             </div>
           ))}
         </Printable>

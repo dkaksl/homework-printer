@@ -6,6 +6,7 @@ import {
   SingularObestämd,
   SingularPossessiv
 } from '../components/nouns'
+import { Dåtid, DåtidTidsuttryck, Nutid } from '../components/verbs'
 import { substantiv, Substantiv } from './dictionary/substantiv'
 import { Verb, verb } from './dictionary/verb'
 
@@ -98,7 +99,7 @@ export const getRandomNounOutOfOptions = (
   return getRandomFromArray(nounAlternatives)
 }
 
-export const getRandomVerb = () => {
+const getRandomVerb = () => {
   const verb = ordbok.verb
   const randomVerb = getRandomFromArray(verb)
   const randomVerbCopy = JSON.parse(JSON.stringify(randomVerb))
@@ -122,4 +123,21 @@ export const getRandomVerb = () => {
     ].join(' ')
   }
   return randomVerbCopy
+}
+
+export const getRandomVerbOutOfOptions = (
+  includedOperators: VerbAlternativ[]
+) => {
+  const randomVerb = getRandomVerb()
+  const verbAlternatives = []
+  if (includedOperators.includes(Nutid)) {
+    verbAlternatives.push(randomVerb.nutid)
+  }
+  if (includedOperators.includes(Dåtid)) {
+    verbAlternatives.push(randomVerb.dåtid.grund)
+  }
+  if (includedOperators.includes(DåtidTidsuttryck)) {
+    verbAlternatives.push(randomVerb.dåtid.tidsuttryck)
+  }
+  return getRandomFromArray(verbAlternatives)
 }
