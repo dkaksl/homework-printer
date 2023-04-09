@@ -7,7 +7,9 @@ import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
 import { Checkbox } from './checkbox'
 
-interface Props extends WithTranslation { }
+// TODO #8
+// eslint-disable-next-line
+interface Props extends WithTranslation {}
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]
@@ -87,7 +89,6 @@ class ABCs extends Component<Props, State> {
       withFreetext: !this.state.withFreetext
     })
   }
-
 
   render() {
     return (
