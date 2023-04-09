@@ -63,6 +63,8 @@ class Zhuyin extends Component<Props, State> {
     this.setState({ rows: this.generateRows() })
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   difficultyHandler(event: any) {
     this.setState({ difficulty: event.target.value })
   }

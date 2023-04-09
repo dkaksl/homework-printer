@@ -115,6 +115,8 @@ export const getRowString = (columns: {
   return newStringArray.join('')
 }
 
+// TODO #8
+// eslint-disable-next-line
 export const getRandomFromArray = (array: any[]) => {
   return array[Math.floor(Math.random() * array.length)]
 }
