@@ -74,7 +74,7 @@ class Nouns extends Component<Props, State> {
         nounAlternatives.push(
           [
             pronomenPrefix + (randomNoun.artikel === 'en' ? 'n' : 'tt'),
-            randomNoun.grundord
+            randomNoun.singular.obestämd
           ].join(' ')
         )
       }
