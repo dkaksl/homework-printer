@@ -78,10 +78,8 @@ class Maths extends Component<Props, State> {
     })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  pageCountHandler(event: any) {
-    this.setState({ pageCount: event.target.value }, () => {
+  pageCountHandler(event: ChangeEvent<HTMLInputElement>) {
+    this.setState({ pageCount: parseInt(event.target.value) }, () => {
       this.refreshRowData(this.props.rowCount)
     })
   }

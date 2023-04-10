@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { ChangeEvent, Component } from 'react'
 import Printable from './printable'
 import WordSheet from './sheets/word-sheet'
 import { Checkbox } from './checkbox'
@@ -109,9 +109,7 @@ class Nouns extends Component<Props, State> {
     })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  pageCountHandler = (event: any) => {
+  pageCountHandler = (event: ChangeEvent<HTMLInputElement>) => {
     this.setStateAndRefreshRows({ pageCount: event.target.value })
   }
 
