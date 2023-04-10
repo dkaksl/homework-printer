@@ -63,44 +63,51 @@ class Nouns extends Component<Props, State> {
     return rows
   }
 
-  refreshRowDataCallback = () => {
+  refreshRowDataCb = () => {
     this.refreshRowData()
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  setStateAndRefreshRows = (newState: any) => {
-    this.setState(newState, this.refreshRowDataCallback)
-  }
-
   toggleSingularObestämd = () => {
-    this.setStateAndRefreshRows({
-      singularObestämd: !this.state.singularObestämd
-    })
+    this.setState(
+      { singularObestämd: !this.state.singularObestämd },
+      this.refreshRowDataCb
+    )
   }
 
   toggleSingularBestämd = () => {
-    this.setStateAndRefreshRows({
-      singularBestämd: !this.state.singularBestämd
-    })
+    this.setState(
+      {
+        singularBestämd: !this.state.singularBestämd
+      },
+      this.refreshRowDataCb
+    )
   }
 
   toggleSingularPossessiv = () => {
-    this.setStateAndRefreshRows({
-      singularPossessiv: !this.state.singularPossessiv
-    })
+    this.setState(
+      {
+        singularPossessiv: !this.state.singularPossessiv
+      },
+      this.refreshRowDataCb
+    )
   }
 
   togglePluralObestämd = () => {
-    this.setStateAndRefreshRows({
-      pluralObestämd: !this.state.pluralObestämd
-    })
+    this.setState(
+      {
+        pluralObestämd: !this.state.pluralObestämd
+      },
+      this.refreshRowDataCb
+    )
   }
 
   togglePluralBestämd = () => {
-    this.setStateAndRefreshRows({
-      pluralBestämd: !this.state.pluralBestämd
-    })
+    this.setState(
+      {
+        pluralBestämd: !this.state.pluralBestämd
+      },
+      this.refreshRowDataCb
+    )
   }
 
   toggleFreetext() {
@@ -110,7 +117,10 @@ class Nouns extends Component<Props, State> {
   }
 
   pageCountHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setStateAndRefreshRows({ pageCount: event.target.value })
+    this.setState(
+      { pageCount: parseInt(event.target.value) },
+      this.refreshRowDataCb
+    )
   }
 
   getSelectedOperators() {
