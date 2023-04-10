@@ -1,11 +1,9 @@
-import { Component, createRef } from 'react'
+import { Component, ReactNode, createRef } from 'react'
 import ReactToPrint from 'react-to-print'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
 interface Props extends WithTranslation {
-  // TODO #8
-  // eslint-disable-next-line
-  children: any
+  children: ReactNode
 }
 
 class Printable extends Component<Props> {
