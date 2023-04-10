@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { ChangeEvent, Component } from 'react'
 import Printable from './printable'
 import ABCSheet from './sheets/abc-sheet'
 import { Difficulty } from '../views/main'
@@ -61,10 +61,8 @@ class Zhuyin extends Component<Props, State> {
     this.setState({ rows: this.generateRows() })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  difficultyHandler(event: any) {
-    this.setState({ difficulty: event.target.value })
+  difficultyHandler(event: ChangeEvent<HTMLSelectElement>) {
+    this.setState({ difficulty: event.target.value as Difficulty })
   }
 
   toggleFreetext() {

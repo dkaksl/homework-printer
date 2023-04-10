@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { ChangeEvent, Component } from 'react'
 import Printable from './printable'
 import MathsSheet from './sheets/maths-sheet'
 import { generateRowData, RowData } from '../util/index'
@@ -72,10 +72,8 @@ class Maths extends Component<Props, State> {
     })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  difficultyHandler(event: any) {
-    this.setState({ difficulty: event.target.value }, () => {
+  difficultyHandler(event: ChangeEvent<HTMLSelectElement>) {
+    this.setState({ difficulty: event.target.value as Difficulty }, () => {
       this.refreshRowData(this.props.rowCount)
     })
   }
