@@ -55,6 +55,8 @@ class Verbs extends Component<Props, State> {
     this.refreshRowData()
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   setStateAndRefreshRows = (newState: any) => {
     this.setState(newState, this.refreshRowDataCallback)
   }
@@ -83,6 +85,8 @@ class Verbs extends Component<Props, State> {
     })
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   pageCountHandler = (event: any) => {
     this.setStateAndRefreshRows({ pageCount: event.target.value })
   }
@@ -140,7 +144,7 @@ class Verbs extends Component<Props, State> {
               type="number"
               min="1"
               value={this.state.pageCount}
-              onChange={() => this.pageCountHandler}
+              onChange={this.pageCountHandler}
             ></input>
             <label htmlFor="checkbox-group">
               {this.props.t<string>('Included Declensions')}

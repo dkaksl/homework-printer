@@ -67,6 +67,8 @@ class Nouns extends Component<Props, State> {
     this.refreshRowData()
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   setStateAndRefreshRows = (newState: any) => {
     this.setState(newState, this.refreshRowDataCallback)
   }
@@ -107,6 +109,8 @@ class Nouns extends Component<Props, State> {
     })
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   pageCountHandler = (event: any) => {
     this.setStateAndRefreshRows({ pageCount: event.target.value })
   }

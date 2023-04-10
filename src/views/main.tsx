@@ -10,7 +10,10 @@ import Verbs from '../components/verbs'
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
 export type Operator = '-' | '+' | '×' | '÷'
 
+// TODO #8
+// eslint-disable-next-line
 interface Props {}
+
 interface State {
   rowCount: number
   selected: string

@@ -7,7 +7,9 @@ import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
 import { Checkbox } from './checkbox'
 
-interface Props extends WithTranslation { }
+// TODO #8
+// eslint-disable-next-line
+interface Props extends WithTranslation {}
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]
@@ -72,10 +74,14 @@ class ABCs extends Component<Props, State> {
     this.setState({ rows: this.generateRows() })
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   difficultyHandler(event: any) {
     this.setState({ difficulty: event.target.value })
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   caseHandler(event: any) {
     this.setState({ case: event.target.value }, () => {
       this.refreshRows()
@@ -87,7 +93,6 @@ class ABCs extends Component<Props, State> {
       withFreetext: !this.state.withFreetext
     })
   }
-
 
   render() {
     return (

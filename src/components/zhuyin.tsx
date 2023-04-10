@@ -7,7 +7,9 @@ import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
 import { Checkbox } from './checkbox'
 
-interface Props extends WithTranslation { }
+// TODO #8
+// eslint-disable-next-line
+interface Props extends WithTranslation {}
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]
@@ -38,7 +40,7 @@ class Zhuyin extends Component<Props, State> {
     this.state = {
       rows: defaultRows,
       difficulty: defaultDifficulty,
-      withFreetext: false,
+      withFreetext: false
     }
     this.difficultyHandler = this.difficultyHandler.bind(this)
     this.toggleFreetext = this.toggleFreetext.bind(this)
@@ -61,6 +63,8 @@ class Zhuyin extends Component<Props, State> {
     this.setState({ rows: this.generateRows() })
   }
 
+  // TODO #8
+  // eslint-disable-next-line
   difficultyHandler(event: any) {
     this.setState({ difficulty: event.target.value })
   }
