@@ -11,17 +11,13 @@ export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
 export type Case = 'upper' | 'lower'
 export type Operator = '-' | '+' | '×' | '÷'
 
-// TODO #8
-// eslint-disable-next-line
-interface Props {}
-
 interface State {
   rowCount: number
   selected: string
 }
 
-export class Main extends Component<Props, State> {
-  constructor(props: Props) {
+export class Main extends Component<Record<string, never>, State> {
+  constructor(props: Record<string, never>) {
     super(props)
     this.state = {
       rowCount: 20,
