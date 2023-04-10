@@ -7,7 +7,7 @@ interface Props extends WithTranslation {
 }
 
 class Printable extends Component<Props> {
-  // TODO #8
+  // TODO
   // eslint-disable-next-line
   myRef: any
   constructor(props: Props) {
