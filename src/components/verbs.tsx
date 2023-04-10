@@ -55,28 +55,31 @@ class Verbs extends Component<Props, State> {
     this.refreshRowData()
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  setStateAndRefreshRows = (newState: any) => {
-    this.setState(newState, this.refreshRowDataCallback)
-  }
-
   toggleNutid = () => {
-    this.setStateAndRefreshRows({
-      nutid: !this.state.nutid
-    })
+    this.setState(
+      {
+        nutid: !this.state.nutid
+      },
+      this.refreshRowDataCallback
+    )
   }
 
   toggleDåtid = () => {
-    this.setStateAndRefreshRows({
-      dåtid: !this.state.dåtid
-    })
+    this.setState(
+      {
+        dåtid: !this.state.dåtid
+      },
+      this.refreshRowDataCallback
+    )
   }
 
   toggleDåtidTidsuttryck = () => {
-    this.setStateAndRefreshRows({
-      dåtidTidsuttryck: !this.state.dåtidTidsuttryck
-    })
+    this.setState(
+      {
+        dåtidTidsuttryck: !this.state.dåtidTidsuttryck
+      },
+      this.refreshRowDataCallback
+    )
   }
 
   toggleFreetext() {
@@ -86,7 +89,10 @@ class Verbs extends Component<Props, State> {
   }
 
   pageCountHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setStateAndRefreshRows({ pageCount: event.target.value })
+    this.setState(
+      { pageCount: parseInt(event.target.value) },
+      this.refreshRowDataCallback
+    )
   }
 
   getSelectedOperators = () => {
