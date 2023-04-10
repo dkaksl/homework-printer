@@ -8,6 +8,7 @@ import Nouns from '../components/nouns'
 import Verbs from '../components/verbs'
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
+export type Case = 'upper' | 'lower'
 export type Operator = '-' | '+' | '×' | '÷'
 
 // TODO #8
