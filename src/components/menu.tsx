@@ -3,9 +3,7 @@ import { withTranslation, WithTranslation } from 'react-i18next'
 
 interface Props extends WithTranslation {
   selected: string
-  // TODO #8
-  // eslint-disable-next-line
-  navigationHandler: Function
+  navigationHandler: (selected: string) => void
 }
 
 interface State {
