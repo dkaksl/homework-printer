@@ -1,20 +1,19 @@
 import { Component } from 'react'
 import Printable from './printable'
 import ABCSheet from './sheets/abc-sheet'
-import { Difficulty } from '../views/main'
+import { Case, Difficulty } from '../views/main'
 
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
 import { Checkbox } from './checkbox'
+import { ChangeEvent } from 'react'
 
-// TODO #8
-// eslint-disable-next-line
-interface Props extends WithTranslation {}
+type Props = WithTranslation
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]
   difficulty: Difficulty
-  case: 'upper' | 'lower'
+  case: Case
   withFreetext: boolean
 }
 
@@ -74,16 +73,12 @@ class ABCs extends Component<Props, State> {
     this.setState({ rows: this.generateRows() })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  difficultyHandler(event: any) {
-    this.setState({ difficulty: event.target.value })
+  difficultyHandler(event: ChangeEvent<HTMLSelectElement>) {
+    this.setState({ difficulty: event.target.value as Difficulty })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  caseHandler(event: any) {
-    this.setState({ case: event.target.value }, () => {
+  caseHandler(event: ChangeEvent<HTMLInputElement>) {
+    this.setState({ case: event.target.value as Case }, () => {
       this.refreshRows()
     })
   }

@@ -4,9 +4,7 @@ interface Props {
   defaultChecked: boolean
   name: string
   label: string
-  // TODO #8
-  // eslint-disable-next-line
-  toggle: Function
+  toggle: () => void
 }
 interface State {
   operator: string

@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { ChangeEvent, Component } from 'react'
 import Printable from './printable'
 import WordSheet from './sheets/word-sheet'
 import { Checkbox } from './checkbox'
@@ -55,28 +55,31 @@ class Verbs extends Component<Props, State> {
     this.refreshRowData()
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  setStateAndRefreshRows = (newState: any) => {
-    this.setState(newState, this.refreshRowDataCallback)
-  }
-
   toggleNutid = () => {
-    this.setStateAndRefreshRows({
-      nutid: !this.state.nutid
-    })
+    this.setState(
+      {
+        nutid: !this.state.nutid
+      },
+      this.refreshRowDataCallback
+    )
   }
 
   toggleDåtid = () => {
-    this.setStateAndRefreshRows({
-      dåtid: !this.state.dåtid
-    })
+    this.setState(
+      {
+        dåtid: !this.state.dåtid
+      },
+      this.refreshRowDataCallback
+    )
   }
 
   toggleDåtidTidsuttryck = () => {
-    this.setStateAndRefreshRows({
-      dåtidTidsuttryck: !this.state.dåtidTidsuttryck
-    })
+    this.setState(
+      {
+        dåtidTidsuttryck: !this.state.dåtidTidsuttryck
+      },
+      this.refreshRowDataCallback
+    )
   }
 
   toggleFreetext() {
@@ -85,10 +88,11 @@ class Verbs extends Component<Props, State> {
     })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  pageCountHandler = (event: any) => {
-    this.setStateAndRefreshRows({ pageCount: event.target.value })
+  pageCountHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    this.setState(
+      { pageCount: parseInt(event.target.value) },
+      this.refreshRowDataCallback
+    )
   }
 
   getSelectedOperators = () => {

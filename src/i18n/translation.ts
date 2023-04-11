@@ -1,11 +1,9 @@
 interface Resources {
-  en: Language
-  se: Language
-  cn: Language
+  [key: string]: Language
 }
 
 interface Language {
-  translation: Dictionary
+  [key: string]: Dictionary
 }
 
 interface Dictionary {

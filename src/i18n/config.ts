@@ -7,7 +7,5 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false // not needed for react as it escapes by default
   },
-  // TODO #8
-  // eslint-disable-next-line
-  resources: resources as any
+  resources
 })

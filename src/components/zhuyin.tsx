@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { ChangeEvent, Component } from 'react'
 import Printable from './printable'
 import ABCSheet from './sheets/abc-sheet'
 import { Difficulty } from '../views/main'
@@ -7,9 +7,7 @@ import { withTranslation, WithTranslation } from 'react-i18next'
 import { getRowString } from '../util'
 import { Checkbox } from './checkbox'
 
-// TODO #8
-// eslint-disable-next-line
-interface Props extends WithTranslation {}
+type Props = WithTranslation
 
 interface State {
   rows: { leftColumn: string; rightColumn: string }[]
@@ -63,10 +61,8 @@ class Zhuyin extends Component<Props, State> {
     this.setState({ rows: this.generateRows() })
   }
 
-  // TODO #8
-  // eslint-disable-next-line
-  difficultyHandler(event: any) {
-    this.setState({ difficulty: event.target.value })
+  difficultyHandler(event: ChangeEvent<HTMLSelectElement>) {
+    this.setState({ difficulty: event.target.value as Difficulty })
   }
 
   toggleFreetext() {
