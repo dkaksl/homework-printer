@@ -202,10 +202,15 @@ export const leksaker: Substantiv[] = [
     artikel: 'ett',
     singular: { obestämd: 'spel', bestämd: 'spelet' },
     plural: { obestämd: 'spel', bestämd: 'spelen' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'svärd', bestämd: 'svärdet' },
+    plural: { obestämd: 'svärd', bestämd: 'svärden' }
   }
 ]
 
-export const schack: Substantiv[] = [
+export const spel: Substantiv[] = [
   {
     artikel: 'ett',
     singular: { obestämd: 'bräde', bestämd: 'brädet' },
@@ -245,6 +250,11 @@ export const schack: Substantiv[] = [
     artikel: 'en',
     singular: { obestämd: 'kung', bestämd: 'kungen' },
     plural: { obestämd: 'kungar', bestämd: 'kungarna' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'kort', bestämd: 'kortet' },
+    plural: { obestämd: 'kort', bestämd: 'korten' }
   }
 ]
 
@@ -334,10 +344,15 @@ export const mat: Substantiv[] = [
     artikel: 'en',
     singular: { obestämd: 'banan', bestämd: 'bananen' },
     plural: { obestämd: 'bananer', bestämd: 'bananerna' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'kött', bestämd: 'köttet' },
+    plural: { obestämd: 'kött', bestämd: 'kötten' }
   }
 ]
 
-export const kroppsdelar: Substantiv[] = [
+export const kroppen: Substantiv[] = [
   {
     artikel: 'ett',
     singular: { obestämd: 'öra', bestämd: 'örat' },
@@ -382,6 +397,19 @@ export const kroppsdelar: Substantiv[] = [
     artikel: 'en',
     singular: { obestämd: 'nacke', bestämd: 'nacken' },
     plural: { obestämd: 'nackar', bestämd: 'nackarna' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'sår', bestämd: 'såret' },
+    plural: { obestämd: 'sår', bestämd: 'såren' }
+  }
+]
+
+export const språk: Substantiv[] = [
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'ord', bestämd: 'ordet' },
+    plural: { obestämd: 'ord', bestämd: 'orden' }
   }
 ]
 
@@ -395,7 +423,8 @@ export const substantiv = [
   ...kläder,
   ...mat,
   ...leksaker,
-  ...schack,
+  ...spel,
   ...djur,
-  ...kroppsdelar
+  ...kroppen,
+  ...språk
 ]
