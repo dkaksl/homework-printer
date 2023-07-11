@@ -92,6 +92,11 @@ export const fordon: Substantiv[] = [
     plural: { obestämd: 'tåg', bestämd: 'tågen' }
   },
   {
+    artikel: 'ett',
+    singular: { obestämd: 'skepp', bestämd: 'skeppet' },
+    plural: { obestämd: 'skepp', bestämd: 'skeppen' }
+  },
+  {
     artikel: 'en',
     singular: { obestämd: 'bil', bestämd: 'bilen' },
     plural: { obestämd: 'bilar', bestämd: 'bilarna' }
@@ -344,6 +349,11 @@ export const mat: Substantiv[] = [
     artikel: 'en',
     singular: { obestämd: 'banan', bestämd: 'bananen' },
     plural: { obestämd: 'bananer', bestämd: 'bananerna' }
+  },
+  {
+    artikel: 'en',
+    singular: { obestämd: 'pirog', bestämd: 'pirogen' },
+    plural: { obestämd: 'piroger', bestämd: 'pirogerna' }
   },
   {
     artikel: 'ett',
