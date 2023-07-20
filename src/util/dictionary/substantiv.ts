@@ -57,6 +57,14 @@ export const hus: Substantiv[] = [
   }
 ]
 
+export const el: Substantiv[] = [
+  {
+    artikel: 'en',
+    singular: { obestämd: 'sladd', bestämd: 'sladden' },
+    plural: { obestämd: 'sladdar', bestämd: 'sladdarna' }
+  }
+]
+
 export const infrastruktur: Substantiv[] = [
   {
     artikel: 'en',
@@ -128,6 +136,11 @@ export const redskap: Substantiv[] = [
     plural: { obestämd: 'pennor', bestämd: 'pennorna' }
   },
   {
+    artikel: 'en',
+    singular: { obestämd: 'knut', bestämd: 'knuten' },
+    plural: { obestämd: 'knutar', bestämd: 'knutarna' }
+  },
+  {
     artikel: 'ett',
     singular: { obestämd: 'papper', bestämd: 'pappret' },
     plural: { obestämd: 'papper', bestämd: 'pappren' }
@@ -136,6 +149,11 @@ export const redskap: Substantiv[] = [
     artikel: 'ett',
     singular: { obestämd: 'brev', bestämd: 'brevet' },
     plural: { obestämd: 'brev', bestämd: 'breven' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'lås', bestämd: 'låset' },
+    plural: { obestämd: 'lås', bestämd: 'låsen' }
   }
 ]
 
@@ -212,6 +230,16 @@ export const leksaker: Substantiv[] = [
     artikel: 'ett',
     singular: { obestämd: 'svärd', bestämd: 'svärdet' },
     plural: { obestämd: 'svärd', bestämd: 'svärden' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'märke', bestämd: 'märket' },
+    plural: { obestämd: 'märken', bestämd: 'märkena' }
+  },
+  {
+    artikel: 'ett',
+    singular: { obestämd: 'klistermärke', bestämd: 'klistermärket' },
+    plural: { obestämd: 'klistermärken', bestämd: 'klistermärkena' }
   }
 ]
 
@@ -324,6 +352,11 @@ export const kläder: Substantiv[] = [
   },
   {
     artikel: 'ett',
+    singular: { obestämd: 'band', bestämd: 'bandet' },
+    plural: { obestämd: 'band', bestämd: 'banden' }
+  },
+  {
+    artikel: 'ett',
     singular: { obestämd: 'armband', bestämd: 'armbandet' },
     plural: { obestämd: 'armband', bestämd: 'armbanden' }
   },
@@ -426,6 +459,7 @@ export const språk: Substantiv[] = [
 export const substantiv = [
   ...hus,
   ...infrastruktur,
+  ...el,
   ...fordon,
   ...möbler,
   ...redskap,
