@@ -136,7 +136,7 @@ td.words {
   white-space: nowrap;
 }
 
-td.abcs-row.lowercase {
+td.abcs-row.lowercase, td.abcs-row.words {
   font-family: 'Comic Sans MS', 'Comic Sans';
 }
 
