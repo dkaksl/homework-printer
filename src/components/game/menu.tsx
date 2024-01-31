@@ -1,4 +1,4 @@
-import { ChangeEvent, Component } from 'react'
+import { Component } from 'react'
 
 enum GAME_STATE {
   NEW = 'new',

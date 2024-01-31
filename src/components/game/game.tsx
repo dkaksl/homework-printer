@@ -1,4 +1,4 @@
-import { ChangeEvent, Component } from 'react'
+import { Component } from 'react'
 import { Difficulty } from '../../views/main'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { Menu } from './menu'
