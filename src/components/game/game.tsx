@@ -1,5 +1,5 @@
 import { ChangeEvent, Component } from 'react'
-import { Difficulty } from '../views/main'
+import { Difficulty } from '../../views/main'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
 type Props = WithTranslation
@@ -25,7 +25,10 @@ class Game extends Component<Props, State> {
   render() {
     return (
       <div>
-        <p>hello</p>
+        <h2>title</h2>
+        <div>
+          <button>start game</button>
+        </div>
       </div>
     )
   }

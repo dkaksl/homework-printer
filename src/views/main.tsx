@@ -6,7 +6,7 @@ import ABCs from '../components/abcs'
 import Zhuyin from '../components/zhuyin'
 import Nouns from '../components/nouns'
 import Verbs from '../components/verbs'
-import Game from '../components/game'
+import Game from '../components/game/game'
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
 export type Case = 'upper' | 'lower'
