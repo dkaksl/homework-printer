@@ -39,7 +39,7 @@ export class Main extends Component<Record<string, never>, State> {
     } else if (selected === 'verbs') {
       return <Verbs rowCount={rowCount}></Verbs>
     } else if (selected === 'game') {
-      return <Game />
+      return <Game numberOfQuestions={10} />
     }
   }
 
