@@ -99,9 +99,11 @@ function QNA({
 }
 
 export default function Game({
-  numberOfQuestions
+  numberOfQuestions,
+  handleReturnToMenu
 }: {
   numberOfQuestions: number
+  handleReturnToMenu: () => void
 }) {
   const randomQuestion = getRandomQuestion()
   const [guesses, setGuesses] = useState([] as Guess[])
@@ -189,6 +191,7 @@ export default function Game({
         <h2>Game Over</h2>
         <p>Play again?</p>
         <button onClick={resetGame}>Restart</button>
+        <button onClick={handleReturnToMenu}>Return to Menu</button>
         <p>
           <table>
             <tr>
