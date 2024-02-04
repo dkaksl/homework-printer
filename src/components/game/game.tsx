@@ -132,20 +132,30 @@ export default function Game({
     const analysis = guesses.reduce(
       (acc, curr) => {
         const { correct, operator } = curr
+        acc.count++
         if (operator === '+') {
           acc.plusCount++
           if (correct) {
+            acc.correctCount++
             acc.plusCorrectCount++
           }
         } else if (operator === '-') {
           acc.minusCount++
           if (correct) {
+            acc.correctCount++
             acc.minusCorrectCount++
           }
         }
         return acc
       },
-      { plusCount: 0, plusCorrectCount: 0, minusCount: 0, minusCorrectCount: 0 }
+      {
+        count: 0,
+        correctCount: 0,
+        plusCount: 0,
+        plusCorrectCount: 0,
+        minusCount: 0,
+        minusCorrectCount: 0
+      }
     )
     console.log(JSON.stringify(analysis))
     const plusAccuracy = Math.floor(
@@ -153,6 +163,9 @@ export default function Game({
     )
     const minusAccuracy = Math.floor(
       (analysis.minusCorrectCount / analysis.minusCount) * 100
+    )
+    const overallAccuracy = Math.floor(
+      (analysis.correctCount / analysis.count) * 100
     )
     content = (
       <div>
@@ -174,6 +187,7 @@ export default function Game({
               </tr>
             ))}
           </table>
+          <p>Overall accuracy: {overallAccuracy}%</p>
           <p>Accuracy for operator +: {plusAccuracy}%</p>
           <p>Accuracy for operator -: {minusAccuracy}%</p>
         </p>
