@@ -30,6 +30,7 @@ const getRandomQuestion = () => {
 
 interface Guess {
   questionString: string
+  operator: Operator
   answer: number
   guess: string
   correct: boolean
@@ -90,6 +91,14 @@ export default function Game({
   const [question, setQuestion] = useState(randomQuestion)
   const [guess, setGuess] = useState('')
 
+  const resetGame = () => {
+    setGuesses([])
+    setGuessCount(0)
+    setGameOver(false)
+    resetQuestion()
+    setGuess('')
+  }
+
   const resetQuestion = () => {
     const randomQuestion = getRandomQuestion()
     setQuestion(randomQuestion)
@@ -97,10 +106,12 @@ export default function Game({
 
   const handleAnswer = () => {
     const { questionString, answer } = question
+
     setGuesses([
       ...guesses,
       {
         questionString,
+        operator: question.question.operator,
         answer,
         guess,
         correct: Number(guess) === answer
@@ -117,9 +128,37 @@ export default function Game({
 
   let content
   if (gameOver) {
+    console.log(JSON.stringify(guesses))
+    const analysis = guesses.reduce(
+      (acc, curr) => {
+        const { correct, operator } = curr
+        if (operator === '+') {
+          acc.plusCount++
+          if (correct) {
+            acc.plusCorrectCount++
+          }
+        } else if (operator === '-') {
+          acc.minusCount++
+          if (correct) {
+            acc.minusCorrectCount++
+          }
+        }
+        return acc
+      },
+      { plusCount: 0, plusCorrectCount: 0, minusCount: 0, minusCorrectCount: 0 }
+    )
+    console.log(JSON.stringify(analysis))
+    const plusAccuracy = Math.floor(
+      (analysis.plusCorrectCount / analysis.plusCount) * 100
+    )
+    const minusAccuracy = Math.floor(
+      (analysis.minusCorrectCount / analysis.minusCount) * 100
+    )
     content = (
       <div>
         <h2>Game Over</h2>
+        <p>Play again?</p>
+        <button onClick={resetGame}>Restart</button>
         <p>
           <table>
             <tr>
@@ -135,6 +174,8 @@ export default function Game({
               </tr>
             ))}
           </table>
+          <p>Accuracy for operator +: {plusAccuracy}%</p>
+          <p>Accuracy for operator -: {minusAccuracy}%</p>
         </p>
       </div>
     )
