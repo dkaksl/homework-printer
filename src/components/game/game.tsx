@@ -28,6 +28,25 @@ const getRandomQuestion = () => {
   }
 }
 
+const getEmojiFromaccuracyPercentage = (percentage: number) => {
+  if (percentage < 30) {
+    return '😭'
+  }
+  if (percentage < 50) {
+    return '😰'
+  }
+  if (percentage < 60) {
+    return '😐'
+  }
+  if (percentage < 75) {
+    return '🙂'
+  }
+  if (percentage < 85) {
+    return '😃'
+  }
+  return '✌️🥳'
+}
+
 interface Guess {
   questionString: string
   operator: Operator
@@ -187,7 +206,10 @@ export default function Game({
               </tr>
             ))}
           </table>
-          <p>Overall accuracy: {overallAccuracy}%</p>
+          <p>
+            Overall accuracy: {overallAccuracy}%
+            {getEmojiFromaccuracyPercentage(overallAccuracy)}
+          </p>
           <p>Accuracy for operator +: {plusAccuracy}%</p>
           <p>Accuracy for operator -: {minusAccuracy}%</p>
         </p>
