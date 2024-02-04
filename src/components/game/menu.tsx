@@ -1,56 +1,52 @@
-import { Component } from 'react'
+import { ChangeEvent, useState } from 'react'
+import Game from './game'
 
-enum GAME_STATE {
-  NEW = 'new',
-  STARTED = 'started',
-  OVER = 'over'
-}
+type GameState = 'not-started' | 'started'
+type Difficulty = 'easy' | 'medium' | 'hard'
 
-interface Props {
-  startGame: () => void
-  endGame: () => void
-}
-interface State {
-  gameState: GAME_STATE
-}
+export default function Menu() {
+  const [gameState, setGameState] = useState<GameState>('not-started')
+  const [difficulty, setDifficulty] = useState<Difficulty>('easy')
+  const [numberOfQuestions, setNumberOfQuestions] = useState(10)
 
-export class Menu extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      gameState: GAME_STATE.NEW // allow override with prop
+  const handleReturnToMenu = () => {
+    setGameState('not-started')
+  }
+
+  const handleDifficulty = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value as Difficulty
+    setDifficulty(value)
+    if (value === 'medium') {
+      setNumberOfQuestions(20)
+    } else if (value === 'hard') {
+      setNumberOfQuestions(30)
+    } else {
+      setNumberOfQuestions(10)
     }
-    this.handleStart = this.handleStart.bind(this)
-    this.handleRestart = this.handleRestart.bind(this)
   }
 
-  handleStart() {
-    console.log('hello start')
-    this.setState({ gameState: GAME_STATE.STARTED })
-    this.props.startGame()
-  }
-
-  handleRestart() {
-    console.log('hello restart')
-    this.setState({ gameState: GAME_STATE.NEW })
-    this.props.endGame()
-  }
-
-  render() {
-    let startButton
-    if (this.state.gameState === GAME_STATE.NEW) {
-      startButton = <button onClick={this.handleStart}>Start game</button>
-    } else if (
-      this.state.gameState === GAME_STATE.STARTED ||
-      this.state.gameState === GAME_STATE.OVER
-    ) {
-      startButton = <button onClick={this.handleRestart}>Restart game</button>
-    }
-
-    return (
+  let content
+  if (gameState === 'not-started') {
+    content = (
       <div>
-        <div>{startButton}</div>
+        <select value={difficulty} onChange={handleDifficulty}>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button onClick={() => setGameState('started')}>Start Game</button>
+      </div>
+    )
+  } else if (gameState === 'started') {
+    content = (
+      <div>
+        <Game
+          numberOfQuestions={numberOfQuestions}
+          handleReturnToMenu={handleReturnToMenu}
+        ></Game>
       </div>
     )
   }
+
+  return <div>{content}</div>
 }
