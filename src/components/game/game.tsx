@@ -147,7 +147,6 @@ export default function Game({
 
   let content
   if (gameOver) {
-    console.log(JSON.stringify(guesses))
     const analysis = guesses.reduce(
       (acc, curr) => {
         const { correct, operator } = curr
@@ -176,7 +175,6 @@ export default function Game({
         minusCorrectCount: 0
       }
     )
-    console.log(JSON.stringify(analysis))
     const plusAccuracy = Math.floor(
       (analysis.plusCorrectCount / analysis.plusCount) * 100
     )
