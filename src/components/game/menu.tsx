@@ -18,11 +18,11 @@ export default function Menu() {
     setDifficulty(value)
     if (value === 'medium') {
       setNumberOfQuestions(20)
-    }
-    if (value === 'hard') {
+    } else if (value === 'hard') {
       setNumberOfQuestions(30)
+    } else {
+      setNumberOfQuestions(10)
     }
-    setNumberOfQuestions(10)
   }
 
   let content
