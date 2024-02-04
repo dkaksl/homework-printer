@@ -4,11 +4,6 @@ import Game from './game'
 type GameState = 'not-started' | 'started'
 type Difficulty = 'easy' | 'medium' | 'hard'
 
-interface Props {
-  startGame: () => void
-  endGame: () => void
-}
-
 export default function Menu() {
   const [gameState, setGameState] = useState<GameState>('not-started')
   const [difficulty, setDifficulty] = useState<Difficulty>('easy')
