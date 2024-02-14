@@ -1,12 +1,14 @@
- 
-
 .game-menu {
-    select.difficulty {
-        font-size: 2em
-    }
-    
-    button {
-        font-size: 2em    
-    }
-}
+  select {
+    margin-right: 0.2em;
+  }
 
+  select.difficulty {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 2em;
+    margin-left: 0.2em;
+  }
+}
