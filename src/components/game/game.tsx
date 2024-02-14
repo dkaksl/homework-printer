@@ -20,28 +20,29 @@ type Operator = '+' | '-'
 
 const getRandomQuestion = (difficulty: Difficulty) => {
   let maxNumber
-  let minNumber
+  const minNumber = 0
   switch (difficulty) {
     case 'medium':
-      minNumber = 5
       maxNumber = 10
       break
     case 'hard':
-      minNumber = 10
       maxNumber = 15
       break
     case 'advanced':
-      minNumber = 15
-      maxNumber = 15
+      maxNumber = 20
       break
     case 'easy':
     default:
-      minNumber = 0
-      maxNumber = 10
+      maxNumber = 5
       break
   }
   const a = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber)
   const operator = Math.floor(Math.random() * 2) ? '+' : '-'
+  if (operator === '-') {
+    if (difficulty === 'easy' || difficulty === 'medium') {
+      maxNumber = a
+    }
+  }
   const b = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber)
   return {
     question: { a, operator: operator as Operator, b },
@@ -93,6 +94,7 @@ function QNA({
       <div className="question">
         <label>{questionString}</label>
       </div>
+
       <div>
         <label>
           <input
@@ -108,14 +110,6 @@ function QNA({
           ></input>
         </label>
       </div>
-      <button
-        type="button"
-        onClick={() => {
-          handleAnswer()
-        }}
-      >
-        Answer
-      </button>
     </div>
   )
 }
