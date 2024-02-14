@@ -1,4 +1,6 @@
+import './game.css'
 import { SetStateAction, useState } from 'react'
+import { Difficulty } from '../../views/main'
 
 interface Question {
   a: number
@@ -16,11 +18,32 @@ const solveQuestion = (q: Question) => {
 
 type Operator = '+' | '-'
 
-const getRandomQuestion = () => {
-  const maxNumber = 10
-  const a = Math.floor(Math.random() * maxNumber)
+const getRandomQuestion = (difficulty: Difficulty) => {
+  let maxNumber
+  const minNumber = 0
+  switch (difficulty) {
+    case 'medium':
+      maxNumber = 10
+      break
+    case 'hard':
+      maxNumber = 15
+      break
+    case 'advanced':
+      maxNumber = 20
+      break
+    case 'easy':
+    default:
+      maxNumber = 5
+      break
+  }
+  const a = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber)
   const operator = Math.floor(Math.random() * 2) ? '+' : '-'
-  const b = Math.floor(Math.random() * maxNumber)
+  if (operator === '-') {
+    if (difficulty === 'easy' || difficulty === 'medium') {
+      maxNumber = a
+    }
+  }
+  const b = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber)
   return {
     question: { a, operator: operator as Operator, b },
     questionString: `${a} ${operator} ${b}`,
@@ -68,13 +91,14 @@ function QNA({
 }) {
   return (
     <div>
-      <div>
-        <label>Question: {questionString}</label>
+      <div className="question">
+        <label>{questionString} =</label>
       </div>
+
       <div>
         <label>
-          Answer:
           <input
+            className="answer"
             value={guess}
             type="number"
             onChange={(e) => setGuess(e.target.value)}
@@ -86,26 +110,22 @@ function QNA({
           ></input>
         </label>
       </div>
-      <button
-        type="button"
-        onClick={() => {
-          handleAnswer()
-        }}
-      >
-        Answer
-      </button>
     </div>
   )
 }
 
+interface Props {
+  numberOfQuestions: number
+  difficulty: Difficulty
+  handleReturnToMenu: () => void
+}
+
 export default function Game({
   numberOfQuestions,
-  handleReturnToMenu
-}: {
-  numberOfQuestions: number
-  handleReturnToMenu: () => void
-}) {
-  const randomQuestion = getRandomQuestion()
+  handleReturnToMenu,
+  difficulty
+}: Props) {
+  const randomQuestion = getRandomQuestion(difficulty)
   const [guesses, setGuesses] = useState([] as Guess[])
   const [guessCount, setGuessCount] = useState(0)
   const [gameOver, setGameOver] = useState(false)
@@ -121,7 +141,7 @@ export default function Game({
   }
 
   const resetQuestion = () => {
-    const randomQuestion = getRandomQuestion()
+    const randomQuestion = getRandomQuestion(difficulty)
     setQuestion(randomQuestion)
   }
 
@@ -189,9 +209,6 @@ export default function Game({
     content = (
       <div>
         <h2>Game Over</h2>
-        <p>Play again?</p>
-        <button onClick={resetGame}>Restart</button>
-        <button onClick={handleReturnToMenu}>Return to Menu</button>
         <p>
           <table>
             <tr>
@@ -214,6 +231,13 @@ export default function Game({
           <p>Accuracy for operator +: {plusAccuracy}%</p>
           <p>Accuracy for operator -: {minusAccuracy}%</p>
         </p>
+        <p>Play again?</p>
+        <button className="game-summary" onClick={resetGame}>
+          Restart
+        </button>
+        <button className="game-summary" onClick={handleReturnToMenu}>
+          Return to Menu
+        </button>
       </div>
     )
   } else {
@@ -227,5 +251,11 @@ export default function Game({
     )
   }
 
-  return <>{content}</>
+  return (
+    <>
+      <div className="game">
+        <div>{content}</div>
+      </div>
+    </>
+  )
 }

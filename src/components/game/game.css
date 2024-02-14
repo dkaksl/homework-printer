@@ -1,0 +1,13 @@
+.game {
+  .question {
+    font-size: 5em;
+  }
+
+  .answer {
+    font-size: 5em;
+    width: 20%;
+    text-align: center;
+  }
+
+  font-size: 1.5em;
+}
