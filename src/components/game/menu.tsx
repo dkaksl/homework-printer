@@ -1,15 +1,15 @@
 import { ChangeEvent, useState } from 'react'
 import Game from './game'
+import { Difficulty } from '../../views/main'
 
 type GameState = 'not-started' | 'started'
-type Difficulty = 'easy' | 'medium' | 'hard'
 
 export default function Menu() {
   const [gameState, setGameState] = useState<GameState>('not-started')
   const [difficulty, setDifficulty] = useState<Difficulty>('easy')
   const [numberOfQuestions, setNumberOfQuestions] = useState(10)
 
-  const handleReturnToMenu = () => {
+  const resetGame = () => {
     setGameState('not-started')
   }
 
@@ -17,9 +17,9 @@ export default function Menu() {
     const value = e.target.value as Difficulty
     setDifficulty(value)
     if (value === 'medium') {
+      setNumberOfQuestions(15)
+    } else if (value === 'hard' || value === 'advanced') {
       setNumberOfQuestions(20)
-    } else if (value === 'hard') {
-      setNumberOfQuestions(30)
     } else {
       setNumberOfQuestions(10)
     }
@@ -33,6 +33,7 @@ export default function Menu() {
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
+          <option value="advanced">Advanced</option>
         </select>
         <button onClick={() => setGameState('started')}>Start Game</button>
       </div>
@@ -40,9 +41,11 @@ export default function Menu() {
   } else if (gameState === 'started') {
     content = (
       <div>
+        <button onClick={resetGame}>Exit Game</button>
         <Game
           numberOfQuestions={numberOfQuestions}
-          handleReturnToMenu={handleReturnToMenu}
+          difficulty={difficulty}
+          handleReturnToMenu={resetGame}
         ></Game>
       </div>
     )

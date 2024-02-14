@@ -1,4 +1,5 @@
 import { SetStateAction, useState } from 'react'
+import { Difficulty } from '../../views/main'
 
 interface Question {
   a: number
@@ -16,11 +17,31 @@ const solveQuestion = (q: Question) => {
 
 type Operator = '+' | '-'
 
-const getRandomQuestion = () => {
-  const maxNumber = 10
-  const a = Math.floor(Math.random() * maxNumber)
+const getRandomQuestion = (difficulty: Difficulty) => {
+  let maxNumber
+  let minNumber
+  switch (difficulty) {
+    case 'medium':
+      minNumber = 5
+      maxNumber = 10
+      break
+    case 'hard':
+      minNumber = 10
+      maxNumber = 15
+      break
+    case 'advanced':
+      minNumber = 15
+      maxNumber = 15
+      break
+    case 'easy':
+    default:
+      minNumber = 0
+      maxNumber = 10
+      break
+  }
+  const a = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber)
   const operator = Math.floor(Math.random() * 2) ? '+' : '-'
-  const b = Math.floor(Math.random() * maxNumber)
+  const b = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber)
   return {
     question: { a, operator: operator as Operator, b },
     questionString: `${a} ${operator} ${b}`,
@@ -98,14 +119,18 @@ function QNA({
   )
 }
 
+interface Props {
+  numberOfQuestions: number
+  difficulty: Difficulty
+  handleReturnToMenu: () => void
+}
+
 export default function Game({
   numberOfQuestions,
-  handleReturnToMenu
-}: {
-  numberOfQuestions: number
-  handleReturnToMenu: () => void
-}) {
-  const randomQuestion = getRandomQuestion()
+  handleReturnToMenu,
+  difficulty
+}: Props) {
+  const randomQuestion = getRandomQuestion(difficulty)
   const [guesses, setGuesses] = useState([] as Guess[])
   const [guessCount, setGuessCount] = useState(0)
   const [gameOver, setGameOver] = useState(false)
@@ -121,7 +146,7 @@ export default function Game({
   }
 
   const resetQuestion = () => {
-    const randomQuestion = getRandomQuestion()
+    const randomQuestion = getRandomQuestion(difficulty)
     setQuestion(randomQuestion)
   }
 
