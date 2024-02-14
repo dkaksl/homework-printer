@@ -1,0 +1,24 @@
+.game {
+    .question {
+        font-size: 5em;
+    }
+    
+    .answer {
+        font-size: 5em;
+    }
+    
+    button.game-summary {
+        font-size: 2em;
+        margin-left: 0.1em;
+        margin-right: 0.1em;
+        border-radius: 12px;
+        
+    }
+
+    button {
+        font-size: 3em    
+    }    
+
+    font-size: 1.5em;
+}
+

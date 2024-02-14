@@ -1,3 +1,4 @@
+import './game.css'
 import { SetStateAction, useState } from 'react'
 import { Difficulty } from '../../views/main'
 
@@ -89,13 +90,13 @@ function QNA({
 }) {
   return (
     <div>
-      <div>
-        <label>Question: {questionString}</label>
+      <div className="question">
+        <label>{questionString}</label>
       </div>
       <div>
         <label>
-          Answer:
           <input
+            className="answer"
             value={guess}
             type="number"
             onChange={(e) => setGuess(e.target.value)}
@@ -214,9 +215,6 @@ export default function Game({
     content = (
       <div>
         <h2>Game Over</h2>
-        <p>Play again?</p>
-        <button onClick={resetGame}>Restart</button>
-        <button onClick={handleReturnToMenu}>Return to Menu</button>
         <p>
           <table>
             <tr>
@@ -239,6 +237,13 @@ export default function Game({
           <p>Accuracy for operator +: {plusAccuracy}%</p>
           <p>Accuracy for operator -: {minusAccuracy}%</p>
         </p>
+        <p>Play again?</p>
+        <button className="game-summary" onClick={resetGame}>
+          Restart
+        </button>
+        <button className="game-summary" onClick={handleReturnToMenu}>
+          Return to Menu
+        </button>
       </div>
     )
   } else {
@@ -252,5 +257,11 @@ export default function Game({
     )
   }
 
-  return <>{content}</>
+  return (
+    <>
+      <div className="game">
+        <div>{content}</div>
+      </div>
+    </>
+  )
 }

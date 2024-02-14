@@ -1,3 +1,4 @@
+import './menu.css'
 import { ChangeEvent, useState } from 'react'
 import Game from './game'
 import { Difficulty } from '../../views/main'
@@ -29,7 +30,11 @@ export default function Menu() {
   if (gameState === 'not-started') {
     content = (
       <div>
-        <select value={difficulty} onChange={handleDifficulty}>
+        <select
+          className="difficulty"
+          value={difficulty}
+          onChange={handleDifficulty}
+        >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
@@ -51,5 +56,5 @@ export default function Menu() {
     )
   }
 
-  return <div>{content}</div>
+  return <div className="game-menu">{content}</div>
 }
