@@ -92,7 +92,7 @@ function QNA({
   return (
     <div>
       <div className="question">
-        <label>{questionString}</label>
+        <label>{questionString} =</label>
       </div>
 
       <div>
