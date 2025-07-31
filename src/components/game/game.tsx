@@ -1,5 +1,5 @@
 import './game.css'
-import { SetStateAction, useState } from 'react'
+import { SetStateAction, useEffect, useRef, useState } from 'react'
 import { Difficulty } from '../../views/main'
 
 interface Question {
@@ -89,12 +89,23 @@ function QNA({
   handleAnswer: () => void
   setGuess: (value: SetStateAction<string>) => void
 }) {
+  const [animate, setAnimate] = useState(false)
+  const prevQuestion = useRef(questionString)
+
+  useEffect(() => {
+    if (prevQuestion.current !== questionString) {
+      setAnimate(true)
+      prevQuestion.current = questionString
+      const timeout = setTimeout(() => setAnimate(false), 400)
+      return () => clearTimeout(timeout)
+    }
+  }, [questionString])
+
   return (
     <div>
-      <div className="question">
+      <div className={`question${animate ? ' animate' : ''}`}>
         <label>{questionString} =</label>
       </div>
-
       <div>
         <label>
           <input
@@ -107,7 +118,7 @@ function QNA({
                 handleAnswer()
               }
             }}
-          ></input>
+          />
         </label>
       </div>
     </div>
