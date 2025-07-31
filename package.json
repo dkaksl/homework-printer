@@ -75,5 +75,8 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "volta": {
+    "node": "20.19.4"
   }
 }
