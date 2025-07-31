@@ -213,13 +213,15 @@ export default function Game({
           <table>
             <tr>
               <th>Question</th>
-              <th>Answer</th>
+              <th>Your Answer</th>
+              <th>Correct Answer</th>
               <th>Correct</th>
             </tr>
             {guesses.map((g) => (
               <tr>
                 <td>{g.questionString}</td>
                 <td>{g.guess}</td>
+                <td>{g.answer}</td>
                 <td>{g.correct ? 'YES' : 'NO'}</td>
               </tr>
             ))}
