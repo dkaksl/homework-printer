@@ -203,3 +203,45 @@ textarea {
   size: A4 portrait;
   margin-top: 20mm;
 }
+
+@media (max-width: 600px) {
+  .menu {
+    font-size: 0.9em;
+    padding: 0.2em 0;
+  }
+
+  .menu ul {
+    padding: 0;
+  }
+
+  .menu li a {
+    min-width: 80px;
+    line-height: 32px;
+    font-size: 0.95em;
+    padding: 4px 2px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+  .menu {
+    font-size: 1.1em;
+    padding: 0.4em 0;
+  }
+
+  .menu ul {
+    padding: 0 5px;
+  }
+
+  .menu li a {
+    min-width: 100px;
+    line-height: 32px;
+    font-size: 1em;
+    padding: 4px 3px;
+  }
+
+  .language-selector button {
+    width: 28px;
+    height: 20px;
+  }
+
+}
