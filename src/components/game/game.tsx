@@ -217,14 +217,16 @@ export default function Game({
               <th>Correct Answer</th>
               <th>Correct</th>
             </tr>
-            {guesses.map((g) => (
-              <tr>
+            {guesses.map((g) => {
+              const { correct } = g
+              return (
+              <tr className={correct ? 'result-row-correct' : 'result-row-incorrect'}>
                 <td>{g.questionString}</td>
                 <td>{g.guess}</td>
                 <td>{g.answer}</td>
-                <td>{g.correct ? 'YES' : 'NO'}</td>
+                <td>{correct ? 'YES' : 'NO'}</td>
               </tr>
-            ))}
+            )})}
           </table>
           <p>
             Overall accuracy: {overallAccuracy}%

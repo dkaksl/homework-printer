@@ -9,5 +9,13 @@
     text-align: center;
   }
 
+  .result-row-correct {
+    background-color: #9cdbad
+  }
+
+  .result-row-incorrect {
+    background-color: #eb9696
+  }
+
   font-size: 1.5em;
 }
