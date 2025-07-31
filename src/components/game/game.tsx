@@ -220,7 +220,7 @@ export default function Game({
             {guesses.map((g) => {
               const { correct } = g
               return (
-              <tr className={correct ? 'result-row-correct' : 'result-row-incorrect'}>
+              <tr className={`result-row ${correct ? 'correct' : 'incorrect'}`}>
                 <td>{g.questionString}</td>
                 <td>{g.guess}</td>
                 <td>{g.answer}</td>
