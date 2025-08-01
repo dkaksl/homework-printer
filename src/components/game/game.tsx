@@ -1,6 +1,7 @@
 import './game.css'
-import { SetStateAction, useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Difficulty } from '../../views/main'
+import { QNA } from './qna'
 
 interface Question {
   a: number
@@ -78,54 +79,6 @@ interface Guess {
   correct: boolean
 }
 
-function QNA({
-  questionString,
-  guess,
-  handleAnswer,
-  setGuess
-}: {
-  questionString: string
-  guess: string
-  handleAnswer: () => void
-  setGuess: (value: SetStateAction<string>) => void
-}) {
-  const [animate, setAnimate] = useState(false)
-  const prevQuestion = useRef(questionString)
-
-  useEffect(() => {
-    if (prevQuestion.current !== questionString) {
-      setAnimate(true)
-      prevQuestion.current = questionString
-      const timeout = setTimeout(() => setAnimate(false), 400)
-      return () => clearTimeout(timeout)
-    }
-  }, [questionString])
-
-  return (
-    <div>
-      <div className={`question${animate ? ' animate' : ''}`}>
-        <label>{questionString} =</label>
-      </div>
-      <div>
-        <label>
-          <input
-            className="answer"
-            value={guess}
-            type="number"
-            inputMode="numeric"
-            onChange={(e) => setGuess(e.target.value)}
-            onKeyUp={(e) => {
-              if (e.key === 'Enter') {
-                handleAnswer()
-              }
-            }}
-          />          
-        </label>
-      </div>
-    </div>
-  )
-}
-
 interface Props {
   numberOfQuestions: number
   difficulty: Difficulty
@@ -137,6 +90,14 @@ export default function Game({
   handleReturnToMenu,
   difficulty
 }: Props) {
+  console.log('starting timer')
+  const timerStart = useRef<Date | null>(null)
+  const timerEnd = useRef<Date | null>(null)
+
+  if (timerStart.current === null) {
+    timerStart.current = new Date()
+  }
+
   const randomQuestion = getRandomQuestion(difficulty)
   const [guesses, setGuesses] = useState([] as Guess[])
   const [guessCount, setGuessCount] = useState(0)
@@ -145,6 +106,8 @@ export default function Game({
   const [guess, setGuess] = useState('')
 
   const resetGame = () => {
+    timerStart.current = new Date()
+    timerEnd.current = null
     setGuesses([])
     setGuessCount(0)
     setGameOver(false)
@@ -172,6 +135,7 @@ export default function Game({
     ])
     const newGuessCount = guessCount + 1
     if (newGuessCount > numberOfQuestions) {
+      timerEnd.current = new Date()
       setGameOver(true)
     }
     setGuessCount(newGuessCount)
@@ -181,6 +145,10 @@ export default function Game({
 
   let content
   if (gameOver) {
+    const gameTime =
+      timerEnd.current && timerStart.current
+        ? (timerEnd.current.getTime() - timerStart.current.getTime()) / 1000
+        : 0
     const analysis = guesses.reduce(
       (acc, curr) => {
         const { correct, operator } = curr
@@ -221,6 +189,7 @@ export default function Game({
     content = (
       <div>
         <h2>Game Over</h2>
+        <p>{gameTime} [s]</p>
         <p>
           <table>
             <tr>
@@ -232,13 +201,16 @@ export default function Game({
             {guesses.map((g) => {
               const { correct } = g
               return (
-              <tr className={`result-row ${correct ? 'correct' : 'incorrect'}`}>
-                <td>{g.questionString}</td>
-                <td>{g.guess}</td>
-                <td>{g.answer}</td>
-                <td>{correct ? 'YES' : 'NO'}</td>
-              </tr>
-            )})}
+                <tr
+                  className={`result-row ${correct ? 'correct' : 'incorrect'}`}
+                >
+                  <td>{g.questionString}</td>
+                  <td>{g.guess}</td>
+                  <td>{g.answer}</td>
+                  <td>{correct ? 'YES' : 'NO'}</td>
+                </tr>
+              )
+            })}
           </table>
           <p>
             Overall accuracy: {overallAccuracy}%
