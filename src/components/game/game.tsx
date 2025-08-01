@@ -119,16 +119,7 @@ function QNA({
                 handleAnswer()
               }
             }}
-          />
-          {isIOS() && (
-            <button
-              type="button"
-              onClick={handleAnswer}
-              style={{ marginLeft: 8, fontSize: '1em' }}
-            >
-              Submit
-            </button>
-          )}
+          />          
         </label>
       </div>
     </div>
@@ -282,12 +273,5 @@ export default function Game({
         <div>{content}</div>
       </div>
     </>
-  )
-}
-
-function isIOS() {
-  return (
-    typeof window !== 'undefined' &&
-    /iPad|iPhone|iPod/.test(navigator.userAgent)
   )
 }
