@@ -189,7 +189,7 @@ export default function Game({
       <div>
         <h2>Game Over</h2>
         <p>Completion Time: {gameTime} [s]</p>
-        <p>
+        <div>
           <table>
             <tr>
               <th>Question</th>
@@ -217,7 +217,7 @@ export default function Game({
           </p>
           <p>Accuracy for operator +: {plusAccuracy}%</p>
           <p>Accuracy for operator -: {minusAccuracy}%</p>
-        </p>
+        </div>
         <p>Play again?</p>
         <button className="game-summary" onClick={resetGame}>
           Restart
