@@ -112,6 +112,7 @@ function QNA({
             className="answer"
             value={guess}
             type="number"
+            inputMode="numeric"
             onChange={(e) => setGuess(e.target.value)}
             onKeyUp={(e) => {
               if (e.key === 'Enter') {
