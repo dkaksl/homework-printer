@@ -188,7 +188,7 @@ export default function Game({
     content = (
       <div>
         <h2>Game Over</h2>
-        <p>Completion Time: {gameTime} [s]</p>
+        <p>Completion Time: {gameTime} s</p>
         <div>
           <table>
             <tr>
