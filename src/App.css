@@ -18,6 +18,7 @@ body {
 }
 
 .menu {
+  z-index: 1000;
   position: fixed;
   top: 0;
   font-size: large;
@@ -78,7 +79,7 @@ body {
   z-index: 200;
 }
 
-.language-selector>div {
+.language-selector > div {
   float: left;
 }
 
@@ -136,7 +137,8 @@ td.words {
   white-space: nowrap;
 }
 
-td.abcs-row.lowercase, td.abcs-row.words {
+td.abcs-row.lowercase,
+td.abcs-row.words {
   font-family: 'Comic Sans MS', 'Comic Sans';
 }
 
@@ -172,7 +174,7 @@ table {
 textarea {
   resize: none;
   font-size: 20px;
-  overflow: hidden
+  overflow: hidden;
 }
 
 @media all {
@@ -182,7 +184,6 @@ textarea {
 }
 
 @media print {
-
   html,
   body {
     height: initial !important;
@@ -243,5 +244,4 @@ textarea {
     width: 28px;
     height: 20px;
   }
-
 }
