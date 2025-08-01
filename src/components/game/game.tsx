@@ -111,7 +111,7 @@ function QNA({
           <input
             className="answer"
             value={guess}
-            type="text"
+            type="number"
             inputMode="numeric"
             onChange={(e) => setGuess(e.target.value)}
             onKeyUp={(e) => {
@@ -120,6 +120,15 @@ function QNA({
               }
             }}
           />
+          {isIOS() && (
+            <button
+              type="button"
+              onClick={handleAnswer}
+              style={{ marginLeft: 8, fontSize: '1em' }}
+            >
+              Submit
+            </button>
+          )}
         </label>
       </div>
     </div>
@@ -273,5 +282,12 @@ export default function Game({
         <div>{content}</div>
       </div>
     </>
+  )
+}
+
+function isIOS() {
+  return (
+    typeof window !== 'undefined' &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
   )
 }
