@@ -90,7 +90,6 @@ export default function Game({
   handleReturnToMenu,
   difficulty
 }: Props) {
-  console.log('starting timer')
   const timerStart = useRef<Date | null>(null)
   const timerEnd = useRef<Date | null>(null)
 
