@@ -32,7 +32,7 @@ class Menu extends Component<Props, State> {
 
   getMenuLinks = () => {
     return this.links.map((link) => (
-      <li>
+      <li key={link.menuId}>
         <a
           href="#/"
           className={this.getSelectedClassName(link.menuId)}
