@@ -223,6 +223,135 @@ textarea {
   }
 }
 
+/* ── Word problem sheet ──────────────────────────────── */
+
+.word-problem-sheet {
+  padding: 8px 18px 6px;
+  font-size: 15px;   /* override .printable's 28px */
+  text-align: left;
+}
+
+.wp-grid {
+  column-count: 2;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.wp-card {
+  border: 2px solid #333;
+  padding: 8px 11px 7px;
+  margin-bottom: 10px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.wp-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.wp-num {
+  font-weight: bold;
+  font-size: 1.05em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.07);
+  line-height: 1.4;
+}
+
+.wp-emoji {
+  font-size: 1.9em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.wp-text {
+  margin: 2px 0 7px;
+  line-height: 1.5;
+}
+
+.wp-answer {
+  margin: 0;
+  font-size: 0.88em;
+  color: #444;
+}
+
+/* Ruled scratch space below the answer line */
+.wp-work-area {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed #bbb;
+  height: 48px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 15px,
+    #ccc 15px,
+    #ccc 16px
+  );
+}
+
+.wp-cmp-answer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.wp-cmp-val {
+  font-weight: bold;
+  font-size: 1.15em;
+}
+
+.wp-cmp-box {
+  display: inline-block;
+  width: 110px;
+  height: 34px;
+  border: 1.5px solid #444;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.wp-meta {
+  display: flex;
+  padding: 12px 16% 0;
+  border-top: 1px solid #555;
+  font-size: 16px;
+}
+
+.wp-meta span {
+  flex: 1;
+  text-align: center;
+}
+
+/* Story problems span both columns */
+.wp-card-wide {
+  grid-column: span 2;
+}
+
+/* Shape variants */
+.wp-s0 { border-radius: 0; }
+.wp-s1 { border-radius: 8px; }
+.wp-s2 { border-radius: 16px; }
+.wp-s3 { border-radius: 24px; }
+.wp-s4 { border-radius: 0 16px 0 16px; }
+.wp-s5 { border-radius: 16px 0 16px 0; }
+
+/* Colour variants (light pastels — print-friendly) */
+.wp-c0 { background: #ffffff; }
+.wp-c1 { background: #fffde7; }
+.wp-c2 { background: #e8f5e9; }
+.wp-c3 { background: #e3f2fd; }
+.wp-c4 { background: #fce4ec; }
+.wp-c5 { background: #f3e5f5; }
+
+/* Border-style variants */
+.wp-b0 { border-style: solid; }
+.wp-b1 { border-style: dashed; }
+.wp-b2 { border-style: double; border-width: 4px; }
+
 @media (min-width: 601px) and (max-width: 1000px) {
   .menu {
     font-size: 1.1em;

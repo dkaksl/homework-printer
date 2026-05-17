@@ -6,6 +6,7 @@ import ABCs from '../components/abcs'
 import Zhuyin from '../components/zhuyin'
 import Nouns from '../components/nouns'
 import Verbs from '../components/verbs'
+import WordProblems from '../components/word-problems'
 import GameMenu from '../components/game/menu'
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'advanced'
@@ -38,6 +39,8 @@ export class Main extends Component<Record<string, never>, State> {
       return <Nouns rowCount={rowCount}></Nouns>
     } else if (selected === 'verbs') {
       return <Verbs rowCount={rowCount}></Verbs>
+    } else if (selected === 'word-problems') {
+      return <WordProblems />
     } else if (selected === 'game') {
       return <GameMenu />
     }

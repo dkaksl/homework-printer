@@ -27,6 +27,7 @@ class Menu extends Component<Props, State> {
     { menuId: 'zhuyin', menuTranslationKey: 'Zhuyin' },
     { menuId: 'nouns', menuTranslationKey: 'Nouns' },
     { menuId: 'verbs', menuTranslationKey: 'Verbs' },
+    { menuId: 'word-problems', menuTranslationKey: 'Word Problems' },
     { menuId: 'game', menuTranslationKey: 'Game' }
   ]
 
