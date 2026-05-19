@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component, createRef } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 
 interface Props extends WithTranslation {
@@ -8,6 +8,7 @@ interface Props extends WithTranslation {
 
 interface State {
   selected: string
+  langOpen: boolean
 }
 
 interface Link {
@@ -15,10 +16,18 @@ interface Link {
   menuTranslationKey: string
 }
 
+const LANGUAGES = [
+  { code: 'en', flagClass: 'fi-gb' },
+  { code: 'se', flagClass: 'fi-se' },
+  { code: 'cn', flagClass: 'fi-tw' },
+]
+
 class Menu extends Component<Props, State> {
+  private langRef = createRef<HTMLDivElement>()
+
   constructor(props: Props) {
     super(props)
-    this.state = { selected: this.props.selected }
+    this.state = { selected: this.props.selected, langOpen: false }
   }
 
   links: Link[] = [
@@ -30,6 +39,26 @@ class Menu extends Component<Props, State> {
     { menuId: 'word-problems', menuTranslationKey: 'Word Problems' },
     { menuId: 'game', menuTranslationKey: 'Game' }
   ]
+
+  componentDidUpdate(_prevProps: Props, prevState: State) {
+    if (this.state.langOpen !== prevState.langOpen) {
+      if (this.state.langOpen) {
+        document.addEventListener('click', this.handleOutsideClick)
+      } else {
+        document.removeEventListener('click', this.handleOutsideClick)
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleOutsideClick)
+  }
+
+  handleOutsideClick = (e: MouseEvent) => {
+    if (this.langRef.current && !this.langRef.current.contains(e.target as Node)) {
+      this.setState({ langOpen: false })
+    }
+  }
 
   getMenuLinks = () => {
     return this.links.map((link) => (
@@ -55,33 +84,37 @@ class Menu extends Component<Props, State> {
     return this.state.selected === selected ? 'active' : ''
   }
 
+  changeLang = (code: string) => {
+    this.props.i18n.changeLanguage(code)
+    localStorage.setItem('i18nextLng', code)
+    this.setState({ langOpen: false })
+  }
+
   render() {
+    const { langOpen } = this.state
     return (
       <div className="menu">
-        <div className="language-selector">
-          <div className="column-1">
-            <button
-              className="fib fi-gb"
-              onClick={() => {
-                this.props.i18n.changeLanguage('en')
-                localStorage.setItem('i18nextLng', 'en')
-              }}
-            ></button>
-            <button
-              className="fib fi-se"
-              onClick={() => {
-                this.props.i18n.changeLanguage('se')
-                localStorage.setItem('i18nextLng', 'se')
-              }}
-            ></button>
-            <button
-              className="fib fi-tw"
-              onClick={() => {
-                this.props.i18n.changeLanguage('cn')
-                localStorage.setItem('i18nextLng', 'cn')
-              }}
-            ></button>
-          </div>
+        <div className="language-selector" ref={this.langRef}>
+          <button
+            className="lang-toggle"
+            onClick={() => this.setState({ langOpen: !langOpen })}
+            aria-label="Select language"
+            aria-expanded={langOpen}
+          >
+            🌐
+          </button>
+          {langOpen && (
+            <div className="lang-dropdown">
+              {LANGUAGES.map(({ code, flagClass }) => (
+                <button
+                  key={code}
+                  className={`fib ${flagClass}`}
+                  onClick={() => this.changeLang(code)}
+                  aria-label={code}
+                />
+              ))}
+            </div>
+          )}
         </div>
         <ul>{this.getMenuLinks()}</ul>
       </div>
