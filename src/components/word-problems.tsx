@@ -53,7 +53,7 @@ class WordProblems extends Component<Props, State> {
     const pages = []
     for (let i = 0; i < pageCount; i++) {
       pages.push(
-        generateWordProblems(this.props.t, problemsPerPage, operators, difficulty)
+        generateWordProblems(this.props.t, this.props.i18n.language, problemsPerPage, operators, difficulty)
       )
     }
     return pages

@@ -1,6 +1,50 @@
 import { Difficulty } from '../views/main'
 
 type TFunc = (key: string, options?: Record<string, string | number>) => string
+
+const SINGULAR_MAP: Record<string, Record<string, string>> = {
+  en: {
+    apples: 'apple', marbles: 'marble', coins: 'coin', shells: 'shell',
+    stickers: 'sticker', feathers: 'feather', buttons: 'button', leaves: 'leaf',
+    ribbons: 'ribbon', badges: 'badge', tokens: 'token', gems: 'gem',
+    seeds: 'seed', acorns: 'acorn', crayons: 'crayon', flowers: 'flower',
+    pebbles: 'pebble', stamps: 'stamp', beads: 'bead', pinecones: 'pinecone',
+    cards: 'card', balloons: 'balloon', books: 'book', pencils: 'pencil',
+    minutes: 'minute', dollars: 'dollar', metres: 'metre', litres: 'litre', points: 'point',
+  },
+  se: {
+    äpplen: 'äpple', kulor: 'kula', snäckor: 'snäcka',
+    klistermärken: 'klistermärke', fjädrar: 'fjäder', knappar: 'knapp',
+    märken: 'märke', brickor: 'bricka', ädelstenar: 'ädelsten',
+    frön: 'frö', kritor: 'krita', blommor: 'blomma', stenar: 'sten',
+    frimärken: 'frimärke', pärlor: 'pärla', kottar: 'kotte',
+    ballonger: 'ballong', böcker: 'bok', pennor: 'penna',
+    minuter: 'minut', kronor: 'krona',
+  },
+}
+
+function fixSingular(text: string, lang: string): string {
+  const map = SINGULAR_MAP[lang]
+  if (!map) return text
+
+  // Split trailing punctuation from a word, e.g. "kottar." → ["kottar", "."]
+  const stripPunct = (w: string): [string, string] => {
+    const bare = w.replace(/[.,!?;:]+$/, '')
+    return [bare, w.slice(bare.length)]
+  }
+
+  // Capture "1 word1" with an optional second word, to handle both
+  // direct "1 item" and adjective-interposed "1 adj item" patterns.
+  return text.replace(/\b1 ([^\s]+)(?:( )([^\s]+))?/g, (match, w1, sp, w2) => {
+    const [b1, s1] = stripPunct(w1)
+    if (map[b1] != null) return `1 ${map[b1]}${s1}${w2 != null ? sp + w2 : ''}`
+    if (w2 != null) {
+      const [b2, s2] = stripPunct(w2)
+      if (map[b2] != null) return `1 ${w1}${sp}${map[b2]}${s2}`
+    }
+    return match
+  })
+}
 type Operator = '+' | '-'
 type Computation =
   | 'add' | 'sub'
@@ -183,6 +227,7 @@ function buildOptions(
 
 function generateProblem(
   t: TFunc,
+  lang: string,
   operator: Operator,
   difficulty: Difficulty,
   hasBoth: boolean
@@ -276,7 +321,10 @@ function generateProblem(
     }
   }
 
-  const text = t(templateKey, { name1, name2, name3, a, b, c, item })
+  const text = fixSingular(
+    t(templateKey, { name1, name2, name3, a, b, c, item }),
+    lang
+  )
   const comparison =
     chosen.computation === 'compare'
       ? { labelA: cmpLabelA, labelB: cmpLabelB }
@@ -286,6 +334,7 @@ function generateProblem(
 
 export function generateWordProblems(
   t: TFunc,
+  lang: string,
   count: number,
   operators: Operator[],
   difficulty: Difficulty
@@ -294,7 +343,7 @@ export function generateWordProblems(
   const problems: WordProblem[] = []
   for (let i = 0; i < count; i++) {
     const op = pickRandom(operators)
-    problems.push(generateProblem(t, op, difficulty, hasBoth))
+    problems.push(generateProblem(t, lang, op, difficulty, hasBoth))
   }
   return shuffle(problems)
 }
