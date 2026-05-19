@@ -38,10 +38,12 @@ class WordProblems extends Component<Props, State> {
     this.problemsPerPageHandler = this.problemsPerPageHandler.bind(this)
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (prevProps.i18n.language !== this.props.i18n.language) {
-      this.refresh()
-    }
+  componentDidMount() {
+    this.props.i18n.on('languageChanged', this.refresh)
+  }
+
+  componentWillUnmount() {
+    this.props.i18n.off('languageChanged', this.refresh)
   }
 
   buildPages(
@@ -66,7 +68,7 @@ class WordProblems extends Component<Props, State> {
     return ops.length > 0 ? ops : ['+']
   }
 
-  refresh() {
+  refresh = () => {
     const { difficulty, pageCount, problemsPerPage } = this.state
     this.setState({
       pages: this.buildPages(

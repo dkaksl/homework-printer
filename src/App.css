@@ -69,18 +69,49 @@ body {
   z-index: 100;
 }
 
-.language-selector button {
-  display: block;
-  border: 0;
-  width: 30px;
-  height: 22.5px;
+.lang-toggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 14px;
+  height: 66px;
+  display: flex;
+  align-items: center;
   box-shadow: none;
-  border-radius: 0px;
-  z-index: 200;
+  border-radius: 0;
+  grid-column: unset;
 }
 
-.language-selector > div {
-  float: left;
+.lang-toggle:hover {
+  background: #4b6a78;
+}
+
+.lang-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #3c5560;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.lang-dropdown button {
+  display: block;
+  border: 0;
+  width: 48px;
+  height: 36px;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  grid-column: unset;
+}
+
+.lang-dropdown button:hover {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: -2px;
 }
 
 .content {
@@ -369,8 +400,9 @@ textarea {
     padding: 4px 3px;
   }
 
-  .language-selector button {
-    width: 28px;
-    height: 20px;
+  .lang-toggle {
+    font-size: 18px;
+    padding: 0 10px;
+    height: 58px;
   }
 }
