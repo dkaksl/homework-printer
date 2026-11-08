@@ -636,6 +636,46 @@ label.checkbox {
   border-bottom: 1px solid #444;
 }
 
+/* Number pyramids */
+
+.np-problem {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 8mm;
+  height: 100%;
+  padding-left: 10mm;
+}
+
+.np-problem .problem-number {
+  top: 3mm;
+  line-height: 10mm;
+}
+
+.np-pyramid {
+  position: relative;
+  flex: none;
+}
+
+.np-box {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px solid #1f2a30;
+  outline-offset: -0.5px;
+  font-size: 18px;
+}
+
+.np-work-area {
+  box-sizing: border-box;
+  flex: 1;
+  border: 1px dashed #bbb;
+  border-radius: 2mm;
+}
+
 /* Full-page sheets */
 
 .full-page-sheet {

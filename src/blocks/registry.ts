@@ -5,6 +5,7 @@ import { wordProblemsBlock } from './full-page/word-problems'
 import { nounsBlock, verbsBlock } from './full-page/words'
 import { pageBreakBlock } from './page-break'
 import { picturePuzzleBlock } from './pictures'
+import { numberPyramidBlock } from './pyramid'
 import { AnyBlockDefinition } from './types'
 import { uppstallningBlock } from './uppstallning'
 
@@ -13,6 +14,7 @@ export const BLOCKS: AnyBlockDefinition[] = [
   uppstallningBlock,
   backwardsBlock,
   picturePuzzleBlock,
+  numberPyramidBlock,
   pageBreakBlock,
   mathsBlock,
   abcsBlock,
