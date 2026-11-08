@@ -581,6 +581,61 @@ label.checkbox {
   color: #444;
 }
 
+/* Picture puzzles */
+
+.pp-puzzle {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding-left: 10mm;
+}
+
+.pp-puzzle .problem-number {
+  top: 3mm;
+  line-height: 11mm;
+}
+
+.pp-row {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  font-size: 18px;
+}
+
+.pp-picture {
+  flex: none;
+  color: #1f2a30;
+}
+
+.pp-symbol {
+  min-width: 4mm;
+  text-align: center;
+}
+
+.pp-result {
+  font-weight: bold;
+}
+
+.pp-answers {
+  gap: 8mm;
+}
+
+.pp-answer {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+
+.pp-blank {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 14mm;
+  height: 8mm;
+  border-bottom: 1px solid #444;
+}
+
 /* Full-page sheets */
 
 .full-page-sheet {
