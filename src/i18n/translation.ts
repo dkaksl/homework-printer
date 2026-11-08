@@ -30,6 +30,38 @@ interface Dictionary {
   Nouns: string
   Verbs: string
   'Word Problems': string
+  'Editor': string
+  'Column Arithmetic': string
+  'column-instruction': string
+  'op-+': string
+  'op--': string
+  'op-×': string
+  'op-÷': string
+  'remainder': string
+  'Page Break': string
+  'page-break-hint': string
+  'Note': string
+  'Document': string
+  'Header': string
+  'header-first-page': string
+  'header-every-page': string
+  'header-none': string
+  'inherit-difficulty': string
+  'Show answers': string
+  'Randomize all': string
+  'Delete': string
+  'Duplicate': string
+  'Move up': string
+  'Move down': string
+  'Add': string
+  'Problem types': string
+  'Sections': string
+  'Full-page sheets': string
+  'palette-hint': string
+  'Zoom': string
+  'does-not-fit': string
+  'Tenses': string
+  'Problems per page': string
   'wp-names': string
   'wp-items': string
   // Item 2-number
@@ -89,6 +121,38 @@ export const resources: Resources = {
       Nouns: 'Nouns',
       Verbs: 'Verbs',
       'Word Problems': 'Word Problems',
+      'Editor': "Worksheet",
+      'Column Arithmetic': "Column arithmetic",
+      'column-instruction': "Write the answer under the line. Show your carrying.",
+      'op-+': "addition",
+      'op--': "subtraction",
+      'op-×': "multiplication",
+      'op-÷': "division",
+      'remainder': "r",
+      'Page Break': "Page break",
+      'page-break-hint': "The next section starts on a new page",
+      'Note': "Note box",
+      'Document': "Document",
+      'Header': "Name and date",
+      'header-first-page': "First page",
+      'header-every-page': "Every page",
+      'header-none': "None",
+      'inherit-difficulty': "Same as document ({{difficulty}})",
+      'Show answers': "Show answers",
+      'Randomize all': "Randomize all",
+      'Delete': "Delete",
+      'Duplicate': "Duplicate",
+      'Move up': "Move up",
+      'Move down': "Move down",
+      'Add': "Add",
+      'Problem types': "Problem types",
+      'Sections': "Sections",
+      'Full-page sheets': "Full-page sheets",
+      'palette-hint': "Drag onto the page, or click to add at the end.",
+      'Zoom': "Zoom",
+      'does-not-fit': "Part of this section doesn't fit on a page.",
+      'Tenses': "Included tenses",
+      'Problems per page': "Problems per page",
       'wp-names':
         'Tom|Sara|Max|Lily|Ben|Mia|Jake|Emma|Leo|Zoe|Sam|Ava|Jack|Maya|Ali|Noah|Grace|Owen|Ruby|Finn',
       'wp-items':
@@ -193,6 +257,38 @@ export const resources: Resources = {
       Nouns: 'Substantiv',
       Verbs: 'Verb',
       'Word Problems': 'Textuppgifter',
+      'Editor': "Arbetsblad",
+      'Column Arithmetic': "Uppställning",
+      'column-instruction': "Räkna med uppställning. Visa hur du växlar.",
+      'op-+': "addition",
+      'op--': "subtraktion",
+      'op-×': "multiplikation",
+      'op-÷': "division",
+      'remainder': "rest",
+      'Page Break': "Sidbrytning",
+      'page-break-hint': "Nästa del börjar på en ny sida",
+      'Note': "Anteckningsruta",
+      'Document': "Dokument",
+      'Header': "Namn och datum",
+      'header-first-page': "Första sidan",
+      'header-every-page': "Varje sida",
+      'header-none': "Inget",
+      'inherit-difficulty': "Som dokumentet ({{difficulty}})",
+      'Show answers': "Visa facit",
+      'Randomize all': "Slumpa alla",
+      'Delete': "Ta bort",
+      'Duplicate': "Duplicera",
+      'Move up': "Flytta upp",
+      'Move down': "Flytta ned",
+      'Add': "Lägg till",
+      'Problem types': "Uppgiftstyper",
+      'Sections': "Delar",
+      'Full-page sheets': "Helsidor",
+      'palette-hint': "Dra till sidan, eller klicka för att lägga till sist.",
+      'Zoom': "Zoom",
+      'does-not-fit': "En del av det här avsnittet får inte plats på en sida.",
+      'Tenses': "Inkluderade tidsformer",
+      'Problems per page': "Uppgifter per sida",
       'wp-names':
         'Erik|Maja|Lars|Anna|Viktor|Sofia|Johan|Ella|Nils|Astrid|Lena|Karl|Frida|Oskar|Ida|Axel|Linnea|Hugo|Alva|Elias',
       'wp-items':
@@ -289,6 +385,38 @@ export const resources: Resources = {
       Nouns: '名詞',
       Verbs: '動詞',
       'Word Problems': '應用題',
+      'Editor': "練習單",
+      'Column Arithmetic': "直式計算",
+      'column-instruction': "直式計算，寫出進位和借位。",
+      'op-+': "加法",
+      'op--': "減法",
+      'op-×': "乘法",
+      'op-÷': "除法",
+      'remainder': "餘",
+      'Page Break': "分頁",
+      'page-break-hint': "下一部分從新的一頁開始",
+      'Note': "備註欄",
+      'Document': "文件",
+      'Header': "姓名和日期",
+      'header-first-page': "第一頁",
+      'header-every-page': "每一頁",
+      'header-none': "無",
+      'inherit-difficulty': "同文件（{{difficulty}}）",
+      'Show answers': "顯示答案",
+      'Randomize all': "全部隨機",
+      'Delete': "刪除",
+      'Duplicate': "複製",
+      'Move up': "上移",
+      'Move down': "下移",
+      'Add': "加入",
+      'Problem types': "題型",
+      'Sections': "部分",
+      'Full-page sheets': "整頁練習",
+      'palette-hint': "拖到頁面上，或點擊加到最後。",
+      'Zoom': "縮放",
+      'does-not-fit': "這部分有內容超出一頁。",
+      'Tenses': "時態",
+      'Problems per page': "每頁題數",
       'wp-names':
         '小明|小紅|小強|小花|小偉|小美|小龍|小雲|大毛|二毛|小剛|小芳|小虎|小燕|小峰|小玲|小杰|小慧|小凱|小雪',
       'wp-items':

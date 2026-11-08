@@ -1,7 +1,7 @@
 import './menu.css'
 import { ChangeEvent, useState } from 'react'
 import Game from './game'
-import { Difficulty } from '../../views/main'
+import { Difficulty } from '../../difficulty'
 
 type GameState = 'not-started' | 'started'
 

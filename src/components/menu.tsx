@@ -31,12 +31,7 @@ class Menu extends Component<Props, State> {
   }
 
   links: Link[] = [
-    { menuId: 'maths', menuTranslationKey: 'Maths' },
-    { menuId: 'abcs', menuTranslationKey: 'ABCs' },
-    { menuId: 'zhuyin', menuTranslationKey: 'Zhuyin' },
-    { menuId: 'nouns', menuTranslationKey: 'Nouns' },
-    { menuId: 'verbs', menuTranslationKey: 'Verbs' },
-    { menuId: 'word-problems', menuTranslationKey: 'Word Problems' },
+    { menuId: 'editor', menuTranslationKey: 'Editor' },
     { menuId: 'game', menuTranslationKey: 'Game' }
   ]
 

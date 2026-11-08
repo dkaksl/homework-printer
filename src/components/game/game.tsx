@@ -1,6 +1,6 @@
 import './game.css'
 import { useRef, useState } from 'react'
-import { Difficulty } from '../../views/main'
+import { Difficulty } from '../../difficulty'
 import { QNA } from './qna'
 
 interface Question {

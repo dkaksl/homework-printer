@@ -1,4 +1,5 @@
-import { Difficulty } from '../views/main'
+import { Difficulty } from '../difficulty'
+import { pick, randInt, Rng, shuffle } from './random'
 
 type TFunc = (key: string, options?: Record<string, string | number>) => string
 
@@ -45,7 +46,7 @@ function fixSingular(text: string, lang: string): string {
     return match
   })
 }
-type Operator = '+' | '-'
+export type Operator = '+' | '-'
 type Computation =
   | 'add' | 'sub'
   | 'add3' | 'sub3' | 'mix3'
@@ -84,26 +85,9 @@ interface Option {
   weight: number
 }
 
-function rand(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
-function pickRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)]
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  const result = [...arr]
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[result[i], result[j]] = [result[j], result[i]]
-  }
-  return result
-}
-
-function weightedPick(opts: Option[]): Option {
+function weightedPick(rng: Rng, opts: Option[]): Option {
   const total = opts.reduce((s, o) => s + o.weight, 0)
-  let r = Math.random() * total
+  let r = rng() * total
   for (const o of opts) {
     r -= o.weight
     if (r <= 0) return o
@@ -123,7 +107,8 @@ function getMaxNumber(difficulty: Difficulty): number {
 function buildOptions(
   operator: Operator,
   difficulty: Difficulty,
-  hasBoth: boolean
+  hasBoth: boolean,
+  allowStory: boolean
 ): Option[] {
   const opts: Option[] = []
   const isMedPlus = difficulty !== 'easy'
@@ -158,8 +143,7 @@ function buildOptions(
       computation: operator === '+' ? 'add' : 'sub',
       weight: 1.5
     })
-    // Story problems (long paragraph, renders full-width)
-    opts.push({
+    if (allowStory) opts.push({
       pool: operator === '+'
         ? ['wp-story-add-1','wp-story-add-2','wp-story-add-3']
         : ['wp-story-sub-1','wp-story-sub-2','wp-story-sub-3'],
@@ -226,27 +210,33 @@ function buildOptions(
 }
 
 function generateProblem(
+  rng: Rng,
   t: TFunc,
   lang: string,
   operator: Operator,
   difficulty: Difficulty,
-  hasBoth: boolean
+  hasBoth: boolean,
+  allowStory: boolean
 ): WordProblem {
   const max = getMaxNumber(difficulty)
-  const chosen = weightedPick(buildOptions(operator, difficulty, hasBoth))
-  const templateKey = pickRandom(chosen.pool)
+  const chosen = weightedPick(
+    rng,
+    buildOptions(operator, difficulty, hasBoth, allowStory)
+  )
+  const templateKey = pick(rng, chosen.pool)
+  const rand = (min: number, max: number) => randInt(rng, min, max)
 
   // Names — pick up to 3 distinct
   const names = t('wp-names').split('|')
-  const name1 = pickRandom(names)
+  const name1 = pick(rng, names)
   const pool2 = names.filter((n) => n !== name1)
-  const name2 = pool2.length > 0 ? pickRandom(pool2) : names[0]
+  const name2 = pool2.length > 0 ? pick(rng, pool2) : names[0]
   const pool3 = pool2.filter((n) => n !== name2)
-  const name3 = pool3.length > 0 ? pickRandom(pool3) : names[0]
+  const name3 = pool3.length > 0 ? pick(rng, pool3) : names[0]
 
   // Item + its emoji
   const itemPool = t('wp-items').split('|')
-  const itemIdx = Math.floor(Math.random() * itemPool.length)
+  const itemIdx = Math.floor(rng() * itemPool.length)
   const item = itemPool[itemIdx]
   const itemEmoji = ITEM_EMOJIS[itemIdx] ?? '📦'
   const emoji = chosen.emojiFor(templateKey, itemEmoji)
@@ -332,18 +322,28 @@ function generateProblem(
   return { text, answer, emoji, answerHint, isStory: chosen.isStory, comparison }
 }
 
+export interface WordProblemOptions {
+  count: number
+  operators: Operator[]
+  difficulty: Difficulty
+  maxStories?: number
+}
+
 export function generateWordProblems(
+  rng: Rng,
   t: TFunc,
   lang: string,
-  count: number,
-  operators: Operator[],
-  difficulty: Difficulty
+  { count, operators, difficulty, maxStories = count }: WordProblemOptions
 ): WordProblem[] {
   const hasBoth = operators.includes('+') && operators.includes('-')
   const problems: WordProblem[] = []
+  let stories = 0
   for (let i = 0; i < count; i++) {
-    const op = pickRandom(operators)
-    problems.push(generateProblem(t, lang, op, difficulty, hasBoth))
+    const op = pick(rng, operators)
+    const allowStory = stories < maxStories
+    const problem = generateProblem(rng, t, lang, op, difficulty, hasBoth, allowStory)
+    if (problem.isStory) stories++
+    problems.push(problem)
   }
-  return shuffle(problems)
+  return shuffle(rng, problems)
 }

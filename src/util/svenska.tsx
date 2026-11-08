@@ -1,3 +1,4 @@
+import { Rng } from './random'
 import { getRandomFromArray } from '.'
 import { substantiv, Substantiv } from './dictionary/substantiv'
 import { Verb, verb } from './dictionary/verb'
@@ -47,11 +48,11 @@ export const ordbok: {
   verb
 }
 
-const getRandomNoun = () => {
+const getRandomNoun = (rng: Rng) => {
   const substantiv = ordbok.substantiv
-  const randomSubstantiv = getRandomFromArray(substantiv)
+  const randomSubstantiv = getRandomFromArray(substantiv, rng)
   const randomSubstantivCopy = JSON.parse(JSON.stringify(randomSubstantiv))
-  const randomPluralNummer = getRandomFromArray(pluralNummer)
+  const randomPluralNummer = getRandomFromArray(pluralNummer, rng)
   randomSubstantivCopy.plural.obestämd =
     randomPluralNummer + ' ' + randomSubstantiv.plural.obestämd
   randomSubstantivCopy.plural.bestämd =
@@ -60,9 +61,10 @@ const getRandomNoun = () => {
 }
 
 export const getRandomNounOutOfOptions = (
-  includedOperators: SubstantivAlternativ[]
+  includedOperators: SubstantivAlternativ[],
+  rng: Rng = Math.random
 ) => {
-  const randomNoun = getRandomNoun()
+  const randomNoun = getRandomNoun(rng)
   const nounAlternatives = []
   if (includedOperators.includes(SubstantivAlternativ.SingularObestämd)) {
     nounAlternatives.push(
@@ -74,7 +76,7 @@ export const getRandomNounOutOfOptions = (
     nounAlternatives.push([denEllerDet, randomNoun.singular.bestämd].join(' '))
   }
   if (includedOperators.includes(SubstantivAlternativ.SingularPossessiv)) {
-    const pronomenPrefix = Math.round(Math.random()) ? 'mi' : 'di'
+    const pronomenPrefix = Math.round(rng()) ? 'mi' : 'di'
     nounAlternatives.push(
       [
         pronomenPrefix + (randomNoun.artikel === 'en' ? 'n' : 'tt'),
@@ -88,22 +90,22 @@ export const getRandomNounOutOfOptions = (
   if (includedOperators.includes(SubstantivAlternativ.PluralBestämd)) {
     nounAlternatives.push(randomNoun.plural.bestämd)
   }
-  return getRandomFromArray(nounAlternatives)
+  return getRandomFromArray(nounAlternatives, rng)
 }
 
-const getRandomVerb = () => {
+const getRandomVerb = (rng: Rng) => {
   const verb = ordbok.verb
-  const randomVerb = getRandomFromArray(verb)
+  const randomVerb = getRandomFromArray(verb, rng)
   const randomVerbCopy = JSON.parse(JSON.stringify(randomVerb))
-  const randomPronomen = getRandomFromArray(pronomen)
-  const randomTidsuttryck = getRandomFromArray(tidsuttryck)
+  const randomPronomen = getRandomFromArray(pronomen, rng)
+  const randomTidsuttryck = getRandomFromArray(tidsuttryck, rng)
   const randomHjälpverb = {
-    nutid: getRandomFromArray(hjälpverb.nutid),
-    framtid: getRandomFromArray(hjälpverb.framtid)
+    nutid: getRandomFromArray(hjälpverb.nutid, rng),
+    framtid: getRandomFromArray(hjälpverb.framtid, rng)
   }
   randomVerbCopy.nutid = [
     randomPronomen,
-    getRandomFromArray([randomHjälpverb.nutid, randomHjälpverb.framtid]),
+    getRandomFromArray([randomHjälpverb.nutid, randomHjälpverb.framtid], rng),
     randomVerb.grundord
   ].join(' ')
   randomVerbCopy.dåtid = {
@@ -118,9 +120,10 @@ const getRandomVerb = () => {
 }
 
 export const getRandomVerbOutOfOptions = (
-  includedOperators: VerbAlternativ[]
+  includedOperators: VerbAlternativ[],
+  rng: Rng = Math.random
 ) => {
-  const randomVerb = getRandomVerb()
+  const randomVerb = getRandomVerb(rng)
   const verbAlternatives = []
   if (includedOperators.includes(VerbAlternativ.Nutid)) {
     verbAlternatives.push(randomVerb.nutid)
@@ -131,5 +134,5 @@ export const getRandomVerbOutOfOptions = (
   if (includedOperators.includes(VerbAlternativ.DåtidTidsuttryck)) {
     verbAlternatives.push(randomVerb.dåtid.tidsuttryck)
   }
-  return getRandomFromArray(verbAlternatives)
+  return getRandomFromArray(verbAlternatives, rng)
 }
