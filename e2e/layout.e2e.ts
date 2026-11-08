@@ -29,6 +29,7 @@ const fullestDocument = (difficulty: string, seed: number) => {
       block('work-backwards', { operators: ['÷'], count: 3 }, 13),
       block('picture-puzzle', { operators: ['+', '-', '×', '÷'], count: 3 }, 14),
       block('picture-puzzle', { operators: ['÷'], count: 3 }, 15),
+      block('number-pyramid', { count: 4 }, 16),
       block('maths', { operators: ['+', '-'], pageCount: 1, ...note }, 4),
       block('abcs', { case: 'lower', ...note }, 5),
       block('zhuyin', note, 6),

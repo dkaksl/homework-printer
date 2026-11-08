@@ -106,6 +106,9 @@ interface Dictionary {
   // Picture puzzle
   'Picture Puzzle': string
   'picture-puzzle-instruction': string
+  // Number pyramid
+  'Number Pyramid': string
+  'number-pyramid-instruction': string
 }
 
 export const resources: Resources = {
@@ -256,7 +259,11 @@ export const resources: Resources = {
 
       // ── Picture puzzle ─────────────────────────────────────────────────────
       'Picture Puzzle': 'Picture puzzle',
-      'picture-puzzle-instruction': 'The same picture always has the same value. Work out what each picture is worth.'
+      'picture-puzzle-instruction': 'The same picture always has the same value. Work out what each picture is worth.',
+
+      // ── Number pyramid ─────────────────────────────────────────────────────
+      'Number Pyramid': 'Number pyramid',
+      'number-pyramid-instruction': 'Each box is the sum of the two boxes directly below it. Fill in the empty boxes.'
     }
   },
 
@@ -399,7 +406,11 @@ export const resources: Resources = {
 
       // ── Bildgåta ───────────────────────────────────────────────────────────
       'Picture Puzzle': 'Bildgåta',
-      'picture-puzzle-instruction': 'Samma bild har alltid samma värde. Räkna ut vad varje bild är värd.'
+      'picture-puzzle-instruction': 'Samma bild har alltid samma värde. Räkna ut vad varje bild är värd.',
+
+      // ── Talpyramid ─────────────────────────────────────────────────────────
+      'Number Pyramid': 'Talpyramid',
+      'number-pyramid-instruction': 'Varje ruta är summan av de två rutorna direkt under den. Fyll i de tomma rutorna.'
     }
   },
 
@@ -542,7 +553,11 @@ export const resources: Resources = {
 
       // ── 圖形謎題 ───────────────────────────────────────────────────────────
       'Picture Puzzle': '圖形謎題',
-      'picture-puzzle-instruction': '相同的圖形代表相同的數。算出每個圖形代表多少。'
+      'picture-puzzle-instruction': '相同的圖形代表相同的數。算出每個圖形代表多少。',
+
+      // ── 數字金字塔 ─────────────────────────────────────────────────────────
+      'Number Pyramid': '數字金字塔',
+      'number-pyramid-instruction': '每一格都是正下方兩格的和。把空格填滿。'
     }
   }
 }
