@@ -103,6 +103,9 @@ interface Dictionary {
   'wb-step-×': string
   'wb-step-÷': string
   'wb-end': string
+  // Picture puzzle
+  'Picture Puzzle': string
+  'picture-puzzle-instruction': string
 }
 
 export const resources: Resources = {
@@ -249,7 +252,11 @@ export const resources: Resources = {
       'wb-step--': '{{then}} {{name}} gave {{n}} {{item}} to {{other}}.',
       'wb-step-×': '{{then}} {{other}} gave {{name}} so many {{item}} that {{name}} had {{n}} times as many as before.',
       'wb-step-÷': '{{then}} {{name}} split the {{item}} into {{n}} equal piles and kept just one pile.',
-      'wb-end': 'Now {{name}} has {{final}} {{item}}. How many {{item}} did {{name}} have at the start?'
+      'wb-end': 'Now {{name}} has {{final}} {{item}}. How many {{item}} did {{name}} have at the start?',
+
+      // ── Picture puzzle ─────────────────────────────────────────────────────
+      'Picture Puzzle': 'Picture puzzle',
+      'picture-puzzle-instruction': 'The same picture always has the same value. Work out what each picture is worth.'
     }
   },
 
@@ -388,7 +395,11 @@ export const resources: Resources = {
       'wb-step--': '{{then}} gav {{name}} bort {{n}} {{item}} till {{other}}.',
       'wb-step-×': '{{then}} fick {{name}} så många {{item}} av {{other}} att {{name}} hade {{n}} gånger så många som innan.',
       'wb-step-÷': '{{then}} delade {{name}} upp sina {{item}} i {{n}} lika stora högar och behöll bara en hög.',
-      'wb-end': 'Nu har {{name}} {{final}} {{item}}. Hur många {{item}} hade {{name}} från början?'
+      'wb-end': 'Nu har {{name}} {{final}} {{item}}. Hur många {{item}} hade {{name}} från början?',
+
+      // ── Bildgåta ───────────────────────────────────────────────────────────
+      'Picture Puzzle': 'Bildgåta',
+      'picture-puzzle-instruction': 'Samma bild har alltid samma värde. Räkna ut vad varje bild är värd.'
     }
   },
 
@@ -527,7 +538,11 @@ export const resources: Resources = {
       'wb-step--': '{{then}}{{name}}送給{{other}}{{n}}個{{item}}。',
       'wb-step-×': '{{then}}{{other}}又給了{{name}}一些{{item}}，讓{{name}}的{{item}}變成原來的{{n}}倍。',
       'wb-step-÷': '{{then}}{{name}}把{{item}}平分成{{n}}堆，只留下一堆。',
-      'wb-end': '現在{{name}}有{{final}}個{{item}}。{{name}}一開始有多少個{{item}}？'
+      'wb-end': '現在{{name}}有{{final}}個{{item}}。{{name}}一開始有多少個{{item}}？',
+
+      // ── 圖形謎題 ───────────────────────────────────────────────────────────
+      'Picture Puzzle': '圖形謎題',
+      'picture-puzzle-instruction': '相同的圖形代表相同的數。算出每個圖形代表多少。'
     }
   }
 }
