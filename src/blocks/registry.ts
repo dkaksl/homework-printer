@@ -1,3 +1,4 @@
+import { backwardsBlock } from './backwards'
 import { abcsBlock, zhuyinBlock } from './full-page/letters'
 import { mathsBlock } from './full-page/maths'
 import { wordProblemsBlock } from './full-page/word-problems'
@@ -9,6 +10,7 @@ import { uppstallningBlock } from './uppstallning'
 /** Palette order. New block types only need to be added here to be covered by the layout contract tests. */
 export const BLOCKS: AnyBlockDefinition[] = [
   uppstallningBlock,
+  backwardsBlock,
   pageBreakBlock,
   mathsBlock,
   abcsBlock,
