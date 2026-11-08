@@ -12,10 +12,12 @@ import {
   useSensors
 } from '@dnd-kit/core'
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { useReactToPrint } from 'react-to-print'
 import { getBlockDefinition } from '../blocks/registry'
 import { layoutDocument } from '../document/layout'
 import { loadDocument, saveDocument } from '../document/persistence'
+import { printLabel, recordPrint } from '../document/printHistory'
 import { documentReducer, newBlockId } from '../document/store'
 import { useT } from '../i18n/useT'
 import { Canvas } from './Canvas'
@@ -86,6 +88,7 @@ export const Editor = () => {
   const [zoom, setZoom] = useState(loadZoom)
   const [dragLabel, setDragLabel] = useState<string | null>(null)
   const [dropTarget, setDropTarget] = useState<DropTarget | null>(null)
+  const [label, setLabel] = useState<string>()
   const printRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => saveDocument(document), [document])
@@ -103,6 +106,11 @@ export const Editor = () => {
 
   const print = useReactToPrint({
     content: () => printRef.current,
+    // The label has to be in the DOM before react-to-print copies it, hence flushSync.
+    onBeforeGetContent: () => {
+      const entry = recordPrint(document, lang)
+      flushSync(() => setLabel(printLabel(entry)))
+    },
     documentTitle: t('Editor'),
     pageStyle: PRINT_PAGE_STYLE
   })
@@ -197,7 +205,7 @@ export const Editor = () => {
       </div>
       <div className="print-root" data-testid="printout" aria-hidden="true">
         <div ref={printRef}>
-          <PrintPages pages={pagination.pages} />
+          <PrintPages pages={pagination.pages} label={label} />
         </div>
       </div>
       <DragOverlay dropAnimation={null}>

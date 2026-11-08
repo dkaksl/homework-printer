@@ -28,11 +28,14 @@ export const SheetPage = ({
   page,
   options,
   wrapUnit = (placed, content) => <UnitBox placed={placed}>{content}</UnitBox>,
+  label,
   children
 }: {
   page: Page
   options: RenderOptions
   wrapUnit?: (placed: PlacedUnit, content: ReactNode) => ReactNode
+  /** Sits in the bottom margin, outside the content area the layout model fills. */
+  label?: string
   children?: ReactNode
 }) => (
   <div className="sheet-page" data-page>
@@ -41,6 +44,7 @@ export const SheetPage = ({
       <PageUnit key={`${placed.blockId}:${placed.unit.key}`} placed={placed} options={options} wrap={wrapUnit} />
     ))}
     {children}
+    {label && <div className="print-label">{label}</div>}
   </div>
 )
 
@@ -54,10 +58,18 @@ const PageUnit = ({
   wrap: (placed: PlacedUnit, content: ReactNode) => ReactNode
 }) => <>{wrap(placed, placed.unit.render(options))}</>
 
-export const PrintPages = ({ pages }: { pages: Page[] }) => (
+export const PrintPages = ({
+  pages,
+  label,
+  showAnswers = false
+}: {
+  pages: Page[]
+  label?: string
+  showAnswers?: boolean
+}) => (
   <div className="print-pages">
     {pages.map((page, i) => (
-      <SheetPage key={i} page={page} options={{ showAnswers: false, mode: 'print' }} />
+      <SheetPage key={i} page={page} options={{ showAnswers, mode: 'print' }} label={label} />
     ))}
   </div>
 )
