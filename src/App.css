@@ -547,6 +547,40 @@ label.checkbox {
   border-left: 1.5px solid #1f2a30;
 }
 
+/* Work backwards word problems */
+
+.wb-problem {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding-left: 10mm;
+}
+
+.wb-problem .problem-number {
+  top: 3mm;
+  line-height: 6mm;
+}
+
+.wb-text {
+  margin: 0;
+  overflow: hidden;
+}
+
+.wb-work-area {
+  box-sizing: border-box;
+  border: 1px dashed #bbb;
+  border-radius: 2mm;
+}
+
+.wb-answer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5mm;
+  margin: 0;
+  color: #444;
+}
+
 /* Full-page sheets */
 
 .full-page-sheet {

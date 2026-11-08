@@ -93,6 +93,16 @@ interface Dictionary {
   'wp-cmp-hint': string
   'wp-cmp-red': string
   'wp-cmp-blue': string
+  // Work backwards
+  'Work Backwards': string
+  'backwards-instruction': string
+  'wb-then': string
+  'wb-intro': string
+  'wb-step-+': string
+  'wb-step--': string
+  'wb-step-×': string
+  'wb-step-÷': string
+  'wb-end': string
 }
 
 export const resources: Resources = {
@@ -228,7 +238,18 @@ export const resources: Resources = {
       'wp-cmp-3': 'During the game, {{name1}} scored {{a}} points and {{name2}} scored {{b}} points. Is {{name1}}\'s score greater than, less than, or equal to {{name2}}\'s score? Write > < or = in the answer space.',
       'wp-cmp-hint': 'Write > < or =',
       'wp-cmp-red': 'red',
-      'wp-cmp-blue': 'blue'
+      'wp-cmp-blue': 'blue',
+
+      // ── Work backwards ─────────────────────────────────────────────────────
+      'Work Backwards': 'Word problem – work backwards',
+      'backwards-instruction': 'Start from the end and work backwards. Show your working.',
+      'wb-then': 'Then|After that|Later|Next',
+      'wb-intro': '{{name}} had some {{item}}.',
+      'wb-step-+': '{{then}} {{name}} got {{n}} {{item}} from {{other}}.',
+      'wb-step--': '{{then}} {{name}} gave {{n}} {{item}} to {{other}}.',
+      'wb-step-×': '{{then}} {{other}} gave {{name}} so many {{item}} that {{name}} had {{n}} times as many as before.',
+      'wb-step-÷': '{{then}} {{name}} split the {{item}} into {{n}} equal piles and kept just one pile.',
+      'wb-end': 'Now {{name}} has {{final}} {{item}}. How many {{item}} did {{name}} have at the start?'
     }
   },
 
@@ -356,7 +377,18 @@ export const resources: Resources = {
       'wp-cmp-3': 'Under spelet fick {{name1}} {{a}} poäng och {{name2}} fick {{b}} poäng. Är {{name1}}s poäng större, mindre eller lika med {{name2}}s poäng? Skriv > < eller = nedan.',
       'wp-cmp-hint': 'Skriv > < eller =',
       'wp-cmp-red': 'röd',
-      'wp-cmp-blue': 'blå'
+      'wp-cmp-blue': 'blå',
+
+      // ── Räkna baklänges ────────────────────────────────────────────────────
+      'Work Backwards': 'Textuppgift – räkna baklänges',
+      'backwards-instruction': 'Börja från slutet och räkna baklänges. Visa hur du räknar.',
+      'wb-then': 'Sedan|Därefter|Senare|Efter det',
+      'wb-intro': '{{name}} hade ett antal {{item}}.',
+      'wb-step-+': '{{then}} fick {{name}} {{n}} {{item}} av {{other}}.',
+      'wb-step--': '{{then}} gav {{name}} bort {{n}} {{item}} till {{other}}.',
+      'wb-step-×': '{{then}} fick {{name}} så många {{item}} av {{other}} att {{name}} hade {{n}} gånger så många som innan.',
+      'wb-step-÷': '{{then}} delade {{name}} upp sina {{item}} i {{n}} lika stora högar och behöll bara en hög.',
+      'wb-end': 'Nu har {{name}} {{final}} {{item}}. Hur många {{item}} hade {{name}} från början?'
     }
   },
 
@@ -484,7 +516,18 @@ export const resources: Resources = {
       'wp-cmp-3': '遊戲中，{{name1}}得了{{a}}分，{{name2}}得了{{b}}分。{{name1}}的分數是大於、小於還是等於{{name2}}的分數？請在答案欄填入 > < 或 =。',
       'wp-cmp-hint': '填入 > < 或 =',
       'wp-cmp-red': '紅色',
-      'wp-cmp-blue': '藍色'
+      'wp-cmp-blue': '藍色',
+
+      // ── 倒推 ───────────────────────────────────────────────────────────────
+      'Work Backwards': '應用題－倒推',
+      'backwards-instruction': '從最後的數量往回推算，寫出算式。',
+      'wb-then': '然後|接著|後來|之後',
+      'wb-intro': '{{name}}原本有一些{{item}}。',
+      'wb-step-+': '{{then}}{{other}}給了{{name}}{{n}}個{{item}}。',
+      'wb-step--': '{{then}}{{name}}送給{{other}}{{n}}個{{item}}。',
+      'wb-step-×': '{{then}}{{other}}又給了{{name}}一些{{item}}，讓{{name}}的{{item}}變成原來的{{n}}倍。',
+      'wb-step-÷': '{{then}}{{name}}把{{item}}平分成{{n}}堆，只留下一堆。',
+      'wb-end': '現在{{name}}有{{final}}個{{item}}。{{name}}一開始有多少個{{item}}？'
     }
   }
 }
