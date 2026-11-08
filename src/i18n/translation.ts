@@ -109,6 +109,15 @@ interface Dictionary {
   // Number pyramid
   'Number Pyramid': string
   'number-pyramid-instruction': string
+  // Printed sheets
+  'Printed sheets': string
+  'printed-sheets-hint': string
+  'printed-sheets-empty': string
+  'printed-sheets-pick': string
+  'Open': string
+  'Delete all': string
+  'delete-all-confirm': string
+  'Answer key': string
 }
 
 export const resources: Resources = {
@@ -263,7 +272,17 @@ export const resources: Resources = {
 
       // ── Number pyramid ─────────────────────────────────────────────────────
       'Number Pyramid': 'Number pyramid',
-      'number-pyramid-instruction': 'Each box is the sum of the two boxes directly below it. Fill in the empty boxes.'
+      'number-pyramid-instruction': 'Each box is the sum of the two boxes directly below it. Fill in the empty boxes.',
+
+      // ── Printed sheets ─────────────────────────────────────────────────────
+      'Printed sheets': 'Printed sheets',
+      'printed-sheets-hint': 'Every printout is kept here with its answers for {{days}} days, in this browser only. The number at the bottom of a printed page matches its entry.',
+      'printed-sheets-empty': 'Nothing has been printed yet.',
+      'printed-sheets-pick': 'Open a printout to see its answers.',
+      'Open': 'Open',
+      'Delete all': 'Delete all',
+      'delete-all-confirm': 'Delete every printed sheet in the history?',
+      'Answer key': 'Answer key'
     }
   },
 
@@ -410,7 +429,17 @@ export const resources: Resources = {
 
       // ── Talpyramid ─────────────────────────────────────────────────────────
       'Number Pyramid': 'Talpyramid',
-      'number-pyramid-instruction': 'Varje ruta är summan av de två rutorna direkt under den. Fyll i de tomma rutorna.'
+      'number-pyramid-instruction': 'Varje ruta är summan av de två rutorna direkt under den. Fyll i de tomma rutorna.',
+
+      // ── Utskrivna blad ─────────────────────────────────────────────────────
+      'Printed sheets': 'Utskrivna blad',
+      'printed-sheets-hint': 'Varje utskrift sparas här med facit i {{days}} dagar, bara i den här webbläsaren. Numret längst ner på ett utskrivet blad visar vilken rad det hör till.',
+      'printed-sheets-empty': 'Inget har skrivits ut än.',
+      'printed-sheets-pick': 'Öppna en utskrift för att se facit.',
+      'Open': 'Öppna',
+      'Delete all': 'Ta bort alla',
+      'delete-all-confirm': 'Ta bort alla utskrivna blad i historiken?',
+      'Answer key': 'Facit'
     }
   },
 
@@ -557,7 +586,17 @@ export const resources: Resources = {
 
       // ── 數字金字塔 ─────────────────────────────────────────────────────────
       'Number Pyramid': '數字金字塔',
-      'number-pyramid-instruction': '每一格都是正下方兩格的和。把空格填滿。'
+      'number-pyramid-instruction': '每一格都是正下方兩格的和。把空格填滿。',
+
+      // ── 已列印的練習單 ─────────────────────────────────────────────────────
+      'Printed sheets': '已列印',
+      'printed-sheets-hint': '每次列印都會連同答案保存在這裡 {{days}} 天，只存在這個瀏覽器。列印頁底部的編號對應這裡的項目。',
+      'printed-sheets-empty': '還沒有列印過任何練習單。',
+      'printed-sheets-pick': '打開一份列印來看答案。',
+      'Open': '打開',
+      'Delete all': '全部刪除',
+      'delete-all-confirm': '要刪除所有已列印的紀錄嗎？',
+      'Answer key': '答案'
     }
   }
 }

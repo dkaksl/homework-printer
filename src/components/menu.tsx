@@ -32,6 +32,7 @@ class Menu extends Component<Props, State> {
 
   links: Link[] = [
     { menuId: 'editor', menuTranslationKey: 'Editor' },
+    { menuId: 'printed', menuTranslationKey: 'Printed sheets' },
     { menuId: 'game', menuTranslationKey: 'Game' }
   ]
 

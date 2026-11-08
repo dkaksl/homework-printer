@@ -6,7 +6,7 @@ export const STORAGE_KEY = 'homework-printer.document'
 
 const HEADER_PLACEMENTS = ['first-page', 'every-page', 'none']
 
-const isDocument = (value: unknown): value is WorksheetDocument => {
+export const isDocument = (value: unknown): value is WorksheetDocument => {
   const doc = value as WorksheetDocument
   return (
     doc?.version === 1 &&
